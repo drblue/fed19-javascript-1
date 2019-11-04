@@ -37,8 +37,18 @@ console.log(welcome_msg);
 */
 
 let email = "jn@thehiveresistance.com";
-// email = "some@dude.org";
+email = "some@dude.org";
+email = "bgates@microsoft.com";
 
+email = "some.brittish.dude@bt.co.uk";
+
+let index_of_at_symbol = email.indexOf('@'); // 2
+let length_of_email = email.length; // 24
+let email_domain = email.slice(index_of_at_symbol+1, length_of_email); // slice(3, 23)
+
+console.log("Email domain is " + email_domain);
+
+/*
 console.log("Email is " + email);
 console.log("Email is " + email.length + " chars long");
 
@@ -49,3 +59,9 @@ console.log("Last 'e' exists at index " + email.lastIndexOf('e'));
 
 console.log("Email in ALL CAPS is " + email.toUpperCase());
 console.log("Email is " + email);
+
+console.log("Slice of email is " + email.slice(3, 4));
+
+console.log("The 4 first chars in email is " + email.substr(0, 4));
+console.log("The 4 chars from index 3 in email is " + email.substr(3, 4));
+*/
