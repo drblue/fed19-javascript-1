@@ -23,15 +23,29 @@ console.log(age);
 // alert('hello')
 */
 
-let student_name = "Tony Stark"; // snake_case
+/*
+let student_name; // snake_case
+student_name = 'Tony Stark';
+
 let points = 42;
 
-points = 80;
+const maxPointsExam = 80;  // camelCase
+let welcome_msg = "Welcome";
+let alert_msg = welcome_msg + " " + student_name;
 
-const maxPointsExam = 84;  // camelCase
-maxpoints = 80;
+console.log(welcome_msg);
+*/
 
-console.log(points);
-console.log(maxpoints);
+let email = "jn@thehiveresistance.com";
+// email = "some@dude.org";
 
-var student = "John Doe";
+console.log("Email is " + email);
+console.log("Email is " + email.length + " chars long");
+
+console.log("First char in email is " + email[0]);
+console.log("Third char in email is " + email[2]);
+
+console.log("Last 'e' exists at index " + email.lastIndexOf('e'));
+
+console.log("Email in ALL CAPS is " + email.toUpperCase());
+console.log("Email is " + email);
