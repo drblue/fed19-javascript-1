@@ -1,0 +1,7 @@
+Number - Tal - 0..9
+String - Sträng - 'Hello World' "Hello World"
+Boolean - Bolesk - true/false
+Null - Null
+Undefined - Odefinierad
+Object - Objekt
+Symbol - Symbol
