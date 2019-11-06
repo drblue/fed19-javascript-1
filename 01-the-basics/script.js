@@ -1,46 +1,34 @@
+// let name = "Bill Gates";
+// let email = "bgates@microsoft.com";
+// let phone = "1-555-BGATES";
+let name = "Tony Stark";
+let email = "tony@starkindustries.com";
+let phone = "1-555-IRONMAN";
+
+// "User Bill Gates can be reached at bgates@microsoft.com or via phone 1-555-BGATES."
+
+// String Concatenation
+// let msg = "User " + name + " can be reached at " + email + " or via phone " + phone + ".";
+// console.log(msg);
+
+// Template Strings/Literals
+// let msg = `User ${name} can be reached at ${email} or by phone ${phone}.`;
+// console.log(msg);
+
+// HTML
+let title = "My Fancy Blog Post";
+let author = "Influencer99";
+let likes = "-1";
 /*
-let radius = 20;
-const PI = 3.1415;
-
-const EXAM_MAX_POINTS = 40;
-let points = 20;
-
-// math operators: +, -, *, /, **, % (modulus, mod)
-
-// console.log(radius % 3);
-console.log(radius * radius * PI);
-console.log(radius ** 2 * PI);
-
-let result = 5 * (10 - 3)**2;
+let html = "<article>" +
+	"<h1>" + title + "</h1>" +
+	"<p>By " + author + ". Number of likes: " + likes + "</p>" +
+	"</article>";
 */
+let html =
+	`<article>
+		<h1>${title}</h1>
+		<p>By ${author}. Number of likes: ${likes}</p>
+	</article>`;
 
-// let likes = 23;
-// console.log(likes + 1); // 24
-// console.log(likes); // 23
-
-/**
- * math shorthands
-*/
-
-// likes = likes + 1; // 24
-// likes++;
-
-// likes = likes - 1;
-// likes--;
-
-// console.log(likes); // 25
-
-// likes = likes + 5;
-// likes += 5;
-// likes -= 8;
-// likes *= 3;
-// likes /= 2;
-
-// let welcome_msg = 'You have 23 likes!' - 1;
-// console.log(welcome_msg);
-
-console.log(15 * 'hello this is dog');
-console.log(5 / 'hello this is dog');
-console.log('hello this is dog' - 8);
-console.log('hello this is dog' + 42); // ???
-console.log(1337 + 'hello this is dog'); // ???
+console.log(html);
