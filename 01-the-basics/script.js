@@ -1,34 +1,30 @@
-// let name = "Bill Gates";
-// let email = "bgates@microsoft.com";
-// let phone = "1-555-BGATES";
-let name = "Tony Stark";
-let email = "tony@starkindustries.com";
-let phone = "1-555-IRONMAN";
+// Arrays
+let avengers = [
+	"Tony Stark",
+	"The Hulk",
+	"Thor",
+	"Black Widow",
+	"Captain America",
+	"Loki"
+];
 
-// "User Bill Gates can be reached at bgates@microsoft.com or via phone 1-555-BGATES."
+console.log("There are " + avengers.length + " avengers in the database.");
+// console.log("The first avenger is: " + avengers[0]);
+// console.log("The second avenger is: " + avengers[1]);
+// console.log("The third avenger is: " + avengers[2]);
+// console.log("The fourth avenger is: " + avengers[3]);
+// avengers[0] = "Iron Man";
 
-// String Concatenation
-// let msg = "User " + name + " can be reached at " + email + " or via phone " + phone + ".";
-// console.log(msg);
+avengers.push("Thanos");
 
-// Template Strings/Literals
-// let msg = `User ${name} can be reached at ${email} or by phone ${phone}.`;
-// console.log(msg);
+// console.log("Loki is at index " + avengers.indexOf("Loki"));
+// console.log(avengers);
+// let all_avengers =
+console.log("All avengers: " + avengers.join(', '));
 
-// HTML
-let title = "My Fancy Blog Post";
-let author = "Influencer99";
-let likes = "-1";
 /*
-let html = "<article>" +
-	"<h1>" + title + "</h1>" +
-	"<p>By " + author + ". Number of likes: " + likes + "</p>" +
-	"</article>";
+let enemies = [12, 1337, 42];
+console.log("There are " + enemies.length + " enemies in the database.");
+console.log(enemies);
+console.log(enemies[1]);
 */
-let html =
-	`<article>
-		<h1>${title}</h1>
-		<p>By ${author}. Number of likes: ${likes}</p>
-	</article>`;
-
-console.log(html);
