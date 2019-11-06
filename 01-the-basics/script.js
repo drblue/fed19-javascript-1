@@ -15,7 +15,7 @@ console.log("There are " + avengers.length + " avengers in the database.");
 // console.log("The fourth avenger is: " + avengers[3]);
 // avengers[0] = "Iron Man";
 
-avengers.push("Thanos");
+console.log("The last added Avenger which has now been thrown out was: " + avengers.pop())
 
 // console.log("Loki is at index " + avengers.indexOf("Loki"));
 // console.log(avengers);
@@ -28,3 +28,13 @@ console.log("There are " + enemies.length + " enemies in the database.");
 console.log(enemies);
 console.log(enemies[1]);
 */
+
+let justice_league = ["Aqua-Man", "Flash", "Wonder Woman", "Superman", "Batman"];
+
+// avengers.push(justice_league);
+let epic_war = avengers.concat(justice_league);
+console.log(epic_war);
+
+// sort a..z
+epic_war.sort();
+console.log("Sorted characters " + epic_war.join(', '));
