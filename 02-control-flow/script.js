@@ -1,18 +1,18 @@
 /**
- * control flow
+ * logical operators:
+ * OR ||
+ * AND &&
  */
 
-const MAX_POINTS = 40;
-const VG_POINTS = 33;
-const G_POINTS = 26;
-let points = 36;
+let username = "johan";
+// password can be 8-16 chars long.
+let password = "asdf";
+let fml = true;
 
-if (points > MAX_POINTS) {
-	console.log("You cheater!");
-} else if (points >= VG_POINTS) {
-	console.log("Your grade is VG!");
-} else if (points >= G_POINTS) {
-	console.log("Your grade is G!");
+let points = (8 + 2) * 4;
+
+if (password.length >= 8 || (password === "admin" && username === "johan") || fml) {
+	console.log("Password is MEGA-SECURE and between 8-16 chars, which is perfect.");
 } else {
-	console.log("Sorry, better luck next time!");
+	console.log("Please choose another password.");
 }
