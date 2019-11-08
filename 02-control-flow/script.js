@@ -7,12 +7,10 @@ let avengers = ["Iron Man", "Black Widow", "Captain America", "Hulk", "Thor", "S
 
 console.log("There are " + avengers.length + " avengers");
 
-for (let i = 0; i < avengers.length; i++) {
-	console.log("Hello avenger", avengers[i]);
-}
-
-for (let i = 1; i <= 4; i++) {
-	console.log("Look ma I can counts", i);
+for (let i = 0; i < 4; i++) {
+	for (let j = 0; j < avengers.length; j++) {
+		console.log("I'm at loop " + i, avengers[j]);
+	}
 }
 
 console.log("Det var allt för de 25 ørena");
