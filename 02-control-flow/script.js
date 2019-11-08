@@ -2,29 +2,17 @@
  * control flow
  */
 
-/*
-let points = 25;
+const MAX_POINTS = 40;
+const VG_POINTS = 33;
+const G_POINTS = 26;
+let points = 36;
 
-if (points >= 26) {
-	console.log("You just made it!");
+if (points > MAX_POINTS) {
+	console.log("You cheater!");
+} else if (points >= VG_POINTS) {
+	console.log("Your grade is VG!");
+} else if (points >= G_POINTS) {
+	console.log("Your grade is G!");
 } else {
 	console.log("Sorry, better luck next time!");
-}
-*/
-
-let name = "Pelle";
-
-if (name == "Johan") {
-	console.log("Such elite haxx0r, much wow");
-} else if (name === "Kalle") {
-	console.log("You is a duck");
-} else {
-	console.log("You are a young Padawan");
-}
-
-let cats = ['Catto', 'Mr Fluffles'];
-if (cats.length > 2) {
-	alert("Warning! Crazy cat person!");
-} else {
-	alert("You has decent amount of cattos");
 }
