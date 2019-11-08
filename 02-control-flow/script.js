@@ -3,22 +3,28 @@
  */
 
 /*
-let avengers = ["Iron Man", "Black Widow", "Captain America", "Hulk", "Thor", "Spider-Man"]; // 6
+let points = 25;
 
-for (let i = 0; i < avengers.length; i++) {
-	console.log("Avenger " + i, avengers[i]);
+if (points >= 26) {
+	console.log("You just made it!");
+} else {
+	console.log("Sorry, better luck next time!");
 }
-
-console.log("For-loop done");
 */
 
-let i = 3;
-while (i < 3) {
-	console.log("i is", i);
-	i++;
+let name = "Pelle";
+
+if (name == "Johan") {
+	console.log("Such elite haxx0r, much wow");
+} else if (name === "Kalle") {
+	console.log("You is a duck");
+} else {
+	console.log("You are a young Padawan");
 }
 
-let j = 0;
-do {
-	console.log("j is", j);
-} while (j < 3);
+let cats = ['Catto', 'Mr Fluffles'];
+if (cats.length > 2) {
+	alert("Warning! Crazy cat person!");
+} else {
+	alert("You has decent amount of cattos");
+}
