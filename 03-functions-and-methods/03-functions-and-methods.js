@@ -13,14 +13,8 @@ function calcArea(radius) {
 	return area;
 }
 
-r = 10;
-x = calcArea(r);
-console.log(`The area of a circle with radius ${r} is ${x}.`);
-
-r = 20;
-x = calcArea(r);
-console.log(`The area of a circle with radius ${r} is ${x}.`);
-
-r = 30;
-x = calcArea(r);
-console.log(`The area of a circle with radius ${r} is ${x}.`);
+const RADIUS = [10, 20, 30, 5, 18, 42];
+for (let i = 0; i < RADIUS.length; i++) {
+	let a = calcArea(RADIUS[i]);
+	console.log(`The area of a circle with radius ${RADIUS[i]} is ${a}.`);
+}
