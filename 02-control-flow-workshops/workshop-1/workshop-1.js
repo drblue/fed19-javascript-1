@@ -19,8 +19,8 @@ const NUMBERS = [
 ];
 
 let password;
-password = "password"; // inte giltigt
-// password = "p@ssword"; // giltigt
+// password = "password"; // inte giltigt
+password = "passw?rd"; // giltigt
 // password = "pa$$word"; // giltigt
 // password = "secretpassword"; // inte giltigt
 // password = "secr3tpassword"; // giltigt
@@ -38,7 +38,7 @@ for (let i = 0; i < SPECIAL_CHARS.length; i++) {
 let has_number = false;
 for (let i = 0; i < NUMBERS.length; i++) {
 	if (password.includes(NUMBERS[i])) {
-		console.log("yey secure!");
+		has_number = true;
 	}
 }
 
