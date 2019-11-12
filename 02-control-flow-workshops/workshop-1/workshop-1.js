@@ -29,8 +29,11 @@ password = "passw?rd"; // giltigt
 // Check if `password` has at least one special char
 let has_special_char = false;
 for (let i = 0; i < SPECIAL_CHARS.length; i++) {
+	console.log(`Checking if password contains '${SPECIAL_CHARS[i]}'`);
 	if (password.includes(SPECIAL_CHARS[i])) {
+		console.log(`Password contains '${SPECIAL_CHARS[i]}'`);
 		has_special_char = true;
+		break;
 	}
 }
 
@@ -39,6 +42,7 @@ let has_number = false;
 for (let i = 0; i < NUMBERS.length; i++) {
 	if (password.includes(NUMBERS[i])) {
 		has_number = true;
+		break;
 	}
 }
 
