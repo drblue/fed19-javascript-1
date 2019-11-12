@@ -1,35 +1,33 @@
 /**
- * switch-statements
+ * SCOPE
+ *
+ * Global vs Local Scope
+ *
+ * Med `let` och `const` har vi scoped variables, vilket inte gick
+ * med `var` som alltid gjorde dem globala (förutom i funktioner).
  */
 
-const GRADE = 'A+';
+/*
+let points = 10;
 
-switch (GRADE) {
-	case 'A':
-		console.log("You got an A!");
-		break;
+if (true) {
+	let points = 20;
+	console.log("Inside if-statement", points);
 
-	case 'B':
-		console.log("You got an B!");
-		break;
-
-	case 'C':
-		console.log("You got an C!");
-		break;
-
-	case 'D':
-		console.log("You got an D!");
-		break;
-
-	case 'E':
-		console.log("You got an E!");
-		break;
-
-	case 'F':
-		console.log("You got an F!");
-		break;
-
-	default:
-		alert("Cheater!");
-		break;
+	if (true) {
+		let points = 30;
+		console.log("Inside inside if-statement", points);
+	}
+	console.log("After inside if-statement", points);
 }
+
+console.log("Outside if-statement", points);
+*/
+
+let users = ['Kalle', 'Pelle', 'Sven'];
+let user;
+for (let i = 0; i < users.length; i++) {
+	let user = users[i];
+	console.log(`User is ${user}`);
+}
+console.log("After for-loop, user is", user);
