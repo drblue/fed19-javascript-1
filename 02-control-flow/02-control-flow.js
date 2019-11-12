@@ -1,20 +1,37 @@
 /**
- * break & continue
+ * switch-statements
  */
 
-let arr = [
-	3, -1, 9, 42
-];
+/**
+ * 0 = User
+ * 1 = Manager
+ * 2 = Baws
+ * 3 = Admin
+ */
+const USER_LEVEL = 1;
 
-let points = 0;
-for (let i = 0; i < arr.length; i++) {
-	if (arr[i] < 0) {
-		console.log(`${arr[i]} is less than 0, won't subtract points`);
-		continue;
-	}
+let human_user_level;
 
-	console.log(`Adding ${arr[i]} to points`);
-	points += arr[i];
+switch (USER_LEVEL) {
+	case 0:
+		human_user_level = "User";
+		break;
+
+	case 1:
+		human_user_level = "Manager";
+		break;
+
+	case 2:
+		human_user_level = "Baws";
+		break;
+
+	case 3:
+		human_user_level = "Admin";
+		break;
+
+	default:
+		human_user_level = "Guest";
+		break;
 }
 
-console.log("Points are", points);
+alert(`Your user level is: ${human_user_level}`);
