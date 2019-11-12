@@ -2,36 +2,34 @@
  * switch-statements
  */
 
-/**
- * 0 = User
- * 1 = Manager
- * 2 = Baws
- * 3 = Admin
- */
-const USER_LEVEL = 1;
+const GRADE = 'A+';
 
-let human_user_level;
-
-switch (USER_LEVEL) {
-	case 0:
-		human_user_level = "User";
+switch (GRADE) {
+	case 'A':
+		console.log("You got an A!");
 		break;
 
-	case 1:
-		human_user_level = "Manager";
+	case 'B':
+		console.log("You got an B!");
 		break;
 
-	case 2:
-		human_user_level = "Baws";
+	case 'C':
+		console.log("You got an C!");
 		break;
 
-	case 3:
-		human_user_level = "Admin";
+	case 'D':
+		console.log("You got an D!");
+		break;
+
+	case 'E':
+		console.log("You got an E!");
+		break;
+
+	case 'F':
+		console.log("You got an F!");
 		break;
 
 	default:
-		human_user_level = "Guest";
+		alert("Cheater!");
 		break;
 }
-
-alert(`Your user level is: ${human_user_level}`);
