@@ -3,13 +3,13 @@
  */
 
 let arr = [
-	3, 9, "banan", 42, false
+	3, -1, 9, 42
 ];
 
 let points = 0;
 for (let i = 0; i < arr.length; i++) {
-	if (typeof arr[i] !== "number") {
-		console.log(`${arr[i]} is not a number, continuing on next item in array`);
+	if (arr[i] < 0) {
+		console.log(`${arr[i]} is less than 0, won't subtract points`);
 		continue;
 	}
 
