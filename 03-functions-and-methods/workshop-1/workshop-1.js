@@ -36,6 +36,21 @@ const has_number = function(str) {
 	return false;
 };
 
+const checkPassword = function(password) {
+	if (password.length >= 8 && has_special_char(password)) {
+		return true;
+
+	} else if (password.length >= 12 && has_number(password)) {
+		return true;
+
+	} else if (password.length >= 16) {
+		return true;
+
+	}
+
+	return false;
+};
+
 let passwords = [
 	"password", // inte giltigt
 	"passw?rd", // giltigt
@@ -47,16 +62,9 @@ let passwords = [
 
 passwords.forEach(function(password) {
 	// check if `password` matches criteria
-	if (password.length >= 8 && has_special_char(password)) {
-		console.log(`Password '${password}' is at least 8 chars and has at least one special char`);
-
-	} else if (password.length >= 12 && has_number(password)) {
-		console.log(`Password '${password}' is at least 12 chars and has at least one numeric char`);
-
-	} else if (password.length >= 16) {
-		console.log(`Password '${password}' is at least 16 chars`);
-
+	if (checkPassword(password)) {
+		console.log(`Password '${password}' is secure.`);
 	} else {
-		console.log(`Password '${password}' is not secure enough, my grandma can crack it!`);
+		console.log(`Password '${password}' is NOT secure.`);
 	}
 });
