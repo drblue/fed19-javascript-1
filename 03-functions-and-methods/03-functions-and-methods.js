@@ -1,37 +1,22 @@
 /**
  * FUNCTIONS
  *
+ * Calling functions from within functions.
  */
 
-// Function Declaration
-/*
-function getRandomNumber(max) {
-	return Math.floor(Math.random() * Math.floor(max)) + 1;
-}
-*/
+const makeMoreExciting = function(txt) {
+	return txt + "!!!!!!";
+};
 
-/*
-// Function Expression
-const getRandomNumber = function(max) {
-	return Math.floor(Math.random() * Math.floor(max)) + 1;
-}
-*/
+const yellIt = function(txt) {
+	/*
+	let exciting = makeMoreExciting(txt);
+	let yelling = exciting.toUpperCase();
+	return yelling;
+	*/
 
-// Arrow Function (Expression)
-/*
-const getRandomNumber = (max) => {
-	return Math.floor(Math.random() * Math.floor(max)) + 1;
+	return makeMoreExciting(txt).toUpperCase();
 }
 
-const getRandomNumber = max => {
-	return Math.floor(Math.random() * Math.floor(max)) + 1;
-}
-*/
-
-const getRandomNumber = max => Math.floor(Math.random() * Math.floor(max)) + 1;
-
-
-// Get me 20 random numbers between 1-50, plz
-for (let i = 0; i < 20; i++) {
-	console.log("Random number", getRandomNumber(50));
-}
+console.log(makeMoreExciting("coffee is good"));
+console.log(yellIt("coffee is good"));
