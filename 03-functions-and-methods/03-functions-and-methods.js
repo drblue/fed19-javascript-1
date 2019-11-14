@@ -1,22 +1,28 @@
 /**
  * FUNCTIONS
  *
- * Calling functions from within functions.
+ * Callbacks
  */
 
-const makeMoreExciting = function(txt) {
-	return txt + "!!!!!!";
-};
+let students = ["Adam", "Thomas", "Max", "Sven", "Bengt"];
 
-const yellIt = function(txt) {
-	/*
-	let exciting = makeMoreExciting(txt);
-	let yelling = exciting.toUpperCase();
-	return yelling;
-	*/
-
-	return makeMoreExciting(txt).toUpperCase();
+/*
+for (let i = 0; i < students.length; i++) {
+	let student = students[i];
+	console.log(`Student name: ${student}`);
 }
+*/
 
-console.log(makeMoreExciting("coffee is good"));
-console.log(yellIt("coffee is good"));
+/*
+// Declare the variable logStudentName containing a function, then pass that variable as a parameter to the `forEach()`-method on the `students`-array.
+const logStudentName = function(name, index) {
+	console.log(`Student at position ${index} is named: ${name}`);
+}
+students.forEach(logStudentName);
+*/
+
+// Pass an anonymous function as a parameter to the `forEach()`-method on the `students`-array.
+students.forEach(function(name, index) {
+	index++;
+	console.log(`Student at position ${index} is named: ${name}`);
+});
