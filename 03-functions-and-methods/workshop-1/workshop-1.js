@@ -10,52 +10,53 @@
  * Specialtecken: @, $, %, *, ^, <, >, ?, !, (, ), [, ], {, }, '
  */
 
-const SPECIAL_CHARS = [
-	"@", "$", "%", "*", "^", "<", ">", "?", "!", "(", ")", "[", "]", "{", "}", "'"
+const has_special_char = function(str) {
+	const SPECIAL_CHARS = [
+		"@", "$", "%", "*", "^", "<", ">", "?", "!", "(", ")", "[", "]", "{", "}", "'"
+	];
+
+	for (let i = 0; i < SPECIAL_CHARS.length; i++) {
+		if (str.includes(SPECIAL_CHARS[i])) {
+			return true;
+		}
+	}
+	return false;
+};
+
+const has_number = function(str) {
+	const NUMBERS = [
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+	];
+
+	for (let i = 0; i < NUMBERS.length; i++) {
+		if (str.includes(NUMBERS[i])) {
+			return true;
+		}
+	}
+	return false;
+};
+
+let passwords = [
+	"password", // inte giltigt
+	"passw?rd", // giltigt
+	"pa$$word", // giltigt
+	"secretpassword", // inte giltigt
+	"secr3tpassword", // giltigt
+	"such-password-much-secure-very-long", // giltigt
 ];
 
-const NUMBERS = [
-	0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-];
+passwords.forEach(function(password) {
+	// check if `password` matches criteria
+	if (password.length >= 8 && has_special_char(password)) {
+		console.log(`Password '${password}' is at least 8 chars and has at least one special char`);
 
-let password;
-// password = "password"; // inte giltigt
-password = "passw?rd"; // giltigt
-// password = "pa$$word"; // giltigt
-// password = "secretpassword"; // inte giltigt
-// password = "secr3tpassword"; // giltigt
-// password = "such-password-much-secure-very-long"; // giltigt
+	} else if (password.length >= 12 && has_number(password)) {
+		console.log(`Password '${password}' is at least 12 chars and has at least one numeric char`);
 
-// Check if `password` has at least one special char
-let has_special_char = false;
-for (let i = 0; i < SPECIAL_CHARS.length; i++) {
-	console.log(`Checking if password contains '${SPECIAL_CHARS[i]}'`);
-	if (password.includes(SPECIAL_CHARS[i])) {
-		console.log(`Password contains '${SPECIAL_CHARS[i]}'`);
-		has_special_char = true;
-		break;
+	} else if (password.length >= 16) {
+		console.log(`Password '${password}' is at least 16 chars`);
+
+	} else {
+		console.log(`Password '${password}' is not secure enough, my grandma can crack it!`);
 	}
-}
-
-// Check if `password` has at least one number
-let has_number = false;
-for (let i = 0; i < NUMBERS.length; i++) {
-	if (password.includes(NUMBERS[i])) {
-		has_number = true;
-		break;
-	}
-}
-
-// check if `password` matches criteria
-if (password.length >= 8 && has_special_char) {
-	console.log("Password is at least 8 chars and has at least one special char");
-
-} else if (password.length >= 12 && has_number) {
-	console.log("Password is at least 12 chars and has at least one numeric char");
-
-} else if (password.length >= 16) {
-	console.log("Password is at least 16 chars");
-
-} else {
-	console.log("Password is not secure enough, my grandma can crack it!");
-}
+});
