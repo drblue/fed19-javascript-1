@@ -4,26 +4,45 @@
  * All Your Object Belong To Me.
  */
 
-// let students = ["Adam", "Thomas", "Max", "Sven", "Bengt"];
-// let grade = ["C", "F", "A", "B", "D"];
+let students = [
+	{
+		name: "Adam",
+		grade: "C",
+		schoolClass: "9A",
+		city: "Malmö",
+		age: 15,
+		pets: ["Mr Bazooka", "Fluffles"],
+		countPets: function() {
+			return this.pets.length;
+		}
+	},
+	{
+		name: "Thomas",
+		grade: "F",
+		schoolClass: "9A",
+		city: "Lund",
+		age: 14.7,
+		pets: [],
+		countPets: function() {
+			return this.pets.length;
+		}
+	},
+	{
+		name: "Tiffany",
+		grade: "F",
+		schoolClass: "8B",
+		city: "Staffanstorp",
+		age: 42,
+		pets: ["Gun"],
+		countPets: function() {
+			return this.pets.length;
+		}
+	}
+];
 
-let student = {
-	name: "Adam",
-	grade: "C",
-	schoolClass: "9A",
-	city: "Malmö",
-	age: 15,
-	pets: ["Mr Bazooka", "Fluffles"]
-};
+students.forEach(student => {
+	console.log(`${student.name} is ${student.age} years old`);
+	console.log(`${student.name} school-class is ${student.schoolClass} and he/she lives in ${student.city}`);
 
-// console.log(student);
-// console.log(student.name); // Adam
-// console.log(student.grade); // C
-
-// console.log(typeof student); // object
-
-student.grade = "D";
-
-// console.log(`Student ${student.name} in class ${student.schoolClass} got an ${student.grade}`);
-console.log(`${student.name} is ${student.age} years old`);
-console.log(`${student.name}s pet(s) are named ${student.pets.join(', ')}`);
+	console.log(`${student.name} has ${student.countPets()} pets named ${student.pets.join(', ')}`);
+});
