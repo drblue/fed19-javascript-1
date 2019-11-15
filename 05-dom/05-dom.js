@@ -3,12 +3,11 @@
  *
  */
 
-let paragraphs = document.querySelectorAll('p');
-console.log(paragraphs);
+let link = document.querySelector('#link1');
+let href = link.getAttribute('href');
 
-paragraphs.forEach((paragraph) => {
-	console.log("Hello I am a paragraph", paragraph);
-	console.log("innerText", paragraph.innerText);
-	console.log("innerHTML", paragraph.innerHTML);
-	paragraph.innerHTML = `<em>${paragraph.innerHTML}</em>`;
-});
+console.log(`#link1 has href-attribute '${href}'`);
+link.innerText = "Have you bing:ed it?";
+
+// change href-attribute
+link.setAttribute('href', 'https://www.bing.com');
