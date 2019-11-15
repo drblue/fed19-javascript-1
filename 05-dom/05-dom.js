@@ -4,7 +4,4 @@
  */
 
 let link = document.querySelector('#link1');
-link.style.color = "green";
-link.style.margin = "20px";
-link.style.display = "inline-block";
-link.style.color = "";
+link.setAttribute('title', 'Do try googling it');
