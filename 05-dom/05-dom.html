@@ -4,34 +4,41 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 	<title>javascript-1/05-dom</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="05-dom.css">
 </head>
 
 <body>
 	<div class="container">
-		<h1>05-dom</h1>
+		<h1>My Awesomest Form</h1>
 
-		<a id="link1" href="https://www.google.com">Have you Googled it?</a>
-		<a id="link2" href="https://www.altavista.com">Go Old-School</a>
+		<form>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+			</div>
 
-		<p>Hello I am a paragraph</p>
-		<p class="error">Hello I am a <strong>erronous</strong> paragraph</p>
+			<div class="form-group">
+				<label for="email">Email address</label>
+				<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your email">
+				<small id="emailHelp" class="form-text text-muted">We'll only sell your email if you allow us (see below).</small>
+			</div>
 
-		<div class="error">
-			<h2>Such error</h2>
-			<p>Hello I am an error that <span class="scratch">divides</span> people.</p>
-		</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			</div>
 
-		<!--
-		<h2>Knausgaard live-edge yuccie banh mi leggings</h2>
-		<p>Authentic ramps vegan brunch fanny pack keytar. Art party pabst poutine air plant butcher vexillologist skateboard vaporware. La croix iceland irony crucifix snackwave live-edge. Tofu flexitarian cloud bread, bushwick pork belly pitchfork normcore chartreuse meditation.</p>
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="okToSellEmail" checked="checked" value="1">
+				<label class="form-check-label" for="okToSellEmail">I'm totally OK with you selling my email and also take my password.</label>
+			</div>
 
-		<p>Jean shorts artisan ethical, shaman leggings dreamcatcher vice meditation brooklyn kitsch occupy put a bird on it. Vaporware direct trade church-key selfies XOXO, street art pork belly humblebrag banh mi jean shorts distillery tacos everyday carry.</p>
-
-		<h2>Ramps jianbing photo booth before they sold out</h2>
-		<p>Vinyl subway tile gochujang disrupt, aesthetic man bun church-key. Hashtag aesthetic pinterest fam +1, vinyl authentic flexitarian gentrify unicorn pop-up. Tilde skateboard austin, lomo lumbersexual small batch jean shorts gochujang lo-fi artisan thundercats hexagon taiyaki.</p>
-		-->
+			<button type="submit" class="btn btn-primary">Sign Me Up, Scotty!</button>
+		</form>
 	</div>
 
 	<script src="05-dom.js"></script>
