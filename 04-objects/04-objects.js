@@ -4,70 +4,36 @@
  * All Your Object Belong To Me.
  */
 
+let points = 42;
+let pointsCopy = points;
+console.log(`Points: ${points}, pointsCopy: ${pointsCopy}`);
+
+pointsCopy = 1337;
+console.log(`Points: ${points}, pointsCopy: ${pointsCopy}`);
+
 let my_cat = {
 	name: "Mr Fluffles",
 	age: 7,
-	legs: 4,
-	length: 30,
-	color: "angry",
-	speak: function() {
-		alert("Meow!");
-	},
-	speakHungry: function() {
-		alert("Meooooooooooooooooow!");
-	},
-	sayHi: function() {
-		return `Hi my name is ${this.name} and I'm ${this.age} years old`;
-	},
-	likesBoxes: function() {
-		return true;
-	}
+	legs: 4
 };
 
-console.log(my_cat);
-console.log(my_cat.length);
+let my_second_cat = my_cat; // this only copies the reference to the object, not the object itself
+console.log(`My cat's name is: ${my_cat.name}`);
+console.log(`My second cat's name is: ${my_second_cat.name}`);
 
-/*
-let students = [
-	{
-		name: "Adam",
-		grade: "C",
-		schoolClass: "9A",
-		city: "Malmö",
-		age: 15,
-		pets: ["Mr Bazooka", "Fluffles"],
-		countPets: function() {
-			return this.pets.length;
-		}
-	},
-	{
-		name: "Thomas",
-		grade: "F",
-		schoolClass: "9A",
-		city: "Lund",
-		age: 14.7,
-		pets: [],
-		countPets: function() {
-			return this.pets.length;
-		}
-	},
-	{
-		name: "Tiffany",
-		grade: "F",
-		schoolClass: "8B",
-		city: "Staffanstorp",
-		age: 42,
-		pets: ["Gun"],
-		countPets: function() {
-			return this.pets.length;
-		}
-	}
+my_second_cat.name = "Ms FLUFFY";
+console.log(`My cat's name is: ${my_cat.name}`);
+console.log(`My second cat's name is: ${my_second_cat.name}`);
+
+
+const my_array = [
+	"Item 1",
+	"Item 2",
 ];
 
-students.forEach(student => {
-	console.log(`${student.name} is ${student.age} years old`);
-	console.log(`${student.name} school-class is ${student.schoolClass} and he/she lives in ${student.city}`);
+my_array.push("Item 3"); // this works because an array is an object and we only store the reference/pointer to the array as a constant.
+console.log(my_array);
 
-	console.log(`${student.name} has ${student.countPets()} pets named ${student.pets.join(', ')}`);
-});
-*/
+my_array = [
+	"My new Item 1",
+];
