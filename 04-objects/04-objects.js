@@ -4,6 +4,30 @@
  * All Your Object Belong To Me.
  */
 
+let my_cat = {
+	name: "Mr Fluffles",
+	age: 7,
+	legs: 4,
+	length: 30,
+	color: "angry",
+	speak: function() {
+		alert("Meow!");
+	},
+	speakHungry: function() {
+		alert("Meooooooooooooooooow!");
+	},
+	sayHi: function() {
+		return `Hi my name is ${this.name} and I'm ${this.age} years old`;
+	},
+	likesBoxes: function() {
+		return true;
+	}
+};
+
+console.log(my_cat);
+console.log(my_cat.length);
+
+/*
 let students = [
 	{
 		name: "Adam",
@@ -46,3 +70,4 @@ students.forEach(student => {
 
 	console.log(`${student.name} has ${student.countPets()} pets named ${student.pets.join(', ')}`);
 });
+*/
