@@ -60,11 +60,18 @@ let passwords = [
 	"such-password-much-secure-very-long", // giltigt
 ];
 
+const list = document.querySelector('.passwords');
+let output = ``;
+
 passwords.forEach(function(password) {
 	// check if `password` matches criteria
 	if (checkPassword(password)) {
 		console.log(`Password '${password}' is secure.`);
+		output += `<li>Password '${password}' is secure.</li>`;
 	} else {
 		console.log(`Password '${password}' is NOT secure.`);
+		output += `<li>Password '${password}' is NOT secure.</li>`;
 	}
 });
+
+list.innerHTML = output;
