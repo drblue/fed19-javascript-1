@@ -3,23 +3,29 @@
  *
  */
 
-let checkbox = document.querySelector('#okToSellEmail');
-checkbox.addEventListener('click', function(e) {
-	// checkbox.checked = true;
-	console.log(this);
-
-	setTimeout(function() {
-		// this.checked = true;
-		e.target.checked = true;
-		// checkbox.checked = true;
-	}, 1000);
-});
-
 /*
-let lis = document.querySelectorAll('li');
-lis.forEach(li => {
-	li.addEventListener('click', function(e) {
-		console.log("You clicked something?", e.target.innerText);
+let listitems = document.querySelectorAll('#list li');
+listitems.forEach(function(listitem) {
+	listitem.addEventListener('click', function(e) {
+		e.target.remove();
 	});
 });
 */
+let list = document.querySelector('#list');
+list.addEventListener('click', function(e) {
+	if (e.target.tagName === "LI") {
+		e.target.remove();
+	}
+});
+
+let createButton = document.querySelector('#create');
+createButton.addEventListener('click', function() {
+
+	// let newListItem = `<li>A New Item</li>`;
+	// newListItem.addEventListener(); // not workey
+	// list.innerHTML += newListItem;
+
+	let newListItem = document.createElement('li');
+	newListItem.innerText = prompt('Enter text', 'A New Item');
+	list.prepend(newListItem);
+});

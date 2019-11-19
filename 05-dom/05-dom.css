@@ -1,0 +1,10 @@
+ul {
+	background-color: #ddd;
+	padding: 1rem 1.5rem;
+}
+
+li {
+	background-color: #aaa;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
