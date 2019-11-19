@@ -3,12 +3,16 @@
  *
  */
 
-let submit_button = document.querySelector('#submit');
-submit_button.addEventListener('click', function(event) {
-	event.preventDefault();
+let checkbox = document.querySelector('#okToSellEmail');
+checkbox.addEventListener('click', function(e) {
+	// checkbox.checked = true;
+	console.log(this);
 
-	let password = document.querySelector('#password');
-	alert(`Your password is ${password.value} 😁`);
+	setTimeout(function() {
+		// this.checked = true;
+		e.target.checked = true;
+		// checkbox.checked = true;
+	}, 1000);
 });
 
 /*
