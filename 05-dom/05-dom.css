@@ -1,10 +1,20 @@
+body {
+	color: #333;
+}
+
 ul {
-	background-color: #ddd;
-	padding: 1rem 1.5rem;
+	border: 1px solid #222;
+	list-style-type: square;
+	padding: 0.5rem 1rem;
 }
 
 li {
-	background-color: #aaa;
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
+	margin-left: 1rem;
+	padding-left: 0.25rem;
+}
+
+li.completed {
+	text-decoration: line-through;
 }

@@ -11,21 +11,21 @@ listitems.forEach(function(listitem) {
 	});
 });
 */
+
 let list = document.querySelector('#list');
 list.addEventListener('click', function(e) {
 	if (e.target.tagName === "LI") {
-		e.target.remove();
+		e.target.classList.toggle('completed');
 	}
 });
 
 let createButton = document.querySelector('#create');
 createButton.addEventListener('click', function() {
-
 	// let newListItem = `<li>A New Item</li>`;
 	// newListItem.addEventListener(); // not workey
 	// list.innerHTML += newListItem;
 
 	let newListItem = document.createElement('li');
 	newListItem.innerText = prompt('Enter text', 'A New Item');
-	list.prepend(newListItem);
+	list.append(newListItem);
 });
