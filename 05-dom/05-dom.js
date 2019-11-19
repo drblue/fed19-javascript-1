@@ -46,7 +46,7 @@ const saveInLocalStorage = function(key, value) {
 
 const getTodosFromStorage = function() {
 	let jsonTodos = getFromLocalStorage('todos');
-	todos = JSON.parse(jsonTodos);
+	let todos = JSON.parse(jsonTodos);
 
 	// if (todos !== false && todos !== null) {
 	if (!todos) {
