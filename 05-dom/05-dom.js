@@ -3,6 +3,7 @@
  *
  */
 
+/*
 let todos = [
 	{ // 0
 		description: "Have class meeting",
@@ -25,6 +26,39 @@ let todos = [
 		completed: false,
 	},
 ];
+*/
+
+const getFromLocalStorage = function(key) {
+	if (typeof(Storage) !== "undefined") {
+		return window.localStorage.getItem(key);
+	}
+
+	return false;
+}
+
+const saveInLocalStorage = function(key, value) {
+	if (typeof(Storage) !== "undefined") {
+		window.localStorage.setItem(key, value);
+	}
+
+	return false;
+}
+
+const getTodosFromStorage = function() {
+	let jsonTodos = getFromLocalStorage('todos');
+	todos = JSON.parse(jsonTodos);
+
+	// if (todos !== false && todos !== null) {
+	if (!todos) {
+		return [];
+	}
+
+	return todos;
+}
+
+// get todos from storage
+let todos = getTodosFromStorage();
+
 
 let todosEl = document.querySelector('#todos');
 
