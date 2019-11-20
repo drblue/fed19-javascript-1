@@ -2,6 +2,13 @@ body {
 	color: #333;
 }
 
+#app,
+#app .btn,
+#app .form-control {
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 300;
+}
+
 .form-control:disabled,
 .form-control[readonly] {
 	background-color: #616365;
