@@ -16,14 +16,8 @@
 		<form id="calc-form">
 			<!-- First Number-->
 			<div class="form-group">
-				<label for="firstNumber">First Number</label>
-				<input type="number" class="form-control" id="firstNumber" placeholder="Enter the first number to add">
-			</div>
-
-			<!-- Second Number-->
-			<div class="form-group">
-				<label for="secondNumber">Second Number</label>
-				<input type="number" class="form-control" id="secondNumber" placeholder="Enter the second number to add">
+				<label for="number">Number</label>
+				<input type="number" class="form-control" id="number" placeholder="Enter a number to add">
 			</div>
 
 			<!-- Sum -->
@@ -32,8 +26,13 @@
 				<output class="form-control form-control-lg" id="sum">0</output>
 			</div>
 
-			<div class="form-group mt-4">
-				<button type="submit" class="btn btn-lg btn-primary w-100">Calculate</button>
+			<div class="form-group mt-4 row">
+				<div class="col-sm-6">
+					<button type="submit" class="btn btn-lg btn-primary btn-block">Add</button>
+				</div>
+				<div class="col-sm-6">
+					<button type="reset" class="btn btn-lg btn-warning btn-block">Clear</button>
+				</div>
 			</div>
 		</form>
 	</div>
