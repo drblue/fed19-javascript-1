@@ -1,3 +1,9 @@
 body {
 	color: #333;
 }
+
+.form-control:disabled,
+.form-control[readonly] {
+	background-color: #616365;
+	color: #fff;
+}
