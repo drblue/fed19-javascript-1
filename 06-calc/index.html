@@ -11,8 +11,23 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-	<div id="app">
+<body class="bg-dark text-white">
+	<div id="app" class="container mt-3">
+		<form id="calc-form">
+			<!-- First Number-->
+			<div class="form-group">
+				<label for="firstNumber">First Number</label>
+				<input type="number" class="form-control" id="firstNumber" placeholder="Enter the first number to add">
+			</div>
+
+			<!-- Second Number-->
+			<div class="form-group">
+				<label for="secondNumber">Second Number</label>
+				<input type="number" class="form-control" id="secondNumber" placeholder="Enter the second number to add">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Calculate</button>
+		</form>
 	</div>
 
 	<script src="app.js"></script>
