@@ -56,6 +56,14 @@ const getTodosFromStorage = function() {
 	return todos;
 }
 
+const saveTodosToLocalStorage = function(todolist) {
+	// Serialize the data in `todolist`
+	let stringifiedTodolist = JSON.stringify(todolist);
+
+	// Save our serialized data to LocalStorage using saveInLocalStorage()
+	saveInLocalStorage('todos', stringifiedTodolist);
+}
+
 // get todos from storage
 let todos = getTodosFromStorage();
 
@@ -93,6 +101,9 @@ todosEl.addEventListener('click', function(e) {
 				// shorthand of above if-statement
 				// todo.completed = !todo.completed;
 
+				// save updated todo list
+				saveTodosToLocalStorage(todos);
+
 				// render the updated todo list to DOM
 				renderTodoList();
 			}
@@ -111,6 +122,9 @@ createNewTodoButton.addEventListener('click', function() {
 	}
 
 	todos.push(newTodo);
+
+	// save our updated todo list
+	saveTodosToLocalStorage(todos);
 
 	// render the updated todo list to DOM
 	renderTodoList();
