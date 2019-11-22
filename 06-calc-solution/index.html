@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>Calc</title>
+
+	<!-- Nice font -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,500&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<!-- App styles -->
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="color-boxes">
+		<div class="color-box"></div>
+		<div class="color-box"></div>
+		<div class="color-box"></div>
+		<div class="color-box"></div>
+		<div class="color-box"></div>
+		<div class="color-box"></div>
+		<div class="color-box"></div>
+	</div>
+
+	<div id="app" class="container mt-3">
+		<form id="calc-form">
+			<!-- First Number-->
+			<div class="form-group">
+				<label for="number">Number</label>
+				<input type="number" class="form-control" id="number" placeholder="Enter a number to add">
+			</div>
+
+			<!-- Sum -->
+			<div class="form-group">
+				<label for="sum">Sum</label>
+				<output class="form-control form-control-lg" id="sum">0</output>
+			</div>
+
+			<div class="form-group mt-4 row">
+				<div class="col-sm-6">
+					<button data-math-operator="ADD" class="btn btn-lg btn-primary btn-block my-2">Add</button>
+				</div>
+				<div class="col-sm-6">
+					<button data-math-operator="SUBTRACT" class="btn btn-lg btn-primary btn-block my-2">Subtract</button>
+				</div>
+				<div class="col-sm-6">
+					<button data-math-operator="MULTIPLY" class="btn btn-lg btn-primary btn-block my-2">Multiply</button>
+				</div>
+				<div class="col-sm-6">
+					<button data-math-operator="DIVIDE" class="btn btn-lg btn-primary btn-block my-2">Divide</button>
+				</div>
+				<div class="col-sm-12">
+					<button type="reset" class="btn btn-lg btn-warning btn-block my-2">Clear</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+:root {
+	--light-grey: #A69C9A;
+	--grey: #6F6664;
+	--grey-darker: #5b5351; /* lolz */
+	--light-beige: #F0E7DA;
+	--light-beige-darker: #d8d0c5; /* lolz */
+	--beige: #D9C7B2;
+	--light-brown: #B28C6C;
+	--dark-brown: #5C483C;
+	--brown: #97643E;
+}
+
+.color-boxes {
+	display: flex;
+	border-bottom: 1px solid #444;
+}
+.color-box {
+	flex-basis: 0;
+	flex-grow: 1;
+	height: 1rem;
+}
+.color-box:nth-child(1) {
+	background-color: var(--light-grey);
+}
+.color-box:nth-child(2) {
+	background-color: var(--grey);
+}
+.color-box:nth-child(3) {
+	background-color: var(--light-beige);
+}
+.color-box:nth-child(4) {
+	background-color: var(--beige);
+}
+.color-box:nth-child(5) {
+	background-color: var(--light-brown);
+}
+.color-box:nth-child(6) {
+	background-color: var(--dark-brown);
+}
+.color-box:nth-child(7) {
+	background-color: var(--brown);
+}
+
+body {
+	background-color: var(--light-grey);
+	color: #333;
+}
+
+.btn-primary {
+	background-color: var(--grey);
+	border-color: var(--grey-darker);
+}
+.btn-primary:hover {
+	background-color: var(--grey-darker);
+	border-color: var(--grey-darker);
+}
+
+.btn-warning {
+	background-color: var(--light-beige);
+	border-color: var(--light-beige-darker);
+}
+.btn-warning:hover {
+	background-color: var(--light-beige-darker);
+	border-color: var(--light-beige-darker);
+}
+
+#app,
+#app .btn,
+#app .form-control {
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 300;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+	background-color: #616365;
+	color: #fff;
+}

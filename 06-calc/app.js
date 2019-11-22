@@ -28,14 +28,19 @@ document.querySelectorAll('button.btn-math-operator').forEach(function(button){
 		const numberToCalc = getNumberToCalc();
 
 		// somehow find math operator and do mathy stuff
-		if (e.target.id === "addButton") {
-			sum = sum + numberToCalc;
-		} else if (e.target.id === "subtractButton") {
-			sum = sum - numberToCalc;
-		} else if (e.target.id === "multiplyButton") {
-			sum = sum * numberToCalc;
-		} else if (e.target.id === "divideButton") {
-			sum = sum / numberToCalc;
+		switch (e.target.id) {
+			case "addButton":
+				sum = sum + numberToCalc;
+				break;
+			case "subtractButton":
+				sum = sum - numberToCalc;
+				break;
+			case "multiplyButton":
+				sum = sum * numberToCalc;
+				break;
+			case "divideButton":
+				sum = sum / numberToCalc;
+				break;
 		}
 
 		// set `sumEl`'s innerText to be the value of `sum`
