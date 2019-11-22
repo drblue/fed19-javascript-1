@@ -5,13 +5,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>javascript-1/03-functions-and-methods</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-	<h1>03-functions-and-methods</h1>
+	<div class="container">
+		<h1>03-functions-and-methods</h1>
 
-	<h2>Students</h2>
-	<ul class="students"></ul>
+		<h2>Random Number Generator</h2>
+		<form id="random-number-form">
+			<div class="form-group">
+				<input type="tel" name="maxNumber" id="maxNumber" class="form-control" placeholder="Enter the largest number for randomizing">
+			</div>
+
+			<div class="form-group">
+				<label for="randomNumber">Your Random Number</label>
+				<output id="randomNumber" class="form-control"></output>
+			</div>
+
+			<input type="submit" class="btn btn-primary" value="Get Random Number">
+		</form>
+	</div>
 
 	<script src="03-functions-and-methods.js"></script>
 </body>

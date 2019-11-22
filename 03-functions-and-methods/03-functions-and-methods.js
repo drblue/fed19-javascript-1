@@ -1,17 +1,21 @@
 /**
  * FUNCTIONS
  *
- * Callbacks in 🔫⚔️.
+ * Default Parameter Values.
  */
 
-const student_list = document.querySelector('.students');
+const getRandomNumber = (max = 10) => {
+	console.log("Random number max");
+	console.log(max, typeof max);
 
-let students = ["Adam", "Thomas", "Max", "Sven", "Bengt"];
+	return Math.ceil(Math.random() * max);
+}
 
-let html = ``;
+document.querySelector('#random-number-form').addEventListener('submit', e => {
+	e.preventDefault();
 
-students.forEach(student => {
-	html += `<li>${student}</li>`;
+	const maxNumber = Number(document.querySelector('#maxNumber').value);
+	const randomNumber = getRandomNumber(maxNumber);
+
+	document.querySelector('#randomNumber').innerText = randomNumber;
 });
-
-student_list.innerHTML = html;
