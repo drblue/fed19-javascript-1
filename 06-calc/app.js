@@ -7,6 +7,8 @@ const calcForm = document.querySelector('#calc-form');
 const numberEl = document.querySelector('#number');
 const addButton = document.querySelector('#addButton');
 const subButton = document.querySelector('#subtractButton');
+const multiplyButton = document.querySelector('#multiplyButton');
+const divideButton = document.querySelector('#divideButton');
 
 let sum = 0;
 
@@ -14,17 +16,23 @@ const updateSumEl = function(val) {
 	document.querySelector('#sum').innerText = val;
 }
 
-// catch when a user clicks on the "Add"-button
-addButton.addEventListener('click', function() {
+const getNumberToCalc = function() {
 	// get the number to calculate and cast it to a number
 	const numberToCalc = Number(numberEl.value);
 
 	// empty numberEl
 	numberEl.value = "";
 
+	return numberToCalc;
+}
+
+// catch when a user clicks on the "Add"-button
+addButton.addEventListener('click', function() {
+	// get the number to calculate and cast it to a number
+	const numberToCalc = getNumberToCalc();
+
 	// add `numberToCalc` to whatever is in the `sum` variable
-	// sum = sum + numberToCalc;
-	sum += numberToCalc;
+	sum = sum + numberToCalc;
 
 	// set `sumEl`'s innerText to be the value of `sum`
 	updateSumEl(sum);
@@ -32,18 +40,38 @@ addButton.addEventListener('click', function() {
 
 // catch when a user clicks on the "Subtract"-button
 subButton.addEventListener('click', function() {
-	// get value from input-field and convert it to a number
-	const inputValue = numberEl.value; // inputValue will be of type string
-	const inputNumber = Number(inputValue); // inputNumber will be of type number
+	// get the number to calculate and cast it to a number
+	const numberToCalc = getNumberToCalc();
 
-	// make input field be empty
-	numberEl.value = "";
+	// subtract `numberToCalc` from whatever is in the `sum` variable
+	sum = sum - numberToCalc;
 
-	// take whatever value is in the variable `sum`
-	// and subtract it with whatever is in the `inputNumber` variable
-	sum = sum - inputNumber;
+	// set `sumEl`'s innerText to be the value of `sum`
+	updateSumEl(sum);
+});
 
-	document.querySelector('#sum').innerText = sum;
+// catch when a user clicks on the "Multiply"-button
+multiplyButton.addEventListener('click', function() {
+	// get the number to calculate and cast it to a number
+	const numberToCalc = getNumberToCalc();
+
+	// multiply `numberToCalc` from whatever is in the `sum` variable
+	sum = sum * numberToCalc;
+
+	// set `sumEl`'s innerText to be the value of `sum`
+	updateSumEl(sum);
+});
+
+// catch when a user clicks on the "Divide"-button
+divideButton.addEventListener('click', function() {
+	// get the number to calculate and cast it to a number
+	const numberToCalc = getNumberToCalc();
+
+	// divide `numberToCalc` from whatever is in the `sum` variable
+	sum = sum / numberToCalc;
+
+	// set `sumEl`'s innerText to be the value of `sum`
+	updateSumEl(sum);
 });
 
 
