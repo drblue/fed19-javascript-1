@@ -8,18 +8,18 @@
   
   1.2. Visa resultatet i ett HTML-element.
 
-2. Håll reda på tidigare gissade tal.
+2. Visa antalet gissningar hittills.
 
-  2.1. Bara visa talen i ett HTML-element.
+3. Håll reda på tidigare gissade tal.
 
-  2.2. Visa för varje tidigare gissat tal om det var för högt eller lågt.
+  3.1. Bara visa talen i ett HTML-element.
 
-  2.3. Visa antalet gissningar hittills.
+  3.2. Visa för varje tidigare gissat tal om det var för högt eller lågt.
 
-3. Starta om spelet.
+4. Starta om spelet.
 
-4. Håll reda på highscore.
+5. Håll reda på highscore.
 
-5. Fråga efter namn på spelaren. Spara namnet med highscore.
+6. Fråga efter namn på spelaren. Spara namnet med highscore.
 
-6. Top 10 highscores.
+7. Top 10 highscores.
