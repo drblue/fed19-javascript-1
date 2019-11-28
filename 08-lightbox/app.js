@@ -22,8 +22,10 @@ en IMG.
 
 const lightboxWrapper = document.querySelector('#lightbox-wrapper');
 const lightboxImg = document.querySelector('#lightbox-wrapper img');
+const lightboxCaption = document.querySelector('#lightbox-wrapper .caption');
 
 // 1a.
+/*
 document.querySelectorAll('a.photo').forEach(function(photo){
 	photo.addEventListener('click', function(e) {
 		// stop, don't follow link
@@ -38,6 +40,7 @@ document.querySelectorAll('a.photo').forEach(function(photo){
 		lightboxWrapper.classList.add("show");
 	});
 });
+*/
 
 // 1b.
 document.querySelector('.photos').addEventListener('click', function(e) {
@@ -47,8 +50,11 @@ document.querySelector('.photos').addEventListener('click', function(e) {
 		// we know it's an image and not some margin, now get
 		// image's parent (which is an `a`-tag) href-attribute
 		const img_src = e.target.parentElement.href;
+		// const img_caption = e.target.parentElement.title;
+		const img_caption = e.target.parentElement.dataset.caption;
 
 		lightboxImg.src = img_src;
+		lightboxCaption.innerText = img_caption;
 		lightboxWrapper.classList.add("show");
 	}
 });
