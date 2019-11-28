@@ -11,9 +11,9 @@ click-EventListener för varje element.
 
 1b. Hämta ut `.photos`-elementet och lägg till en click-EventListener
 på den. I EventListener:n, kolla om det som klickades på är
-en IMG eller A-tagg.
+en IMG.
 
-2. Hämta ut A-taggens href och sätt på `#lightbox-wrapper img` src-attribut.
+2. Hämta ut IMG's förälder (A-tagg) href och sätt på `#lightbox-wrapper img` src-attribut.
 
 3. Lägg till klassen `show` på `#lightbox-wrapper`.
 
