@@ -4,7 +4,7 @@ String - Sträng - 'Hello World' "Hello World"
 Boolean - Bolesk - true/false
 Null - Null
 Undefined - Odefinierad
+Symbol - Symbol
 
 # Reference Datatypes
 Object - Objekt (Array)
-Symbol - Symbol

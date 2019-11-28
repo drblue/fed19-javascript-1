@@ -3,67 +3,25 @@
  *
  */
 
-let user1_name = "Johan";
-let user1_points = 42;
-
-let user2_name = "Peter";
-let user2_points = 4;
-
-let usernames = ["Johan", "Peter"];
-let userpoints = [42, 4];
-
-let user1 = {
+let johan = {
 	name: "Johan",
-	points: 42,
-	getInfo: function() {
-		if (this.points !== null) {
-			console.log(`User ${this.name} has ${this.points} points.`);
-		} else {
-			console.log(`User ${this.name} hasen't had their exam audited.`);
-		}
-	}
+	points: 42
 };
 
-let user2 = {
-	name: "Bus-Peter",
-	points: null,
-	getInfo: function() {
-		if (this.points !== null) {
-			console.log(`User ${this.name} has ${this.points} points.`);
-		} else {
-			console.log(`User ${this.name} hasen't had their exam audited.`);
-		}
-	},
-	school: "Medieinstitutet"
+let johan2 = johan;
+
+let peter = {
+	name: "Peter",
+	points: 4
 };
 
-user2.getInfo(); // "User Bus-Peter hasen't had their exam audited."
-
-// Some time later
-user2.points = 4;
-
-user2.name = null;
-
-user2.getInfo(); // "User Bus-Peter has 4 points."
-
-
-/*
-let users = [user1, user2];
-users.forEach(function(user) {
-	user.getInfo();
-});
-*/
-
-/*
-const outputUserInfo = function(user) {
-	console.log(`User ${user.name} (${user.name.length} chars long) has ${user.points} points.`);
+const addTenPoints = function(user) {
+	user.points = user.points + 10;
+	return user.points;
 }
 
-outputUserInfo(user1);
-outputUserInfo(user2);
-*/
+console.log("Johans points before addTenPoints()", johan.points); // 42
+addTenPoints(johan);
+console.log("Johans points after addTenPoints()", johan.points); // 52
 
-/*
-user1.getInfo();
-user2.getInfo();
-*/
+console.log("Johan 2's points addTenPoints()", johan2.points); // 52
