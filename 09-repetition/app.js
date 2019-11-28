@@ -3,25 +3,26 @@
  *
  */
 
-let johan = {
-	name: "Johan",
-	points: 42
-};
-
-let johan2 = johan;
-
-let peter = {
-	name: "Peter",
-	points: 4
-};
-
-const addTenPoints = function(user) {
-	user.points = user.points + 10;
-	return user.points;
+const add = (a, b) => {
+	return a + b;
 }
 
-console.log("Johans points before addTenPoints()", johan.points); // 42
-addTenPoints(johan);
-console.log("Johans points after addTenPoints()", johan.points); // 52
+const subtract = function(a, b) {
+	return a - b;
+}
 
-console.log("Johan 2's points addTenPoints()", johan2.points); // 52
+const showMathResult = function(mathoperation, x, y) {
+	const sum = mathoperation(x, y);
+	console.log("The sum is: " + sum);
+}
+
+// showMathResult(add, 4, 2);
+// showMathResult(subtract, 4, 2);
+
+
+const numbers = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096];
+const logStuff = function(stuff) {
+	console.log("The stuff is", stuff);
+}
+
+numbers.forEach(logStuff);
