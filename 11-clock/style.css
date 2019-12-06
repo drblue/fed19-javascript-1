@@ -1,0 +1,33 @@
+body {
+	background-color: #343a40;
+	color: #fcfcfc;
+}
+
+#clock-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	padding: 1rem;
+}
+
+#clock {
+	font-size: 2em;
+}
+
+#date {
+	font-weight: 100;
+}
+
+#time {
+	font-size: 1.5em;
+	font-weight: 500;
+}
+
+#clock .separator {
+	visibility: visible;
+}
+
+#clock .separator.hidden {
+	visibility: hidden;
+}
