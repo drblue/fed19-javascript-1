@@ -51,16 +51,34 @@ console.log("Found cat?", foundCat);
 
 const products = [
 	{sku: 'GOLD-STAR-1', name: 'gold star', price: 20, stock: 3},
-	{sku: 'MUSHROOM-3', name: 'mushroom', price: 40, stock: 0},
+	{sku: 'SHELLS', name: 'red shells', price: 50, stock: 0},
 	{sku: 'GREEN-SHELLS', name: 'green shells', price: 30, stock: 1337},
+	{sku: 'MUSHROOM-3', name: 'mushroom', price: 40, stock: 0},
 	{sku: 'BANANANA', name: 'banana skin', price: 10, stock: 2},
-	{sku: 'SHELLS', name: 'red shells', price: 50, stock: 0}
 ];
 
-const product = products.find(product => product.sku === 'MUSHROOM-3');
-console.log("Found your product!", product);
-if (product.stock > 0) {
-	alert("Added to your basket");
-} else {
-	alert(`Sorry, we're out of stock on ${product.name}s`);
-}
+/*
+const outOfStock = products
+	.filter(product => product.stock === 0)
+	.sort((a,b) => {
+		if (a.sku > b.sku) {
+			return 1;
+		} else if (a.sku < b.sku) {
+			return -1;
+		}
+		return 0;
+	});
+console.log("Out of stock products", outOfStock);
+*/
+
+const productsOnSale = products
+	.filter(product => product.stock > 0)
+	.map(product => {
+		return {
+			sku: product.sku,
+			name: product.name,
+			price: product.price / 2,
+			stock: product.stock
+		};
+	});
+console.log("Products on sale with new prices", productsOnSale);
