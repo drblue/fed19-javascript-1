@@ -11,14 +11,28 @@
  *
  */
 
+/*
 const points = [42, 3, 16, 8, 84];
-const catnames = [
-	"Picatso",
-	"William Shakespaw",
-	"Mega-bite",
-	"Chairwoman Miao",
-	"Notorious C.A.T"
-];
+
+const filteredPoints = [];
+for (let i = 0; i < points.length; i++) {
+	if (points[i] > 20) {
+		filteredPoints.push(points[i]);
+	}
+}
+console.log("Points before filter", points);
+
+const filteredPoints = points.filter(function(point) {
+	if (point > 20) {
+		return true;
+	} else {
+		return false;
+	}
+});
+
+console.log("Points after filter", points);
+console.log("Filtered points", filteredPoints);
+*/
 
 const cats = [
 	{ name: "Picatso", age: 8 },
@@ -28,21 +42,19 @@ const cats = [
 	{ name: "Notorious C.A.T", age: 3 },
 ];
 
-const logCatname = catname => {
-	console.log(`Cat is called ${catname}`);
-}
-
-const ourOwnForEach = (arr, callback) => {
-	for (let i = 0; i < arr.length; i++) {
-		callback(arr[i]);
+/*
+const seniorCats = [];
+for (let i = 0; i < cats.length; i++) {
+	let cat = cats[i];
+	if (cat.age >= 7) {
+		seniorCats.push(cat);
 	}
 }
-// ourOwnForEach(catnames, logCatname);
-ourOwnForEach(catnames, function(catname) {
-	console.log(catname);
-});
-
-// catnames.forEach(function(catname, i) {
-// 	console.log(`Cat at index ${i} is ${catname}`);
+*/
+// const seniorCats = cats.filter(cat => {
+// 	return cat.age >= 7;
 // });
-// catnames.forEach(logCatname);
+
+const seniorCats = cats.filter(cat => cat.age >= 7);
+
+console.log("Senior cats", seniorCats);
