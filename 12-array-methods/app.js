@@ -12,49 +12,43 @@
  */
 
 /*
-const points = [42, 3, 16, 8, 84];
+const prices = [20, 10, 30, 25, 15, 40, 80, 5];
 
-const filteredPoints = [];
-for (let i = 0; i < points.length; i++) {
-	if (points[i] > 20) {
-		filteredPoints.push(points[i]);
-	}
+const blackFridayPrices = [];
+for (let i = 0; i < prices.length; i++) {
+	let price = prices[i];
+	blackFridayPrices.push(price / 2);
 }
-console.log("Points before filter", points);
 
-const filteredPoints = points.filter(function(point) {
-	if (point > 20) {
-		return true;
-	} else {
-		return false;
-	}
-});
+const blackFridayPrices = prices.map(price => price / 2);
 
-console.log("Points after filter", points);
-console.log("Filtered points", filteredPoints);
+console.log("Regular sale prices", prices);
+console.log("Black Friday prices", blackFridayPrices);
 */
 
-const cats = [
-	{ name: "Picatso", age: 8 },
-	{ name: "William Shakespaw", age: 12 },
-	{ name: "Mega-bite", age: 1 },
-	{ name: "Chairwoman Miao", age: 17 },
-	{ name: "Notorious C.A.T", age: 3 },
+const products = [
+	{name: 'gold star', price: 20},
+	{name: 'mushroom', price: 40},
+	{name: 'green shells', price: 30},
+	{name: 'banana skin', price: 10},
+	{name: 'red shells', price: 50}
 ];
 
-/*
-const seniorCats = [];
-for (let i = 0; i < cats.length; i++) {
-	let cat = cats[i];
-	if (cat.age >= 7) {
-		seniorCats.push(cat);
-	}
-}
-*/
-// const seniorCats = cats.filter(cat => {
-// 	return cat.age >= 7;
+// const saleProducts = products.map(product => {
+// 	return {
+// 		name: product.name,
+// 		price: product.price / 2
+// 	};
 // });
-
-const seniorCats = cats.filter(cat => cat.age >= 7);
-
-console.log("Senior cats", seniorCats);
+const saleProducts = products.map(product => {
+	if (product.price >= 30) {
+		return {
+			name: product.name,
+			price: product.price / 2
+		};
+	} else {
+		return product;
+	}
+});
+console.log("products", products);
+console.log("saleProducts", saleProducts);
