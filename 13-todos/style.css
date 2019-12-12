@@ -23,6 +23,6 @@ li {
 	padding-left: 0.25rem;
 }
 
-li.completed {
+#finished-todos li {
 	text-decoration: line-through;
 }

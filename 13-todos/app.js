@@ -3,30 +3,9 @@
  *
  */
 
-/*
-let todos = [
-	{ // 0
-		description: "Have class meeting",
-		completed: false,
-	},
-	{ // 1
-		description: "Eat lunch",
-		completed: false,
-	},
-	{ // 2
-		description: "Code",
-		completed: true,
-	},
-	{ // 3
-		description: "Sleep",
-		completed: true,
-	},
-	{ // 4
-		description: "Repeat",
-		completed: false,
-	},
-];
-*/
+let unfinishedTodosEl = document.querySelector('#unfinished-todos');
+let finishedTodosEl = document.querySelector('#finished-todos');
+let createNewTodoButton = document.querySelector("#createNewTodo");
 
 const getFromLocalStorage = function(key) {
 	if (typeof(Storage) !== "undefined") {
@@ -64,31 +43,27 @@ const saveTodosToLocalStorage = function(todolist) {
 	saveInLocalStorage('todos', stringifiedTodolist);
 }
 
-// get todos from storage
-let todos = getTodosFromStorage();
-
-
-let todosEl = document.querySelector('#todos');
-
 const renderTodoList = function() {
-	todosEl.innerHTML = "";
+	unfinishedTodosEl.innerHTML = "";
+	finishedTodosEl.innerHTML = "";
 
-	todos.forEach(function(todo) {
+	todos.filter(todo => !todo.completed).forEach(function(todo) {
 		let todoEl = document.createElement('li');
 		todoEl.innerText = todo.description;
 
-		// check if todo is completed, if so add class 'completed'
-		if (todo.completed) {
-			todoEl.classList.add('completed');
-		}
+		unfinishedTodosEl.append(todoEl);
+	});
 
-		todosEl.append(todoEl);
+	todos.filter(todo => todo.completed).forEach(function(todo) {
+		let todoEl = document.createElement('li');
+		todoEl.innerText = todo.description;
+
+		finishedTodosEl.append(todoEl);
 	});
 };
-renderTodoList();
 
 // Add click handler for updating completed status
-todosEl.addEventListener('click', function(e) {
+document.querySelector('#todos').addEventListener('click', function(e) {
 	if (e.target.tagName === "LI") {
 		// update completed status for this todo item
 		todos.forEach(function(todo) {
@@ -112,7 +87,6 @@ todosEl.addEventListener('click', function(e) {
 });
 
 // Add click handler for creating a new TODO
-let createNewTodoButton = document.querySelector("#createNewTodo");
 createNewTodoButton.addEventListener('click', function() {
 	let text = prompt("What do you want to add to the TODO list?", "Do Rainman Dance");
 
@@ -121,7 +95,18 @@ createNewTodoButton.addEventListener('click', function() {
 		completed: false
 	}
 
+	// add newTodo to list of todos
 	todos.push(newTodo);
+
+	// sort todos alphabetically
+	todos.sort((a,b) => {
+		if (a.description > b.description) {
+			return 1;
+		} else if (a.description < b.description) {
+			return -1;
+		}
+		return 0;
+	});
 
 	// save our updated todo list
 	saveTodosToLocalStorage(todos);
@@ -129,3 +114,7 @@ createNewTodoButton.addEventListener('click', function() {
 	// render the updated todo list to DOM
 	renderTodoList();
 });
+
+// get todos from storage
+let todos = getTodosFromStorage();
+renderTodoList();
