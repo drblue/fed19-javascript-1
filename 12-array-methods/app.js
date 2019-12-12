@@ -71,6 +71,7 @@ const outOfStock = products
 console.log("Out of stock products", outOfStock);
 */
 
+/*
 const productsOnSale = products
 	.filter(product => product.stock > 0)
 	.map(product => {
@@ -82,3 +83,14 @@ const productsOnSale = products
 		};
 	});
 console.log("Products on sale with new prices", productsOnSale);
+*/
+
+const skusInStock = products
+	.filter(product => product.stock > 0)
+	.map(product => product.sku);
+
+console.log("Our products are:", products);
+console.log("Our skusInStock are:", skusInStock);
+
+const totalProductsInStock = products.reduce((sum, product) => sum + product.stock, 0);
+console.log(`totalProductsInStock: ${totalProductsInStock} products`);
