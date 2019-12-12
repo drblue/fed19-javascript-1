@@ -3,18 +3,25 @@
  *
  */
 
-console.log(1);
-console.log(2);
+console.log("Preparing request to be sent");
 
-setTimeout(() => {
-	console.log("Hi I'm a timer");
-	console.log("And I'm done");
-}, 3000);
+const request = new XMLHttpRequest();
+let todos;
 
-// setInterval(() => {
-// 	console.log(Math.random());
-// }, 2000);
+request.addEventListener('readystatechange', () => {
+	if (request.readyState === 4) {
+		if (request.status !== 200) {
+			console.error("Something went wrong with the request, we didn't get 200 OK in response.", request);
+		} else {
+			console.log("Got 200 OK as a response");
 
-console.log(3);
-console.log(4);
-console.log(5);
+			todos = JSON.parse(request.responseText);
+			console.log("My todos are", todos);
+		}
+	}
+});
+
+request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+request.send();
+
+console.log("Request sent");
