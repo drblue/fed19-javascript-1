@@ -65,24 +65,17 @@ const renderTodoList = function() {
 // Add click handler for updating completed status
 document.querySelector('#todos').addEventListener('click', function(e) {
 	if (e.target.tagName === "LI") {
+		// find clicked todo
+		const todo = todos.find(todo => todo.description === e.target.innerText);
+
 		// update completed status for this todo item
-		todos.forEach(function(todo) {
-			if (todo.description === e.target.innerText) {
-				if (todo.completed) {
-					todo.completed = false;
-				} else {
-					todo.completed = true;
-				}
-				// shorthand of above if-statement
-				// todo.completed = !todo.completed;
+		todo.completed = !todo.completed;
 
-				// save updated todo list
-				saveTodosToLocalStorage(todos);
+		// save updated todo list
+		saveTodosToLocalStorage(todos);
 
-				// render the updated todo list to DOM
-				renderTodoList();
-			}
-		});
+		// render the updated todo list to DOM
+		renderTodoList();
 	}
 });
 
