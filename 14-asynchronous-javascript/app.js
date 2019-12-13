@@ -45,41 +45,4 @@ getJSON('pets/cats.json', (err, cats) => {
 	});
 });
 
-// dogs callback
-const logDogs = (err, dogs) => {
-	console.log("Dogs callback");
-
-	if (err) {
-		// yep, err was truth-y
-		alert("Error getting dogs");
-		return;
-	}
-
-	dogs.forEach(dog => console.log(dog));
-};
-
-console.log("Getting dogs..");
-
-// get dogs from server
-getJSON('pets/dogs.json', logDogs);
-
-// feed callback some array-data
-logDogs(undefined, [
-	{ name: "Nando", age: 7 }
-]);
-
-// get external data
-getJSON('https://jsonplaceholder.typicode.com/users', (err, data) => {
-	console.log("Users callback");
-
-	if (err) {
-		alert("Error getting users");
-		return;
-	}
-
-	data.forEach(user => {
-		console.log(`User's name is ${user.name}`);
-	});
-});
-
 console.log("All requests are sent");
