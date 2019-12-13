@@ -3,31 +3,30 @@
  *
  */
 
-const getCats = (callback) => {
+const getJSON = (url, callback) => {
 	const request = new XMLHttpRequest();
 
 	request.addEventListener('readystatechange', () => {
 		if (request.readyState === 4) {
 			if (request.status !== 200) {
-				console.error("Something went wrong with the request, we didn't get 200 OK in response.", request);
-				callback("Something went wrong with the request, we didn't get 200 OK in response.");
+				console.error("Did not get 200 OK in response.", request);
+				callback("Did not get 200 OK in response.");
 			} else {
-				console.log("Success in getting cats");
-				let cats = JSON.parse(request.responseText);
-				callback(undefined, cats);
+				console.log("Success in getting data");
+				let data = JSON.parse(request.responseText);
+				callback(undefined, data);
 			}
 		}
 	});
 
-	request.open('GET', 'pets/cats.json');
+	request.open('GET', url);
 	request.send();
-	console.log("Request for cats sent");
+	console.log(`Request for data sent to ${url}`);
 };
 
 console.log("Getting cats..");
-
-getCats((err, cats) => {
-	console.log("getCats callback");
+getJSON('pets/cats.json', (err, cats) => {
+	console.log("Cats callback");
 
 	// check if something went wrong
 	if (err) {
@@ -46,18 +45,41 @@ getCats((err, cats) => {
 	});
 });
 
-getCats((err, data) => {
-	console.log("Got cats for second time");
+// dogs callback
+const logDogs = (err, dogs) => {
+	console.log("Dogs callback");
 
 	if (err) {
 		// yep, err was truth-y
-		alert("Error getting cats the second time");
+		alert("Error getting dogs");
 		return;
 	}
 
-	data.forEach(cat => console.log(cat));
+	dogs.forEach(dog => console.log(dog));
+};
+
+console.log("Getting dogs..");
+
+// get dogs from server
+getJSON('pets/dogs.json', logDogs);
+
+// feed callback some array-data
+logDogs(undefined, [
+	{ name: "Nando", age: 7 }
+]);
+
+// get external data
+getJSON('https://jsonplaceholder.typicode.com/users', (err, data) => {
+	console.log("Users callback");
+
+	if (err) {
+		alert("Error getting users");
+		return;
+	}
+
+	data.forEach(user => {
+		console.log(`User's name is ${user.name}`);
+	});
 });
-
-
 
 console.log("All requests are sent");
