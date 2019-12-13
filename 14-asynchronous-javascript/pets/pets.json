@@ -1,5 +1,4 @@
 [
-	{ "title": "Birds", "url": "pets/birds.json" },
 	{ "title": "Cats", "url": "pets/cats.json" },
 	{ "title": "Dogs", "url": "pets/dogs.json" }
 ]
