@@ -15,13 +15,21 @@ request.addEventListener('readystatechange', () => {
 		} else {
 			console.log("Got 200 OK as a response");
 
-			todos = JSON.parse(request.responseText);
-			console.log("My todos are", todos);
+			cats = JSON.parse(request.responseText);
+			console.log("My cats are", cats);
+
+			document.querySelector('#cats').innerHTML = "<ul></ul>";
+			const catsEl = document.querySelector('#cats ul');
+			cats.forEach(cat => {
+				let catEl = document.createElement('LI');
+				catEl.innerHTML = `Cat ${cat.name} is ${cat.age} years old`;
+				catsEl.append(catEl);
+			});
 		}
 	}
 });
 
-request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+request.open('GET', 'pets/cats.json');
 request.send();
 
 console.log("Request sent");
