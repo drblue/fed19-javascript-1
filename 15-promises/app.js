@@ -31,9 +31,9 @@ const getJSON = (url) => {
 			if (request.readyState === 4) {
 				if (request.status !== 200) {
 					console.error("Did not get 200 OK in response.", request);
-					reject(`Did not get 200 OK in response from '${url}'.`);
+					reject(`Request to '${url}' returned ${request.status} ${request.statusText}.`);
 				} else {
-					console.log(`Success in getting data from '${url}'`);
+					console.log(`Got 200 OK from request to '${url}'`);
 					let data = JSON.parse(request.responseText);
 					resolve(data);
 				}
@@ -84,13 +84,13 @@ getJSON("pets/birds.json")
 .then(data => {
 	renderPetList("Cats", data);
 
-	return getJSON("pets/dogs.json");
+	return getJSON("pets/dogz.json");
 })
 .then(data => {
 	renderPetList("Dogs", data);
 })
 .catch(err => {
-	alert("Error getting birds/cats");
+	petsWrapperEl.innerHTML = `<div class="alert alert-warning"><strong>Promise rejected. The stated reason was:</strong> ${err}</div>`
 });
 
 
