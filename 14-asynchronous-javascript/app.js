@@ -34,9 +34,11 @@ const getJSON = (url, callback) => {
  * render the contents to their own UL-element.
  */
 
+const petsWrapperEl = document.querySelector('#pets-wrapper');
+
 console.log("Getting pets..");
 getJSON('pets/pets.json', (err, pets) => {
-	console.log("Pets callback");
+	// console.log("Pets callback");
 
 	// check if something went wrong
 	if (err) {
@@ -46,12 +48,40 @@ getJSON('pets/pets.json', (err, pets) => {
 	}
 
 	// all is well
-	console.log("Pets:", pets);
+	// console.log("Pets:", pets);
 
 	pets.forEach(pet => {
-		console.log(`Lets make a request to get us some ${pet.title} from '${pet.url}'`);
+		// console.log(`Lets make a request to get us some ${pet.title} from '${pet.url}'`);
+
 		// make request to `pet.url`, deal with response 😎
-		// and render a UL to the DOM for each response 👨🏻‍🎨
+		getJSON(pet.url, (err, pets) => {
+			// console.log(`Pets sub-request callback for ${pet.title}`);
+
+			// check if something went wrong
+			if (err) {
+				// yep, err was truth-y
+				alert("Error getting sub-pets");
+				return;
+			}
+
+			// all is well
+			// console.log(pet.title, pets);
+
+			// and render a UL to the DOM for each response 👨🏻‍🎨
+			let petsTitleEl = document.createElement("H2");
+			petsTitleEl.innerText = pet.title;
+
+			let petsEl = document.createElement("UL");
+			pets.forEach(pet => {
+				let petEl = document.createElement("LI");
+				petEl.innerHTML = `${pet.name} is ${pet.age} years old`;
+
+				petsEl.append(petEl);
+			});
+
+			petsWrapperEl.append(petsTitleEl);
+			petsWrapperEl.append(petsEl);
+		});
 	});
 });
 
