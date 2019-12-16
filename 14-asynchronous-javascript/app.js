@@ -36,51 +36,51 @@ const getJSON = (url, callback) => {
 
 const petsWrapperEl = document.querySelector('#pets-wrapper');
 
-console.log("Getting pets..");
-getJSON('pets/pets.json', (err, pets) => {
-	// console.log("Pets callback");
+const renderPetList = (title, pets) => {
+	let petsTitleEl = document.createElement("H2");
+	petsTitleEl.innerText = title;
 
-	// check if something went wrong
+	let petsEl = document.createElement("UL");
+	pets.forEach(pet => {
+		let petEl = document.createElement("LI");
+		petEl.innerHTML = `${pet.name} is ${pet.age} years old`;
+
+		petsEl.append(petEl);
+	});
+
+	petsWrapperEl.append(petsTitleEl);
+	petsWrapperEl.append(petsEl);
+}
+
+console.log("Getting birds..");
+getJSON("pets/birds.json", (err, birds) => {
 	if (err) {
-		// yep, err was truth-y
-		alert("Error getting pets");
+		alert("Error getting birds");
 		return;
 	}
 
-	// all is well
-	// console.log("Pets:", pets);
+	// and render a UL to the DOM for each response 👨🏻‍🎨
+	renderPetList("Birds", birds);
 
-	pets.forEach(pet => {
-		// console.log(`Lets make a request to get us some ${pet.title} from '${pet.url}'`);
+	// get cats
+	getJSON("pets/cats.json", (err, cats) => {
+		if (err) {
+			alert("Error getting cats");
+			return;
+		}
 
-		// make request to `pet.url`, deal with response 😎
-		getJSON(pet.url, (err, pets) => {
-			// console.log(`Pets sub-request callback for ${pet.title}`);
+		// and render a UL to the DOM for each response 👨🏻‍🎨
+		renderPetList("Cats", cats);
 
-			// check if something went wrong
+		// get dogs
+		getJSON("pets/dogs.json", (err, dogs) => {
 			if (err) {
-				// yep, err was truth-y
-				alert("Error getting sub-pets");
+				alert("Error getting dogs");
 				return;
 			}
 
-			// all is well
-			// console.log(pet.title, pets);
-
 			// and render a UL to the DOM for each response 👨🏻‍🎨
-			let petsTitleEl = document.createElement("H2");
-			petsTitleEl.innerText = pet.title;
-
-			let petsEl = document.createElement("UL");
-			pets.forEach(pet => {
-				let petEl = document.createElement("LI");
-				petEl.innerHTML = `${pet.name} is ${pet.age} years old`;
-
-				petsEl.append(petEl);
-			});
-
-			petsWrapperEl.append(petsTitleEl);
-			petsWrapperEl.append(petsEl);
+			renderPetList("Dogs", dogs);
 		});
 	});
 });
