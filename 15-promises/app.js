@@ -84,13 +84,14 @@ getJSON("pets/birds.json")
 .then(data => {
 	renderPetList("Cats", data);
 
-	return getJSON("pets/dogz.json");
+	return getJSON("pets/dogs.json");
 })
 .then(data => {
 	renderPetList("Dogs", data);
 })
 .catch(err => {
-	petsWrapperEl.innerHTML = `<div class="alert alert-warning"><strong>Promise rejected. The stated reason was:</strong> ${err}</div>`
+	console.error(err);
+	petsWrapperEl.innerHTML = `<div class="alert alert-warning"><strong>Promise rejected. The stated reason was:</strong> ${err}</div>`;
 });
 
 
