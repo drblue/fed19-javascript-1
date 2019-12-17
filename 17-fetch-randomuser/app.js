@@ -6,8 +6,18 @@
 const userCardsEl = document.querySelector('#user-cards');
 
 const getUsers = () => {
-	fetch('https://randomuser.me/api/?results=4')
-	.then(response => response.json())
+	fetch('https://randomuser.me/api/')
+	// fetch('https://randomuser.me/ewwerwerewr')
+	.then(response => {
+		console.log("Response is:", response);
+		// check if response.ok is true,
+		// and if not, throw an error
+		if (!response.ok) {
+			throw new Error('Response was not ok.');
+		}
+
+		return response.json();
+	})
 	.then(response => {
 		// loop over result
 		response.results.forEach(user => {
@@ -26,6 +36,9 @@ const getUsers = () => {
 
 			userCardsEl.innerHTML += userHTML;
 		});
+	})
+	.catch(err => {
+		console.error("Something went very wrong! Error was:", err);
 	});
 };
 
