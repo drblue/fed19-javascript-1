@@ -7,6 +7,9 @@ const userCardsEl = document.querySelector('#user-cards');
 
 const getUsers = async () => {
 	const response = await fetch('https://randomuser.me/api/?results=4');
+	if (!response.ok) {
+		throw new Error(`Response was not OK. Status Code was ${response.status}.`);
+	}
 	const data = await response.json();
 
 	// loop over result
@@ -28,4 +31,11 @@ const getUsers = async () => {
 	});
 };
 
-getUsers();
+getUsers()
+	.catch(err => {
+		userCardsEl.innerHTML = `
+			<div class="alert alert-warning">
+				${err}
+			</div>
+		`;
+	});
