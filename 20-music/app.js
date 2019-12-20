@@ -89,6 +89,32 @@ const renderSearchResponseTrack = track => {
 	`;
 };
 
+const handleSearchResults = searchResults => {
+	searchResultsEl.innerHTML = "";
+
+	console.log("Response data", searchResults.data);
+	if (searchResults.data.length < 1) {
+		searchResultsEl.innerHTML = `<div class="alert alert-info">Sorry, no matches found for "${this.query.value}"</div>`;
+	}
+
+	searchResults.data.forEach(item => {
+		switch (item.type) {
+			case 'track':
+				renderSearchResponseTrack(item);
+				break;
+			case 'artist':
+				renderSearchResponseArtist(item);
+				break;
+			case 'album':
+				renderSearchResponseAlbum(item);
+				break;
+			default:
+				// show unknown search result type
+				console.warn("Got search result for unknown type!", item);
+				break;
+		}
+	});
+};
 
 document.querySelector('#search-form').addEventListener('submit', function (e) {
 	e.preventDefault();
@@ -96,32 +122,7 @@ document.querySelector('#search-form').addEventListener('submit', function (e) {
 	if (this.all.checked) {
 		// search for any match
 		search(this.query.value)
-		.then(response => {
-			searchResultsEl.innerHTML = "";
-
-			console.log("Response data", response.data);
-			if (response.data.length < 1) {
-				searchResultsEl.innerHTML = `<div class="alert alert-info">Sorry, no matches found for "${this.query.value}"</div>`;
-			}
-
-			response.data.forEach(item => {
-				switch (item.type) {
-					case 'track':
-						renderSearchResponseTrack(item);
-						break;
-					case 'artist':
-						renderSearchResponseArtist(item);
-						break;
-					case 'album':
-						renderSearchResponseAlbum(item);
-						break;
-					default:
-						// show unknown search result type
-						console.warn("Got search result for unknown type!", item);
-						break;
-				}
-			});
-		})
+		.then(handleSearchResults)
 		.catch(err => {
 			console.error("Got an error :(", err);
 		});
@@ -129,27 +130,7 @@ document.querySelector('#search-form').addEventListener('submit', function (e) {
 	} else if (this.artists.checked) {
 		// search for only artist matches
 		searchArtists(this.query.value)
-		.then(response => {
-			searchResultsEl.innerHTML = "";
-
-			response.data.forEach(item => {
-				switch (item.type) {
-					case 'track':
-						renderSearchResponseTrack(item);
-						break;
-					case 'artist':
-						renderSearchResponseArtist(item);
-						break;
-					case 'album':
-						renderSearchResponseAlbum(item);
-						break;
-					default:
-						// show unknown search result type
-						console.warn("Got search result for unknown type!", item);
-						break;
-				}
-			});
-		})
+		.then(handleSearchResults)
 		.catch(err => {
 			console.error("Got an error :(", err);
 		});
@@ -157,61 +138,17 @@ document.querySelector('#search-form').addEventListener('submit', function (e) {
 	} else if (this.albums.checked) {
 		// search for only album matches
 		searchAlbums(this.query.value)
-		.then(response => {
-			searchResultsEl.innerHTML = "";
-
-			response.data.forEach(item => {
-				switch (item.type) {
-					case 'track':
-						renderSearchResponseTrack(item);
-						break;
-					case 'artist':
-						renderSearchResponseArtist(item);
-						break;
-					case 'album':
-						renderSearchResponseAlbum(item);
-						break;
-					default:
-						// show unknown search result type
-						console.warn("Got search result for unknown type!", item);
-						break;
-				}
-			});
-		})
+		.then(handleSearchResults)
 		.catch(err => {
 			console.error("Got an error :(", err);
 		});
-
-
 
 	} else if (this.tracks.checked) {
 		// search for only track matches
 		searchTracks(this.query.value)
-		.then(response => {
-			searchResultsEl.innerHTML = "";
-
-			response.data.forEach(item => {
-				switch (item.type) {
-					case 'track':
-						renderSearchResponseTrack(item);
-						break;
-					case 'artist':
-						renderSearchResponseArtist(item);
-						break;
-					case 'album':
-						renderSearchResponseAlbum(item);
-						break;
-					default:
-						// show unknown search result type
-						console.warn("Got search result for unknown type!", item);
-						break;
-				}
-			});
-		})
+		.then(handleSearchResults)
 		.catch(err => {
 			console.error("Got an error :(", err);
 		});
 	}
-
-
 });
