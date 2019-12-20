@@ -116,39 +116,28 @@ const handleSearchResults = searchResults => {
 	});
 };
 
+const handleSearchError = err => {
+	console.error("Got an error :(", err);
+	searchResultsEl.innerHTML = `<div class="alert alert-danger">Error searching. Message was: "${err}"</div>`;
+};
+
 document.querySelector('#search-form').addEventListener('submit', function (e) {
 	e.preventDefault();
 
 	if (this.all.checked) {
 		// search for any match
-		search(this.query.value)
-		.then(handleSearchResults)
-		.catch(err => {
-			console.error("Got an error :(", err);
-		});
+		search(this.query.value).then(handleSearchResults).catch(handleSearchError);
 
 	} else if (this.artists.checked) {
 		// search for only artist matches
-		searchArtists(this.query.value)
-		.then(handleSearchResults)
-		.catch(err => {
-			console.error("Got an error :(", err);
-		});
+		searchArtists(this.query.value).then(handleSearchResults).catch(handleSearchError);
 
 	} else if (this.albums.checked) {
 		// search for only album matches
-		searchAlbums(this.query.value)
-		.then(handleSearchResults)
-		.catch(err => {
-			console.error("Got an error :(", err);
-		});
+		searchAlbums(this.query.value).then(handleSearchResults).catch(handleSearchError);
 
 	} else if (this.tracks.checked) {
 		// search for only track matches
-		searchTracks(this.query.value)
-		.then(handleSearchResults)
-		.catch(err => {
-			console.error("Got an error :(", err);
-		});
+		searchTracks(this.query.value).then(handleSearchResults).catch(handleSearchError);
 	}
 });
