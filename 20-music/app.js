@@ -5,9 +5,9 @@
 
 const searchResultsEl = document.querySelector('#search-results');
 
-/** Search for matches of any type */
-const search = async (query) => {
-	const request = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${query}`, {
+/** Get a JSON resource */
+const getJSON = async (url) => {
+	const request = await fetch(url, {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
@@ -18,51 +18,26 @@ const search = async (query) => {
 		throw new Error(`Request was not OK. Status Code returned was: ${request.status}.`);
 	}
 	return await request.json();
+}
+
+/** Search for matches of any type */
+const search = async (query) => {
+	return getJSON(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${query}`);
 }
 
 /** Search for Album matches only */
 const searchAlbums = async (query) => {
-	const request = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search/album?q=${query}`, {
-		"method": "GET",
-		"headers": {
-			"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-			"x-rapidapi-key": "06ebd6b4ffmsh9f40daeb7de6cefp160b3ejsn550347289560"
-		}
-	});
-	if (!request.ok) {
-		throw new Error(`Request was not OK. Status Code returned was: ${request.status}.`);
-	}
-	return await request.json();
+	return getJSON(`https://deezerdevs-deezer.p.rapidapi.com/search/album?q=${query}`);
 }
 
 /** Search for Artist matches only */
 const searchArtists = async (query) => {
-	const request = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search/artist?q=${query}`, {
-		"method": "GET",
-		"headers": {
-			"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-			"x-rapidapi-key": "06ebd6b4ffmsh9f40daeb7de6cefp160b3ejsn550347289560"
-		}
-	});
-	if (!request.ok) {
-		throw new Error(`Request was not OK. Status Code returned was: ${request.status}.`);
-	}
-	return await request.json();
+	return getJSON(`https://deezerdevs-deezer.p.rapidapi.com/search/artist?q=${query}`);
 }
 
 /** Search for Track matches only */
 const searchTracks = async (query) => {
-	const request = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search/track?q=${query}`, {
-		"method": "GET",
-		"headers": {
-			"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-			"x-rapidapi-key": "06ebd6b4ffmsh9f40daeb7de6cefp160b3ejsn550347289560"
-		}
-	});
-	if (!request.ok) {
-		throw new Error(`Request was not OK. Status Code returned was: ${request.status}.`);
-	}
-	return await request.json();
+	return getJSON(`https://deezerdevs-deezer.p.rapidapi.com/search/track?q=${query}`);
 }
 
 const renderSearchResponseAlbum = album => {
