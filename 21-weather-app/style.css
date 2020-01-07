@@ -1,0 +1,26 @@
+body {
+	background-color: #efefef;
+	color: #333;
+	line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0.5em;
+	margin-bottom: 0.75em;
+}
+
+#app {
+	margin-top: 1.5rem;
+}
+
+#search-form {
+	max-width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2rem;
+}
+
+/* make cards fit their containing columns height */
+#forecast {
+	margin-bottom: 1.5rem;
+}
