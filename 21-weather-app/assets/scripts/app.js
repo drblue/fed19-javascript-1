@@ -3,8 +3,13 @@
  *
  */
 
+const renderAlert = (severity, msg) => {
+	document.querySelector('#forecast').innerHTML =
+		`<div class="alert alert-${severity}" role="alert">${msg}</div>`;
+};
+
 const renderCurrentWeather = data => {
-	const template = `
+	document.querySelector('#forecast').innerHTML = `
 		<div class="card">
 			<img src="assets/images/forecast-banner.png" class="card-img-top">
 			<div class="card-body">
@@ -20,14 +25,12 @@ const renderCurrentWeather = data => {
 			</div>
 		</div>
 	`;
-
-	document.querySelector('#forecast').innerHTML = template;
 };
 
 document.querySelector('#search-form').addEventListener('submit', e => {
 	e.preventDefault();
 
-	const city = document.querySelector('#query').value;
+	const city = document.querySelector('#query').value.trim();
 
 	if (city.length < 2) {
 		return;
@@ -37,15 +40,15 @@ document.querySelector('#search-form').addEventListener('submit', e => {
 		.then(data => {
 			if (data.cod === 200) {
 				renderCurrentWeather(data);
+			} else if (data.cod == "404") { // sic! dumb api
+				renderAlert('warning', 'Ajdå, den där staden fanns inte.');
 			} else {
-				// show what went wrong
-				// document.querySelector('#forecast').innerHTML =
-				// alert(data.message);
-				throw new Error("Ajajajajajaj");
+				// show warning alert
+				renderAlert('warning', data.message);
 			}
 		})
 		.catch(err => {
-			// network error?
-			alert(err);
+			// show danger alert
+			renderAlert('danger', err);
 		});
 });
