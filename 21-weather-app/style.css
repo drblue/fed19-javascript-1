@@ -20,6 +20,11 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 2rem;
 }
 
+#search-form #query-wrapper {
+	display: flex;
+	margin-bottom: 0.5rem;
+}
+
 /* make cards fit their containing columns height */
 #forecast {
 	margin-bottom: 1.5rem;
