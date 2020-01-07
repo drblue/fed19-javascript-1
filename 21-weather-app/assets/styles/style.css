@@ -40,6 +40,11 @@ h1, h2, h3, h4, h5, h6 {
 	text-transform: uppercase;
 }
 
+#forecast #country {
+	background-color: #ddd;
+	padding: 0.25rem 0.5rem;
+}
+
 #forecast .temp {
 	font-size: 2em;
 }

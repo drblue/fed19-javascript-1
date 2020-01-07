@@ -8,7 +8,7 @@ const renderCurrentWeather = data => {
 		<div class="card">
 			<img src="assets/images/forecast-banner.png" class="card-img-top">
 			<div class="card-body">
-				<h5 class="card-title" id="city">${data.name}</h5>
+				<h5 class="card-title" id="city">${data.name}, <span id="country">${data.sys.country}</span></h5>
 				<p class="temp">
 					<span id="temperature">${data.main.temp}</span>
 					&deg;C
@@ -33,7 +33,19 @@ document.querySelector('#search-form').addEventListener('submit', e => {
 		return;
 	}
 
-	getCurrentWeather(city).then(data => {
-		renderCurrentWeather(data);
-	});
+	getCurrentWeather(city)
+		.then(data => {
+			if (data.cod === 200) {
+				renderCurrentWeather(data);
+			} else {
+				// show what went wrong
+				// document.querySelector('#forecast').innerHTML =
+				// alert(data.message);
+				throw new Error("Ajajajajajaj");
+			}
+		})
+		.catch(err => {
+			// network error?
+			alert(err);
+		});
 });
