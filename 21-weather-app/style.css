@@ -2,6 +2,7 @@ body {
 	background-color: #efefef;
 	color: #333;
 	line-height: 1.5;
+	letter-spacing: 0.1em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -11,6 +12,9 @@ h1, h2, h3, h4, h5, h6 {
 
 #app {
 	margin-top: 1.5rem;
+	max-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #search-form {
@@ -28,4 +32,18 @@ h1, h2, h3, h4, h5, h6 {
 /* make cards fit their containing columns height */
 #forecast {
 	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+#forecast #city {
+	font-size: 1.2em;
+	text-transform: uppercase;
+}
+
+#forecast .temp {
+	font-size: 2em;
+}
+
+#forecast .wind {
+	font-size: 1.5em;
 }
