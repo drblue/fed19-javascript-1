@@ -5,6 +5,26 @@
  *
  */
 
+class House {
+	constructor(doors, windows, floors) {
+		this.address = "";
+		this.doors = doors;
+		this.windows = windows;
+		this.floors = floors;
+		this.owner = false;
+	}
+	setOwner(name) {
+		this.owner = name;
+	}
+}
+
+const my_house = new House(2, 4, 1);
+my_house.setOwner("Meeeee!");
+
+const neiiiighbour = new House(2, 4, 1);
+neiiiighbour.setOwner("My neighbour");
+
+
 class Product {
 	constructor(name, price, stock) {
 		this.name = name;
@@ -14,6 +34,10 @@ class Product {
 
 	addStock(amount) {
 		this.stock += amount;
+	}
+
+	getPrice() {
+		return this.price;
 	}
 
 	getStock() {
@@ -29,16 +53,45 @@ class Product {
 	}
 }
 
-const products = [
-	new Product("Bananana", 14.5, 100),
-	new Product("Bapple", 5, 20),
-	new Product("Orange", 42, 2)
-];
+class Basket {
+	constructor() {
+		this.products = [];
+	}
 
-products[1].decreaseStock(2);
+	addProduct(product) {
+		if (product.getStock() >= 1) {
+			this.products.push(product);
+			product.decreaseStock(1);
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-products[2].addStock(5);
+	calcTotal() {
+		return this.products
+			.map(product => product.getPrice())
+			.reduce((sum, price) => sum + price, 0);
+	}
 
-products.forEach(product => {
-	console.log(`${product.name} costs ${product.price} kr and we have ${product.stock} in stock.`);
-});
+	printShoppingInfo() {
+		console.log(`This basket has ${this.products.length} products with a total value of ${this.calcTotal()}`);
+	}
+}
+
+const pelles_basket = new Basket();
+const alicias_basket = new Basket();
+
+const bananana = new Product("Bananana", 14.5, 100);
+const bapple = new Product("Bapple", 5, 20);
+const orange = new Product("Orange", 42, 2);
+
+pelles_basket.addProduct(bananana);
+pelles_basket.addProduct(bapple);
+
+alicias_basket.addProduct(bananana);
+alicias_basket.addProduct(orange);
+alicias_basket.addProduct(bapple);
+
+pelles_basket.printShoppingInfo();
+alicias_basket.printShoppingInfo();
