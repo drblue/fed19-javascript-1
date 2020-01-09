@@ -53,19 +53,43 @@ class Product {
 	}
 }
 
+class ProductList {
+	constructor() {
+		this.productlist = [];
+	}
+
+	addProduct(product) {
+		this.productlist.push(product);
+		return this;
+	}
+
+	getProducts() {
+		return this.products;
+	}
+
+	getProductsInStock() {
+		return this.productlist.filter(product => product.stock > 1);
+	}
+
+	getProductByName(name) {
+		return this.productlist.find(product => product.name === name);
+	}
+}
+
+
 class Basket {
 	constructor() {
 		this.products = [];
 	}
 
+	getProducts() {
+		return this.products;
+	}
+
 	addProduct(product) {
-		if (product.getStock() >= 1) {
-			this.products.push(product);
-			product.decreaseStock(1);
-			return true;
-		} else {
-			return false;
-		}
+		product.decreaseStock();
+		this.products.push(product);
+		return this;
 	}
 
 	calcTotal() {
@@ -86,12 +110,29 @@ const bananana = new Product("Bananana", 14.5, 100);
 const bapple = new Product("Bapple", 5, 20);
 const orange = new Product("Orange", 42, 2);
 
-pelles_basket.addProduct(bananana);
-pelles_basket.addProduct(bapple);
+const productlist = new ProductList();
+productlist.addProduct(new Product("Bananana", 14.5, 100))
+	.addProduct(new Product("Bapple", 5, 20))
+	.addProduct(new Product("Orange", 42, 2));
+
+pelles_basket
+	.addProduct(bananana)
+	.addProduct(bapple)
+	.addProduct(orange);
+
+pelles_basket.addProduct(bananana)
+.addProduct(bapple)
+.addProduct(orange);
+
 
 alicias_basket.addProduct(bananana);
 alicias_basket.addProduct(orange);
 alicias_basket.addProduct(bapple);
+
+console.log("Pelles basket", pelles_basket.getProducts());
+console.log("Alicias basket", alicias_basket.getProducts());
+
+
 
 pelles_basket.printShoppingInfo();
 alicias_basket.printShoppingInfo();
