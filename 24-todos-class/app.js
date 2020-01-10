@@ -7,22 +7,22 @@ let unfinishedTodosEl = document.querySelector('#unfinished-todos');
 let finishedTodosEl = document.querySelector('#finished-todos');
 let createNewTodoButton = document.querySelector("#createNewTodo");
 
+const createTodoElement = function(todo) {
+	let todoEl = document.createElement('li');
+	todoEl.innerText = todo.getDescription();
+	return todoEl;
+}
+
 const renderTodoList = function() {
 	unfinishedTodosEl.innerHTML = "";
 	finishedTodosEl.innerHTML = "";
 
 	todos.getUnfinishedTodos().forEach(function(todo) {
-		let todoEl = document.createElement('li');
-		todoEl.innerText = todo.getDescription();
-
-		unfinishedTodosEl.append(todoEl);
+		unfinishedTodosEl.append(createTodoElement(todo));
 	});
 
 	todos.getFinishedTodos().forEach(function(todo) {
-		let todoEl = document.createElement('li');
-		todoEl.innerText = todo.getDescription();
-
-		finishedTodosEl.append(todoEl);
+		finishedTodosEl.append(createTodoElement(todo));
 	});
 };
 
