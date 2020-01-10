@@ -42,4 +42,29 @@ class TodoList {
 	}
 }
 
-class Todo {}
+class Todo {
+	constructor(description) {
+		this.description = description;
+		this.completed = false;
+	}
+
+	getDescription() {
+		return this.description;
+	}
+
+	isCompleted() {
+		return this.completed;
+	}
+
+	setCompleted() {
+		this.completed = true;
+	}
+
+	setIncomplete() {
+		this.completed = false;
+	}
+
+	toggleCompleted() {
+		this.completed = !this.completed;
+	}
+}

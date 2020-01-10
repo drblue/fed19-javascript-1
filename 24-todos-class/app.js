@@ -13,14 +13,14 @@ const renderTodoList = function() {
 
 	todos.getUnfinishedTodos().forEach(function(todo) {
 		let todoEl = document.createElement('li');
-		todoEl.innerText = todo.description;
+		todoEl.innerText = todo.getDescription();
 
 		unfinishedTodosEl.append(todoEl);
 	});
 
 	todos.getFinishedTodos().forEach(function(todo) {
 		let todoEl = document.createElement('li');
-		todoEl.innerText = todo.description;
+		todoEl.innerText = todo.getDescription();
 
 		finishedTodosEl.append(todoEl);
 	});
@@ -33,7 +33,7 @@ document.querySelector('#todos').addEventListener('click', function(e) {
 		const todo = todos.getTodoByDescription(e.target.innerText);
 
 		// update completed status for this todo item
-		todo.completed = !todo.completed;
+		todo.toggleCompleted();
 
 		// render the updated todo list to DOM
 		renderTodoList();
@@ -44,13 +44,10 @@ document.querySelector('#todos').addEventListener('click', function(e) {
 createNewTodoButton.addEventListener('click', function() {
 	let text = prompt("What do you want to add to the TODO list?", "Do Rainman Dance");
 
-	let newTodo = {
-		description: text,
-		completed: false
-	}
+	let todo = new Todo(text);
 
-	// add newTodo to list of todos
-	todos.addTodo(newTodo);
+	// add todo to list of todos
+	todos.addTodo(todo);
 
 	// sort todos alphabetically
 	todos.sortTodos();
