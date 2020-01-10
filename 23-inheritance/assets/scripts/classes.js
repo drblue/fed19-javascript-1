@@ -7,18 +7,37 @@ class Vehicle {
 		this.fuel = "Unknown";
 	}
 
+	hasEngine() {
+		return this.engine;
+	}
+
 	getInfo() {
 		return `Hi, I am a vehicle called ${this.name}.`;
 	}
 }
 
-class Car extends Vehicle {
+class Bicycle extends Vehicle {
+	constructor(name) {
+		super(name);
+
+		this.wheels = 2;
+	}
+}
+
+class MotorVehicle extends Vehicle {
+	constructor(name) {
+		super(name);
+
+		this.engine = true;
+	}
+}
+
+class Car extends MotorVehicle {
 	constructor(name, doors, fuel, license_plate) {
 		super(name);
 
 		this.doors = doors;
 		this.fuel = fuel;
-		this.engine = true;
 		this.wheels = 4;
 		this.license_plate = license_plate;
 	}
@@ -32,11 +51,10 @@ class Car extends Vehicle {
 	}
 }
 
-class MotorCycle extends Vehicle {
+class MotorCycle extends MotorVehicle {
 	constructor(name, fuel) {
 		super(name);
 
-		this.engine = true;
 		this.wheels = 2;
 		this.fuel = fuel;
 	}
