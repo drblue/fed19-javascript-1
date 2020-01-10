@@ -3,8 +3,8 @@
 }
 
 body {
-	background-color: #efefef;
-	color: #333;
+	background-color: #333;
+	color: #efefef;
 	line-height: 1.5;
 	letter-spacing: 0.1em;
 }
@@ -16,7 +16,4 @@ h1, h2, h3, h4, h5, h6 {
 
 #app {
 	margin-top: 1.5rem;
-	max-width: 400px;
-	margin-left: auto;
-	margin-right: auto;
 }
