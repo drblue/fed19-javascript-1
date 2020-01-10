@@ -1,65 +1,49 @@
-class Vehicle {
+class Account {
 	constructor(name) {
 		this.name = name;
-		this.doors = 0;
-		this.engine = false;
-		this.wheels = 0;
-		this.fuel = "Unknown";
+		this.interest = 0;
+		this.transactions = [];
 	}
 
-	hasEngine() {
-		return this.engine;
+	addTransaction(amount) {
+		this.transactions.push(amount);
 	}
 
-	getInfo() {
-		return `Hi, I am a vehicle called ${this.name}.`;
-	}
-}
-
-class Bicycle extends Vehicle {
-	constructor(name) {
-		super(name);
-
-		this.wheels = 2;
-	}
-}
-
-class MotorVehicle extends Vehicle {
-	constructor(name) {
-		super(name);
-
-		this.engine = true;
-	}
-}
-
-class Car extends MotorVehicle {
-	constructor(name, doors, fuel, license_plate) {
-		super(name);
-
-		this.doors = doors;
-		this.fuel = fuel;
-		this.wheels = 4;
-		this.license_plate = license_plate;
+	deposit(amount) {
+		this.addTransaction(amount);
 	}
 
-	getInfo() {
-		return `Hi, I am a car called ${this.name} and I have ${this.doors} doors, ${this.wheels} wheels and runs on ${this.fuel} fuel.`;
+	withdraw(amount) {
+		this.addTransaction(-amount);
 	}
 
-	getLicensePlate() {
-		return this.license_plate;
+	getBalance() {
+		return this.getTransactions().reduce((sum, amount) => sum + amount, 0);
+	}
+
+	getInterest() {
+		return this.getBalance() * this.interest;
+	}
+
+	getInterestRate() {
+		return this.interest;
+	}
+
+	getTransactions() {
+		return this.transactions;
 	}
 }
 
-class MotorCycle extends MotorVehicle {
-	constructor(name, fuel) {
+class SavingsAccount extends Account {
+	constructor(name, interest = 0.05) {
 		super(name);
-
-		this.wheels = 2;
-		this.fuel = fuel;
+		this.interest = interest;
 	}
+}
 
-	getInfo() {
-		return `Hi, I am a motorcycle called ${this.name} and I have ${this.wheels} wheels and runs on ${this.fuel} fuel.`;
+class CreditAccount extends Account {
+	constructor(name, interest = 0.2) {
+		super(name);
+		this.interest = interest;
 	}
 }
