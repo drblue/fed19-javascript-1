@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ul {
-	border: 1px solid #222;
+	border: 1px solid #888;
 	list-style-type: square;
 	padding: 0.5rem 1rem;
 	margin-bottom: 1.5rem;
