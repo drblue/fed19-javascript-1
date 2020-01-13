@@ -3,6 +3,27 @@
  *
  */
 
+// connect to firestore
+const db = firebase.firestore();
+
+const getTodosFromDatabase = async () => {
+	const data = await db.collection('todos').get();
+	const todos = new TodoList();
+
+	data.docs.forEach(doc => {
+		// for each todo-document
+		const rawTodo = doc.data();
+
+		// create a Todo object
+		const todo = new Todo(rawTodo.description, rawTodo.completed);
+
+		// and add it to the TodoList object
+		todos.addTodo(todo);
+	});
+
+	return todos;
+};
+
 let unfinishedTodosEl = document.querySelector('#unfinished-todos');
 let finishedTodosEl = document.querySelector('#finished-todos');
 let createNewTodoButton = document.querySelector("#createNewTodo");
@@ -56,6 +77,13 @@ createNewTodoButton.addEventListener('click', function() {
 	renderTodoList();
 });
 
-// create empty todos-list
-let todos = new TodoList();
-renderTodoList();
+// declare variable for todos-list
+let todos;
+
+getTodosFromDatabase().then(todolist => {
+	todos = todolist;
+	renderTodoList();
+
+}).catch(err => {
+	console.error("Error! Error! Error!", err);
+});
