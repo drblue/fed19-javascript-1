@@ -26,19 +26,30 @@ class User {
 	}
 }
 
-class Admin extends User {
-	constructor(username, email, title){
+class Teacher extends User {
+	constructor(username, email){
 		super(username, email);
-		this.title = title;
+		this.title = "ninja";
 	}
-	deleteUser(user){
-		users = users.filter(u => u.username !== user.username);
-		return this; // allow method chaining
+	gradeUser(){
+		// grade user
+		console.log("All users are gradable");
+		return this;
 	}
 }
 
-const userOne = new User('luigi', 'luigi@thenetninja.co.uk');
-const userTwo = new User('mario', 'mario@thenetninja.co.uk');
-const userThree = new Admin('shaun', 'shaun@thenetninja.co.uk', 'black-belt ninja');
+const userJohan = new Teacher(
+	"Johan",
+	"jn@thehiveresistance.com"
+);
 
-console.log(userOne, userThree);
+const userPeter = new User(
+	"Peter",
+	"peter@medieinstitutet.se"
+);
+
+console.log("userJohan", userJohan);
+console.log("userPeter", userPeter);
+
+userJohan.login();
+userPeter.login();
