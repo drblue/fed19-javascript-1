@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>javascript-1/26-todos-class</title>
+
+	<link rel="stylesheet" href="../00-assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>My Even Moar Awesomest TODO List</h1>
+
+		<div id="todos">
+			<h2>Unfinished tasks</h2>
+			<ul id="unfinished-todos"></ul>
+
+			<h2>Finished tasks</h2>
+			<ul id="finished-todos"></ul>
+		</div>
+
+		<button id="createNewTodo" class="btn btn-success">Create new TODO</button>
+	</div>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyD4xtlHcpBkLYqnskwWM949FwNTHMw84lk",
+			authDomain: "awesome-todos-a6c59.firebaseapp.com",
+			databaseURL: "https://awesome-todos-a6c59.firebaseio.com",
+			projectId: "awesome-todos-a6c59",
+			storageBucket: "awesome-todos-a6c59.appspot.com",
+			messagingSenderId: "283405509159",
+			appId: "1:283405509159:web:bfdd54ac3fbe800adea402"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<script src="todo-classes.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
