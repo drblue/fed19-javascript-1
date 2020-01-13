@@ -1,7 +1,7 @@
 /**
  * OOP - Object-Oriented Programming.
  *
- * Prototypes.
+ * Classes.
  *
  */
 
