@@ -10,7 +10,8 @@ const db = firebase.firestore();
 const recipiesEl = document.querySelector('#recipies');
 
 const addRecipieToList = (recipie) => {
-	recipiesEl.innerHTML += `<li>${recipie.title} (a year ago)</li>`;
+	const created = moment.unix(recipie.created_at.seconds);
+	recipiesEl.innerHTML += `<li>${recipie.title} (${created.fromNow()})</li>`;
 };
 
 db.collection('recipies').get()
