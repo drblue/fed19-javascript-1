@@ -32,7 +32,7 @@ recipiesEl.addEventListener('click', e => {
 
 	db.collection('recipies').doc(dataId).delete()
 		.then(res => {
-			getRecipies();
+			listItemEl.remove();
 		})
 		.catch(err => {
 			console.error(`Error when deleting recipie ${dataId}`, err);
