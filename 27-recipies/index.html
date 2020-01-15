@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>javascript-1/27-recipies</title>
+
+	<link rel="stylesheet" href="../00-assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Awesome Recipies</h1>
+
+		<ul id="recipies">
+		</ul>
+	</div>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyAEnrLyToKetrkQDVx3uXgkz1PX8f4J3Z8",
+			authDomain: "awesome-recipies.firebaseapp.com",
+			databaseURL: "https://awesome-recipies.firebaseio.com",
+			projectId: "awesome-recipies",
+			storageBucket: "awesome-recipies.appspot.com",
+			messagingSenderId: "363169265247",
+			appId: "1:363169265247:web:206d683f8dd5b7aa460dea"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<script src="app.js"></script>
+</body>
+</html>
