@@ -19,36 +19,50 @@ newRecipieForm.addEventListener('submit', e => {
 	// stop form from being submitted
 	e.preventDefault();
 
+	const recipie_title = newRecipieForm.recipie_title.value.trim();
+	if (recipie_title.length < 3) {
+		return;
+	}
+
+	// clear form fields
+	newRecipieForm.reset();
+
 	const now = new Date();
 	const recipie = {
-		title: newRecipieForm.recipie_title.value,
+		title: recipie_title,
 		created_at: firebase.firestore.Timestamp.fromDate(now)
 	};
 
 	// add a new document to the 'recipies' collection
 	db.collection('recipies').add(recipie)
 		.then(res => {
-			console.log("recipie added to collection", res);
 			/**
 			 * @todo
 			 *
-			 * 1. clear input field(s)
-			 * 2. reload recipies from database
+			 * 1. clear input field(s) ✅
+			 * 2. reload recipies from database ✅
 			 * 3. show message that recipie was added successfully
 			 */
+			getRecipies();
 		})
 		.catch(err => {
 			console.error(err);
 		});
 });
 
-db.collection('recipies').get()
-	.then(snapshot => {
-		// loop over the documents in the snapshot
-		snapshot.docs.forEach(doc => {
-			addRecipieToList(doc.data());
+const getRecipies = () => {
+	document.querySelector('#recipies').innerHTML = "";
+
+	db.collection('recipies').get()
+		.then(snapshot => {
+			// loop over the documents in the snapshot
+			snapshot.docs.forEach(doc => {
+				addRecipieToList(doc.data());
+			});
+		})
+		.catch(err => {
+			console.error(err);
 		});
-	})
-	.catch(err => {
-		console.error(err);
-	});
+};
+
+getRecipies();
