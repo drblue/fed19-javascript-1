@@ -29,7 +29,14 @@ recipiesEl.addEventListener('click', e => {
 	// now, find out which recipie
 	const listItemEl = e.target.parentElement;
 	const dataId = listItemEl.getAttribute('data-id');
-	console.log("dataId:", dataId);
+
+	db.collection('recipies').doc(dataId).delete()
+		.then(res => {
+			getRecipies();
+		})
+		.catch(err => {
+			console.error(`Error when deleting recipie ${dataId}`, err);
+		});
 });
 
 newRecipieForm.addEventListener('submit', e => {
@@ -63,7 +70,7 @@ newRecipieForm.addEventListener('submit', e => {
 			getRecipies();
 		})
 		.catch(err => {
-			console.error(err);
+			console.error("Error when adding new recipie", err);
 		});
 });
 
@@ -78,7 +85,7 @@ const getRecipies = () => {
 			});
 		})
 		.catch(err => {
-			console.error(err);
+			console.error("Error when retrieving recipies", err);
 		});
 };
 
