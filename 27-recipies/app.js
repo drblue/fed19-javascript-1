@@ -10,10 +10,27 @@ const db = firebase.firestore();
 const recipiesEl = document.querySelector('#recipies');
 const newRecipieForm = document.querySelector('#new-recipie');
 
-const addRecipieToList = (recipie) => {
+const addRecipieToList = (recipie, id) => {
 	const created = moment.unix(recipie.created_at.seconds);
-	recipiesEl.innerHTML += `<li>${recipie.title} (${created.fromNow()})</li>`;
+	recipiesEl.innerHTML += `
+		<li data-id="${id}">
+			${recipie.title} (${created.fromNow()})
+			<button class="btn btn-danger btn-sm">Delete</button>
+		</li>
+	`;
 };
+
+recipiesEl.addEventListener('click', e => {
+	if (e.target.tagName !== "BUTTON") {
+		return;
+	}
+
+	// ok, we know the click happend on a button in our recipie list
+	// now, find out which recipie
+	const listItemEl = e.target.parentElement;
+	const dataId = listItemEl.getAttribute('data-id');
+	console.log("dataId:", dataId);
+});
 
 newRecipieForm.addEventListener('submit', e => {
 	// stop form from being submitted
@@ -57,7 +74,7 @@ const getRecipies = () => {
 		.then(snapshot => {
 			// loop over the documents in the snapshot
 			snapshot.docs.forEach(doc => {
-				addRecipieToList(doc.data());
+				addRecipieToList(doc.data(), doc.id);
 			});
 		})
 		.catch(err => {
