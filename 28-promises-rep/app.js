@@ -10,8 +10,30 @@ const setStatus = msg => {
 	status.innerHTML = msg;
 };
 
-setStatus("No promise made.");
-
 btnMakePromise.addEventListener('click', e => {
 	setStatus("Button clicked.");
+
+	const promise = new Promise((resolve, reject) => {
+		console.log("Promise created!");
+
+		setTimeout(() => {
+			if (document.querySelector('#fulfill').checked) {
+				resolve();
+			} else {
+				reject();
+			}
+		}, 3000);
+	});
+
+	console.log(promise);
+
+	promise.then(() => {
+		setStatus("Promise fulfilled! 🥳");
+	}).catch(() => {
+		setStatus("Promise rejected 🥺");
+	});
+
+	setStatus("Promise made.");
 });
+
+setStatus("No promise made.");
