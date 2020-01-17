@@ -10,10 +10,8 @@ const setStatus = msg => {
 	status.innerHTML = msg;
 };
 
-btnMakePromise.addEventListener('click', e => {
-	setStatus("Button clicked.");
-
-	const promise = new Promise((resolve, reject) => {
+const makePromise = () => {
+	return new Promise((resolve, reject) => {
 		console.log("Promise created!");
 
 		setTimeout(() => {
@@ -24,10 +22,12 @@ btnMakePromise.addEventListener('click', e => {
 			}
 		}, 3000);
 	});
+};
 
-	console.log(promise);
+btnMakePromise.addEventListener('click', e => {
+	setStatus("Button clicked.");
 
-	promise.then(() => {
+	makePromise().then(() => {
 		setStatus("Promise fulfilled! 🥳");
 	}).catch(() => {
 		setStatus("Promise rejected 🥺");
