@@ -1,6 +1,37 @@
 /**
  * Class Recipe
  */
+
+class Cookbook {
+	constructor(title) {
+		this.title = title;
+		this.recipes = [];
+	}
+
+	getTitle() {
+		return this.title;
+	}
+
+	addRecipe(recipe) {
+		this.recipes.push(recipe);
+		return this;
+	}
+
+	getRecipes() {
+		return this.recipes;
+	}
+
+	getRecipesContaining(ingredient_name) {
+		// loopa över varje recept
+		// för varje recept, kolla om ingredienslistan inkluderar ovan ingredient_name
+		// om det är sant, inkludera receptet i den slutliga listan
+		return this.recipes.filter(recipe => {
+			return recipe.containsIngredient(ingredient_name);
+		});
+	}
+}
+
+
 class Recipe {
 	constructor(title, description = '') {
 		this.title = title;
@@ -11,10 +42,20 @@ class Recipe {
 
 	addBasicIngredient(item) {
 		this.ingredients.push(new BasicIngredient(item));
+		return this;
 	}
 
 	addIngredient(qty, item) {
 		this.ingredients.push(new Ingredient(qty, item));
+		return this;
+	}
+
+	containsIngredient(item) {
+		const ingredient = this.ingredients.find(ingredient => {
+			return ingredient.item.toLowerCase() === item.toLowerCase();
+		});
+
+		return typeof ingredient !== 'undefined';
 	}
 
 	getIngredients() {
@@ -25,6 +66,7 @@ class Recipe {
 
 	addInstruction(instruction) {
 		this.instructions.push(instruction);
+		return this;
 	}
 
 	getInstructions() {
