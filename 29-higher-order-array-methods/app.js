@@ -12,6 +12,22 @@ document.querySelector('form').addEventListener('submit', e => {
 
 	logStatus("Form is being submitted");
 
+	// const data = {};
+	// document.querySelectorAll('input').forEach(input => {
+	// 	data[input.id] = input.value;
+	// });
+
+	const realArray = Array.from(document.querySelectorAll('input'));
+
+	const data = realArray.reduce((sum, input) => {
+		sum[input.id] = input.value;
+		return sum;
+	}, {});
+
+	const jsonData = JSON.stringify(data);
+	logStatus(jsonData);
+
+	/*
 	const input_name = document.querySelector('#name').value;
 	const input_address = document.querySelector('#address').value;
 	const input_postal = document.querySelector('#postal').value;
@@ -30,5 +46,6 @@ document.querySelector('form').addEventListener('submit', e => {
 
 	const jsonData = JSON.stringify(data);
 	logStatus(jsonData);
+	*/
 });
 
