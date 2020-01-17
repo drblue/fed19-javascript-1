@@ -12,12 +12,25 @@ const newRecipieForm = document.querySelector('#new-recipie');
 
 const addRecipieToList = (recipie, id) => {
 	const created = moment.unix(recipie.created_at.seconds);
-	recipiesEl.innerHTML += `
-		<li data-id="${id}">
-			${recipie.title} (${created.fromNow()})
-			<button class="btn btn-danger btn-sm">Delete</button>
-		</li>
-	`;
+
+	if (recipie.desc) {
+		// show recipie title and description
+		recipiesEl.innerHTML += `
+			<li data-id="${id}">
+				${recipie.title} (${created.fromNow()})
+				<button class="btn btn-danger btn-sm">Delete</button>
+				<p>${recipie.desc}</p>
+			</li>
+		`;
+	} else {
+		// show only recipie title
+		recipiesEl.innerHTML += `
+			<li data-id="${id}">
+				${recipie.title} (${created.fromNow()})
+				<button class="btn btn-danger btn-sm">Delete</button>
+			</li>
+		`;
+	}
 };
 
 recipiesEl.addEventListener('click', e => {
@@ -44,7 +57,8 @@ newRecipieForm.addEventListener('submit', e => {
 	e.preventDefault();
 
 	const recipie_title = newRecipieForm.recipie_title.value.trim();
-	if (recipie_title.length < 3) {
+	const recipie_desc = newRecipieForm.recipie_desc.value.trim();
+	if (recipie_title.length < 3 || recipie_desc.length < 3) {
 		return;
 	}
 
@@ -54,6 +68,7 @@ newRecipieForm.addEventListener('submit', e => {
 	const now = new Date();
 	const recipie = {
 		title: recipie_title,
+		desc: recipie_desc,
 		created_at: firebase.firestore.Timestamp.fromDate(now)
 	};
 
