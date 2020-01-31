@@ -1,43 +1,50 @@
 /**
  * ES6 functions.
  *
+ * Sets
  */
 
-// rest
-const double = (...nums) => {
-	console.log(nums);
-	return nums.map(num => num * 2);
-}
+/*
+// Arrays with duplicate values
+const names = ['Albert', 'Berit', 'Carl', 'David', 'Berit'];
+const numbers = [1, 1, 2, 3, 5, 8, 8, 13, 21];
 
-const sum = (...nums) => {
-	return nums.reduce((sum, num) => sum + num, 0);
-};
+console.log('names:', names);
+console.log('numbers:', numbers);
 
-const doubledNumbers = double(1, 1, 2, 3, 5, 8, 13, 21);
-console.log("Doubled numbers:", doubledNumbers);
+// Sets
+// const uniqueArrayValues = arr => {
+// 	return [...new Set(arr)];
+// };
+const uniqueArrayValues = arr => [...new Set(arr)];
 
-const sumNumbers = sum(1, 1, 2);
-console.log("Sum of numbers:", sumNumbers);
+const namesSet = new Set(names);
+const numbersSet = new Set(numbers);
 
+console.log('namesSet:', namesSet);
+console.log('numbersSet:', numbersSet);
 
-// spread (arrays)
-const some_people = ['Albert', 'Berit', 'Carl'];
-const other_people = ['David', 'Erik', 'Frida'];
+// const uniqueNames = [...namesSet];
+// const uniqueNames = [...new Set(names)];
+console.log('uniqueNames:', uniqueArrayValues(names));
+console.log('uniqueNumbers:', uniqueArrayValues(numbers));
 
-const people = ['Harald', 'Ivar', ...some_people, ...other_people];
+namesSet.add('Ivan');
+namesSet.add('Ivan');
+namesSet.delete('Albert');
+namesSet.forEach(name => console.log(name));
 
-console.log('People', ...people);
+const ivanExists = namesSet.has('Ivan');
+const albertExists = namesSet.has('Albert');
+console.log("Does namesSet have 'Ivan'?", ivanExists);
+console.log("Does namesSet have 'Albert'?", albertExists);
+*/
 
-const numbers = [1, 2, 4, 8, 16, 32, 64];
-const more_numbers = [...numbers, 128, 256, 512, 1024, 2048, 4096, 8192, 16384];
-console.log('Numbers:', ...more_numbers);
+const points = new Set();
+points
+	.add(20)
+	.add(25)
+	.add(30)
+	.add(25);
 
-// spread (objects)
-const albert = { name: "Albert", grade: 4 };
-// const berit = albert;
-// berit.name = "Berit";
-
-const berit = { ...albert, name: "Berit", year: 3 };
-
-console.log('Albert', albert);
-console.log('Berit', berit);
+console.log(points);
