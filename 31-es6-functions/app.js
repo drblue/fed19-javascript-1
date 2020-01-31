@@ -3,7 +3,7 @@
  *
  */
 
-// spread
+// rest
 const double = (...nums) => {
 	console.log(nums);
 	return nums.map(num => num * 2);
@@ -18,3 +18,12 @@ console.log("Doubled numbers:", doubledNumbers);
 
 const sumNumbers = sum(1, 1, 2);
 console.log("Sum of numbers:", sumNumbers);
+
+
+// spread
+const some_people = ['Albert', 'Berit', 'Carl'];
+const other_people = ['David', 'Erik', 'Frida'];
+
+const people = ['Harald', 'Ivar', ...some_people, ...other_people];
+
+console.log('People', people);
