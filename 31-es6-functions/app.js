@@ -3,42 +3,18 @@
  *
  */
 
-const getWeather = () => {
-	const cityName = "Malmö";
-	const temperature = 8;
-	const humidity = 91;
-	const percipitation = 9;
-
-	return {
-		cityName,
-		temperature,
-		humidity,
-		percipitation
-	};
+// spread
+const double = (...nums) => {
+	console.log(nums);
+	return nums.map(num => num * 2);
 }
 
-// const currentWeather = getWeather();
-// const cityName = currentWeather.cityName;
-// const temperature = currentWeather.temperature;
-// const humidity = currentWeather.humidity;
-// const percipitation = currentWeather.percipitation;
-
-const { cityName, temperature, humidity, percipitation } = getWeather();
-console.log(`It's ${temperature} C in ${cityName} right now.`);
-
-
-const getUser = () => {
-	return {
-		username: "jn",
-		name: "Johan Nordström",
-		level: 1337,
-		pets: 2,
-		highscore: 42,
-		is_admin: true,
-	};
+const sum = (...nums) => {
+	return nums.reduce((sum, num) => sum + num, 0);
 };
 
-const { username, level } = getUser();
-// console.log(user);
-// console.log(`User ${user.username} is at level ${user.level}`);
-console.log(`User ${username} is at level ${level}`);
+const doubledNumbers = double(1, 1, 2, 3, 5, 8, 13, 21);
+console.log("Doubled numbers:", doubledNumbers);
+
+const sumNumbers = sum(1, 1, 2);
+console.log("Sum of numbers:", sumNumbers);
