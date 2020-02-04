@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "babel": "node_modules/.bin/babel -w src/app.js -o dist/app.js"
+	"babel": "node_modules/.bin/babel -w src/app.js -o dist/app.js",
+	"webpack": "node_modules/.bin/webpack -w"
   },
   "author": "",
   "license": "ISC",
