@@ -26,3 +26,8 @@ class Admin extends User {
 		return this.title;
 	}
 }
+
+console.log("Hello from src/index.js");
+alert("🍽️");
+const user = new User("Test Testsson", "n00b");
+console.log(getUser(user));
