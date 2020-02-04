@@ -1,33 +1,16 @@
-const getUser = () => {
-	return {
-		username: "jn",
-		name: "Johan Nordström",
-		level: 1337,
-	};
-}
+import "core-js";
+import "regenerator-runtime/runtime";
 
-class User {
-	constructor(name) {
-		this.name = name;
-	}
-
-	getName() {
-		return this.name;
-	}
-}
-
-class Admin extends User {
-	constructor(name, title) {
-		super(name);
-		this.title = title;
-	}
-
-	getTitle() {
-		return this.title;
-	}
-}
+import { setBackgroundColor, setTitle } from './dom';
+import { getCurrentWeather } from './openweathermap';
+// import { getCurrentWeather } from './randomweather';
 
 console.log("Hello from src/index.js");
 
-const user = new User("Test Testsson", "n00b");
-console.log(getUser(user));
+getCurrentWeather('Malmö')
+	.then(currentWeather => {
+		setTitle(`It's ${currentWeather.temp} degrees and ${currentWeather.humidity} % humidity in Malmö right now. 🥶`);
+	})
+	.catch(err => {
+		setTitle(err);
+	});
