@@ -15,6 +15,7 @@ const app = new Vue({
 		y: 0,
 
 		name: 'Neo',
+		anonymous: false,
 	},
 	methods: {
 		increaseClicks() {
@@ -33,8 +34,11 @@ const app = new Vue({
 			this.y = e.offsetY;
 		},
 
-		setName(e) {
-			this.name = e.target.value;
-		}
+		getName() {
+			if (this.name.length === 0 || this.anonymous) {
+				return 'anonymous';
+			}
+			return this.name;
+		},
 	},
 });

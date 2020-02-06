@@ -46,12 +46,17 @@
 
 			<hr>
 
-			<p class="display-4">Hello {{ name }}!</p>
+			<p class="display-5">Hello {{ getName() }}, it's nice to meet you {{ getName() }}!</p>
 
-			<input
-				type="text"
-				:value="name"
-				@keyup="setName">
+			<div>
+				<input
+					type="text"
+					v-model="name">
+			</div>
+
+			<div>
+				Anonymous: <input type="checkbox" v-model="anonymous">
+			</div>
 
 		</div><!-- /.container -->
 
