@@ -13,6 +13,8 @@ const app = new Vue({
 
 		x: 0,
 		y: 0,
+
+		name: 'Neo',
 	},
 	methods: {
 		increaseClicks() {
@@ -29,6 +31,10 @@ const app = new Vue({
 		updateCoords(e) {
 			this.x = e.offsetX;
 			this.y = e.offsetY;
+		},
+
+		setName(e) {
+			this.name = e.target.value;
 		}
 	},
 });

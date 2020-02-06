@@ -44,6 +44,15 @@
 				</div>
 			</div>
 
+			<hr>
+
+			<p class="display-4">Hello {{ name }}!</p>
+
+			<input
+				type="text"
+				:value="name"
+				@keyup="setName">
+
 		</div><!-- /.container -->
 
 	</div><!-- /#app -->
