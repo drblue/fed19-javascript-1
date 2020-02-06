@@ -15,14 +15,17 @@
 </head>
 
 <body>
+	<div id="app">
 
-	<div class="container">
-		<h1>Vue.js basics</h1>
+		<div class="container">
+			<h1>Vue.js basics</h1>
 
-		<div id="app">
-			I need {{ wish }}!
-		</div>
-	</div>
+			<a :href="url">Get me some {{ wish }}, {{ name }}!</a>
+
+			<div :class="getMsgClass()">{{ msg }}</div>
+		</div><!-- /.container -->
+
+	</div><!-- /#app -->
 
 	<script src="app.js"></script>
 </body>
