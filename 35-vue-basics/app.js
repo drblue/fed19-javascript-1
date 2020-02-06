@@ -6,7 +6,7 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-		url: 'https://www.espressohouse.se',
+		url: 'https://www.google.com',
 
 		clicks: 0,
 		salary: 10,
@@ -18,6 +18,11 @@ const app = new Vue({
 		anonymous: false,
 	},
 	methods: {
+
+		secretLinkClicked() {
+			this.url = 'https://www.reddit.com';
+		},
+
 		increaseClicks() {
 			this.clicks++;
 		},

@@ -20,7 +20,7 @@
 		<div class="container">
 			<h1>Vue.js basics</h1>
 
-			<!-- <a :href="url">Get me some {{ wish }}, {{ name }}!</a> -->
+			<a :href="url" @click="secretLinkClicked">Secret link</a>
 
 			<p>You have clicked the button: {{ clicks }} times.</p>
 
@@ -33,8 +33,8 @@
 			<button @click="increaseSalary(1)" class="btn btn-success btn-lg">Increase salary 🤑</button>
 			<button @click="decreaseSalary(1)" class="btn btn-danger btn-lg">Decrease salary 😢</button>
 
-			<button @dblclick="increaseSalary(5)" class="btn btn-success btn-lg">Increase salary 🤑🤑🤑</button>
-			<button @dblclick="decreaseSalary(5)" class="btn btn-danger btn-lg">Decrease salary 🥺🥺🥺</button>
+			<button @click.alt="increaseSalary(5)" class="btn btn-success btn-lg">Increase salary 🤑🤑🤑</button>
+			<button @click.alt="decreaseSalary(5)" class="btn btn-danger btn-lg">Decrease salary 🥺🥺🥺</button>
 
 			<hr>
 
