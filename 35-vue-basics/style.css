@@ -6,6 +6,8 @@ body {
 	background-color: #333;
 	color: #f6f6f6;
 	line-height: 1.5;
+
+	margin-bottom: 1.5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -13,8 +15,24 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 0.75em;
 }
 
+hr {
+	border-top-color: #ccc;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
 .important {
 	background-color: peachpuff;
 	color: #222;
 	padding: 1rem 1.5rem;
+}
+
+.bg-grey {
+	background-color: #888;
+	height: 300px;
+	width: 400px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

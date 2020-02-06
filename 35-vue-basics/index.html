@@ -24,15 +24,25 @@
 
 			<p>You have clicked the button: {{ clicks }} times.</p>
 
-			<button v-on:click="increaseClicks" class="btn btn-success btn-lg">Click meee! 😃</button>
+			<button @click="increaseClicks" class="btn btn-success btn-lg">Click meee! 😃</button>
+
+			<hr>
 
 			<p>Salary per hour: {{ salary }} €</p>
 
-			<button v-on:click="increaseSalary(1)" class="btn btn-success btn-lg">Increase salary 🤑</button>
-			<button v-on:click="decreaseSalary(1)" class="btn btn-danger btn-lg">Decrease salary 😢</button>
+			<button @click="increaseSalary(1)" class="btn btn-success btn-lg">Increase salary 🤑</button>
+			<button @click="decreaseSalary(1)" class="btn btn-danger btn-lg">Decrease salary 😢</button>
 
-			<button v-on:click="increaseSalary(5)" class="btn btn-success btn-lg">Increase salary 🤑🤑🤑</button>
-			<button v-on:click="decreaseSalary(5)" class="btn btn-danger btn-lg">Decrease salary 🥺🥺🥺</button>
+			<button @dblclick="increaseSalary(5)" class="btn btn-success btn-lg">Increase salary 🤑🤑🤑</button>
+			<button @dblclick="decreaseSalary(5)" class="btn btn-danger btn-lg">Decrease salary 🥺🥺🥺</button>
+
+			<hr>
+
+			<div class="bg-grey" @mousemove="updateCoords">
+				<div class="coords">
+					{{ x }}, {{ y }}
+				</div>
+			</div>
 
 		</div><!-- /.container -->
 

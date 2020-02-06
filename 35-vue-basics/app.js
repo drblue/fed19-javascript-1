@@ -10,6 +10,9 @@ const app = new Vue({
 
 		clicks: 0,
 		salary: 10,
+
+		x: 0,
+		y: 0,
 	},
 	methods: {
 		increaseClicks() {
@@ -21,6 +24,11 @@ const app = new Vue({
 		},
 		decreaseSalary(amount) {
 			this.salary -= amount;
+		},
+
+		updateCoords(e) {
+			this.x = e.offsetX;
+			this.y = e.offsetY;
 		}
 	},
 });
