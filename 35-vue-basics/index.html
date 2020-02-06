@@ -20,9 +20,20 @@
 		<div class="container">
 			<h1>Vue.js basics</h1>
 
-			<a :href="url">Get me some {{ wish }}, {{ name }}!</a>
+			<!-- <a :href="url">Get me some {{ wish }}, {{ name }}!</a> -->
 
-			<div :class="getMsgClass()">{{ msg }}</div>
+			<p>You have clicked the button: {{ clicks }} times.</p>
+
+			<button v-on:click="increaseClicks" class="btn btn-success btn-lg">Click meee! 😃</button>
+
+			<p>Salary per hour: {{ salary }} €</p>
+
+			<button v-on:click="increaseSalary(1)" class="btn btn-success btn-lg">Increase salary 🤑</button>
+			<button v-on:click="decreaseSalary(1)" class="btn btn-danger btn-lg">Decrease salary 😢</button>
+
+			<button v-on:click="increaseSalary(5)" class="btn btn-success btn-lg">Increase salary 🤑🤑🤑</button>
+			<button v-on:click="decreaseSalary(5)" class="btn btn-danger btn-lg">Decrease salary 🥺🥺🥺</button>
+
 		</div><!-- /.container -->
 
 	</div><!-- /#app -->

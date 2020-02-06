@@ -6,25 +6,21 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-		name: 'teacher',
-		wish: 'coffee',
 		url: 'https://www.espressohouse.se',
 
-		msg: `This is my message and I'm sticking to it.`,
-
-		msgClass: ['alert', 'alert-warning'],
+		clicks: 0,
+		salary: 10,
 	},
 	methods: {
-		getMsgClass() {
-			if (this.msg.includes('DANGER')) {
-				return 'alert alert-danger';
-			} else {
-				return 'alert alert-success';
-			}
+		increaseClicks() {
+			this.clicks++;
 		},
 
-		want() {
-			return `I want ${this.wish}, ${this.name}.`;
+		increaseSalary(amount) {
+			this.salary += amount;
+		},
+		decreaseSalary(amount) {
+			this.salary -= amount;
 		}
 	},
 });
