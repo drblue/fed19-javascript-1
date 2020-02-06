@@ -21,6 +21,6 @@ const getCurrentWeather = async city => {
 	};
 }
 
-export default {
-	getCurrentWeather,
+export {
+	getCurrentWeather
 };
