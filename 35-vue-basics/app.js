@@ -16,8 +16,24 @@ const app = new Vue({
 
 		name: 'Neo',
 		anonymous: false,
+
+		todos: [
+			'Make coffee',
+			'Drink coffee',
+			'Drink MOAR coffee',
+			'Drink ALL THE coffeeeeeee',
+		],
 	},
 	methods: {
+
+		addTodo() {
+			this.todos.push('Some new TODO');
+		},
+
+		removeTodo(pos) {
+			console.log("Want to remove todo at position:", pos);
+			this.todos.splice(pos, 1);
+		},
 
 		secretLinkClicked() {
 			this.url = 'https://www.reddit.com';

@@ -58,6 +58,16 @@
 				Anonymous: <input type="checkbox" v-model="anonymous">
 			</div>
 
+			<hr>
+
+			<h2>Todos</h2>
+
+			<ul>
+				<li v-for="(todo, i) in todos" @click="removeTodo(i)">[{{ i }}] {{ todo }}</li>
+			</ul>
+
+			<button class="btn btn-success" @click="addTodo">Add TODO</button>
+
 		</div><!-- /.container -->
 
 	</div><!-- /#app -->
