@@ -32,7 +32,7 @@
 
 			<ul class="todos">
 				<li v-for="(todo, i) in todos" :class="{ done: todo.completed }">
-					<span @click="toggleTodo(i)">
+					<span class="todo-title" @click="toggleTodo(i)">
 						{{ todo.title }}
 					</span>
 				</li>

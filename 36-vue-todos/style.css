@@ -37,3 +37,7 @@ hr {
 	font-style: italic;
 	text-decoration: line-through;
 }
+
+.todos li span.todo-title {
+	cursor: pointer;
+}
