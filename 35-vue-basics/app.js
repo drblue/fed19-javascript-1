@@ -40,7 +40,7 @@ const app = new Vue({
 		},
 
 		getName() {
-			if (this.name.length === 0 || this.anonymous) {
+			if (this.anonymous) {
 				return 'anonymous';
 			}
 			return this.name;
