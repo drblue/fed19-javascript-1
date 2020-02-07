@@ -20,6 +20,24 @@
 		<div class="container">
 			<h1>Vue.js TODOs</h1>
 
+			<form class="mb-3">
+				<div class="input-group">
+					<input type="text" placeholder="Type in your new TODO..." class="form-control">
+
+					<div class="input-group-append">
+						<button type="submit" class="btn btn-success">Create</button>
+					</div>
+				</div>
+			</form>
+
+			<ul class="todos">
+				<li v-for="(todo, i) in todos" :class="{ done: todo.completed }">
+					<span @click="toggleTodo(i)">
+						{{ todo.title }}
+					</span>
+				</li>
+			</ul>
+
 		</div><!-- /.container -->
 
 	</div><!-- /#app -->

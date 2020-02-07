@@ -8,10 +8,27 @@ const app = new Vue({
 
 	data: {
 		// our variables/properties
+		todos: [
+			{
+				title: "Make coffee",
+				completed: true,
+			},
+			{
+				title: "Drink coffee",
+				completed: false,
+			},
+			{
+				title: "Drink MORE coffee",
+				completed: false,
+			},
+		],
 	},
 
 	methods: {
 		// our functions/methods
+		toggleTodo(index) {
+			this.todos[index].completed = !this.todos[index].completed;
+		},
 
 	},
 });

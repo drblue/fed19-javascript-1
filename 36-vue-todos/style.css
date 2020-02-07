@@ -20,3 +20,20 @@ hr {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 }
+
+.todos {
+	border: 1px solid #888;
+	border-radius: 3px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.todos li {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.todos li.done {
+	font-style: italic;
+	text-decoration: line-through;
+}
