@@ -8,6 +8,8 @@ const app = new Vue({
 
 	data: {
 		// our variables/properties
+		newTodoTitle: '',
+
 		todos: [
 			{
 				title: "Make coffee",
@@ -21,13 +23,52 @@ const app = new Vue({
 				title: "Drink MORE coffee",
 				completed: false,
 			},
+			{
+				title: "Do workshop",
+				completed: false,
+			},
+			{
+				title: "Get a room with a nice Vue",
+				completed: true,
+			},
+			{
+				title: "Fire the teacher due to bad puns",
+				completed: false,
+			},
 		],
+	},
+
+	computed: {
+		unfinishedTodos: function() {
+			return this.todos.filter(todo => !todo.completed).length;
+		},
 	},
 
 	methods: {
 		// our functions/methods
-		toggleTodo(index) {
-			this.todos[index].completed = !this.todos[index].completed;
+		createTodo() {
+			if (!this.newTodoIsValid()) {
+				return;
+			}
+
+			this.todos.push({
+				title: this.newTodoTitle,
+				completed: false,
+			});
+
+			this.newTodoTitle = '';
+		},
+
+		deleteTodo(todo) {
+			this.todos = this.todos.filter(item => item !== todo);
+		},
+
+		newTodoIsValid() {
+			return (this.newTodoTitle.length > 1);
+		},
+
+		toggleTodo(todo) {
+			todo.completed = !todo.completed;
 		},
 
 	},

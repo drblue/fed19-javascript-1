@@ -7,7 +7,13 @@
 
 	<title>javascript-1/36-vue-todos</title>
 
+	<!-- Bootstrap -->
 	<link rel="stylesheet" href="../00-assets/css/bootstrap.min.css">
+
+	<!-- Font Awesome 5 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"/>
+
+	<!-- App styles -->
 	<link rel="stylesheet" href="style.css">
 
 	<!-- development version, includes helpful console warnings -->
@@ -20,23 +26,34 @@
 		<div class="container">
 			<h1>Vue.js TODOs</h1>
 
-			<form class="mb-3">
+			<form class="mb-3" @submit.prevent="createTodo">
 				<div class="input-group">
-					<input type="text" placeholder="Type in your new TODO..." class="form-control">
+					<input type="text" placeholder="Type in your new TODO..." class="form-control" v-model="newTodoTitle">
 
 					<div class="input-group-append">
-						<button type="submit" class="btn btn-success">Create</button>
+						<button
+							type="submit"
+							:disabled="!newTodoIsValid()"
+							class="btn btn-success">Create</button>
 					</div>
 				</div>
 			</form>
 
-			<ul class="todos">
-				<li v-for="(todo, i) in todos" :class="{ done: todo.completed }">
-					<span class="todo-title" @click="toggleTodo(i)">
-						{{ todo.title }}
-					</span>
-				</li>
-			</ul>
+			<div v-if="todos.length">
+				<ul class="todos">
+					<li v-for="todo in todos" :class="{ done: todo.completed }">
+						<span class="todo-title" @click="toggleTodo(todo)">
+							{{ todo.title }}
+						</span>
+						<span class="todo-delete far fa-trash-alt" @click="deleteTodo(todo)"></span>
+					</li>
+				</ul>
+				<p>Unfinished items: {{ unfinishedTodos }}</p>
+			</div>
+			<div class="alert alert-success" v-else>
+				You don't have anything todo!
+			</div>
+			<p>Unfinished items: {{ unfinishedTodos }}</p>
 
 		</div><!-- /.container -->
 

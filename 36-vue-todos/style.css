@@ -38,6 +38,7 @@ hr {
 	text-decoration: line-through;
 }
 
-.todos li span.todo-title {
+.todos li span.todo-title,
+.todos li span.todo-delete {
 	cursor: pointer;
 }
