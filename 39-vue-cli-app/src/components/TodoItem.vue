@@ -1,14 +1,18 @@
 <template>
-	<li>
-		This is my TODO item
+	<li :class="{ done: item.completed }">
+		{{ item.title }}
 	</li>
 </template>
 
 <script>
 export default {
-	name: 'Todo-Item'
+	name: 'Todo-Item',
+	props: ['item'],
 }
 </script>
 
 <style>
+li.done {
+	text-decoration: line-through;
+}
 </style>

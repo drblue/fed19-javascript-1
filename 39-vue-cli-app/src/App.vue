@@ -3,7 +3,11 @@
 		<h1>Things To Do</h1>
 
 		<ul>
-			<Todo-Item></Todo-Item>
+			<Todo-Item
+				v-for="(todo, i) in todos"
+				v-bind:key="i"
+				v-bind:item="todo"
+			/>
 		</ul>
 	</div>
 </template>
@@ -29,7 +33,7 @@ export default {
 				},
 				{
 					title: 'Profit! 🤑',
-					completed: false,
+					completed: true,
 				},
 			],
 		}
