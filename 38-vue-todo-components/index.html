@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title>javascript-1/37-vue-components</title>
+	<title>javascript-1/38-vue-todo-components</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="../00-assets/css/bootstrap.min.css">
@@ -42,12 +42,9 @@
 
 			<div v-show="todos.length">
 				<ul class="todos">
-					<li v-for="todo in todos" :class="{ done: todo.completed }">
-						<span class="todo-title" @click="toggleTodo(todo)">
-							{{ todo.title }}
-						</span>
-						<span class="todo-delete far fa-trash-alt" @click="deleteTodo(todo)"></span>
-					</li>
+
+					<todo-item v-for="todoItem in todos" :item="todoItem"></todo-item>
+
 				</ul>
 				<p>Unfinished items: {{ unfinishedTodos }}</p>
 			</div>

@@ -13,10 +13,11 @@ Vue.component('click-counter', {
 });
 
 Vue.component('student', {
-	template: `<li>{{ prefix }} Hello, I am a student</li>`,
+	template: `<li>{{ prefix }} my name is {{ student.name }} and I am {{ student.age }} years old</li>`,
+	props: ['student'],
 	data() {
 		return {
-			prefix: 'Name:',
+			prefix: 'Hello',
 		}
 	}
 });
@@ -27,15 +28,26 @@ const app = new Vue({
 	data: {
 		// our variables/properties
 		students: [
-			'Adam',
-			'Bertil',
-			'Caesar',
-			'David',
-			'Erik',
-			'Fredrik',
-			'Harald',
-			'Ivar',
-			'Johan'
+			{
+				name: 'Adam',
+				age: 7,
+			},
+			{
+				name: 'Berit',
+				age: 5,
+			},
+			{
+				name: 'Calle',
+				age: 8,
+			},
+			{
+				name: 'Daniel',
+				age: 4,
+			},
+			{
+				name: 'Eskil',
+				age: 7,
+			},
 		],
 	},
 
