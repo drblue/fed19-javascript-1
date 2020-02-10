@@ -1,0 +1,44 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #333;
+	color: #f6f6f6;
+	line-height: 1.5;
+
+	margin-bottom: 60rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0.5em;
+	margin-bottom: 0.75em;
+}
+
+hr {
+	border-top-color: #ccc;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.todos {
+	border: 1px solid #888;
+	border-radius: 3px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.todos li {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.todos li.done {
+	font-style: italic;
+	text-decoration: line-through;
+}
+
+.todos li span.todo-title,
+.todos li span.todo-delete {
+	cursor: pointer;
+}

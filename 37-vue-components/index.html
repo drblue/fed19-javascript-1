@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>javascript-1/37-vue-components</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="../00-assets/css/bootstrap.min.css">
+
+	<!-- Font Awesome 5 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"/>
+
+	<!-- App styles -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- development version, includes helpful console warnings -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+
+		<div class="container">
+			<h1>Vue.js Components</h1>
+
+			<div>
+				<click-counter></click-counter>
+				<click-counter></click-counter>
+				<click-counter></click-counter>
+			</div>
+
+			<ul>
+				<student v-for="student in students"></student>
+			</ul>
+		</div><!-- /.container -->
+
+	</div><!-- /#app -->
+
+	<script src="app.js"></script>
+</body>
+</html>
