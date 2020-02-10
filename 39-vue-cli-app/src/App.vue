@@ -9,6 +9,11 @@
 				v-bind:item="todo"
 			/>
 		</ul>
+
+		<ul>
+			<li>Look I'm a list item</li>
+			<li>Look I'm also a list item</li>
+		</ul>
 	</div>
 </template>
 
