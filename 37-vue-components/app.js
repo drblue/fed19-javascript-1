@@ -4,7 +4,7 @@
  */
 
 Vue.component('click-counter', {
-	template: `<button class="btn btn-primary">Clicks: {{ clicks }}</button>`,
+	template: `<button class="btn btn-primary" @click="clicks++">Clicks: {{ clicks }}</button>`,
 	data() {
 		return {
 			clicks: 0,
