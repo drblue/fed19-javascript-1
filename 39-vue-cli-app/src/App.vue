@@ -9,28 +9,32 @@
 </template>
 
 <script>
-	export default {
-		name: 'App',
-		components: {},
-		data() {
-			return {
-				todos: [
-					{
-						title: 'Learn the Basics about Vue',
-						completed: true,
-					},
-					{
-						title: 'Learn about Vue Components',
-						completed: false,
-					},
-					{
-						title: 'Profit! 🤑',
-						completed: false,
-					},
-				],
-			}
-		},
-	}
+import TodoItem from './components/TodoItem'
+
+export default {
+	name: 'App',
+	components: {
+		TodoItem,
+	},
+	data() {
+		return {
+			todos: [
+				{
+					title: 'Learn the Basics about Vue',
+					completed: true,
+				},
+				{
+					title: 'Learn about Vue Components',
+					completed: false,
+				},
+				{
+					title: 'Profit! 🤑',
+					completed: false,
+				},
+			],
+		}
+	},
+}
 </script>
 
 <style>
