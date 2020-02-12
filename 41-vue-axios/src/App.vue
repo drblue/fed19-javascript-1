@@ -12,20 +12,40 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
 	name: 'App',
 
 	data() {
 		return {
-			hasJoke: true,
-			joke: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus placerat diam, molestie fringilla magna posuere ac.',
+			hasJoke: false,
+			joke: null,
 		}
+	},
+
+	created() {
+		this.getJoke();
 	},
 
 	methods: {
 		getJoke() {
+			this.hasJoke = false;
+
 			// go out and get a joke from the API
 			// and then set `this.joke` to the joke in the response
+			axios.get('https://icanhazdadjoke.com', {
+				headers: {
+					'Accept': 'application/json'
+				}
+			})
+			.then(response => {
+				this.hasJoke = true;
+				this.joke = response.data.joke;
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
 		},
 	},
 }
