@@ -2,8 +2,6 @@
 	<div id="app">
 		<h1>Things To Do</h1>
 
-		<Todo-List v-bind:todos="todos" />
-
 		<ul>
 			<Todo-Item
 				v-for="(todo, i) in todos"
