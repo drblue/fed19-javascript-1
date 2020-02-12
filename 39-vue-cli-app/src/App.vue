@@ -2,23 +2,24 @@
 	<div id="app">
 		<h1>Things To Do</h1>
 
-		<ul>
-			<Todo-Item
-				v-for="(todo, i) in todos"
-				v-bind:key="i"
-				v-bind:item="todo"
-			/>
-		</ul>
+		<h2>My TODOs</h2>
+		<Todo-List v-bind:todos="todos" />
+
+		<hr>
+
+		<h2>Peters TODOs</h2>
+		<Todo-List v-bind:todos="peters_todos" />
+
 	</div>
 </template>
 
 <script>
-import TodoItem from './components/TodoItem'
+import TodoList from './components/TodoList';
 
 export default {
 	name: 'App',
 	components: {
-		TodoItem,
+		TodoList,
 	},
 	data() {
 		return {
@@ -34,6 +35,17 @@ export default {
 				{
 					title: 'Profit! 🤑',
 					completed: true,
+				},
+			],
+
+			peters_todos: [
+				{
+					title: 'Vara en rolig gubbe',
+					completed: true,
+				},
+				{
+					title: 'Dricka kaffe',
+					completed: false,
 				},
 			],
 		}
