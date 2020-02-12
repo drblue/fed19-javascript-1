@@ -1,6 +1,7 @@
 <template>
-	<li class="todo-item" :class="{ done: item.completed }" @click="toggleTodo()">
-		{{ item.title }}
+	<li class="todo-item" :class="{ done: item.completed }">
+		<span class="todo-title" @click="toggleTodo()">{{ item.title }}</span>
+		<span class="delete-todo" @click="emitDeleteTodo()">[X]</span>
 	</li>
 </template>
 
@@ -9,6 +10,11 @@ export default {
 	name: 'Todo-Item',
 	props: ['item'],
 	methods: {
+		emitDeleteTodo() {
+			// somehow delete this todo???
+			console.log("Todo-Item: Emitting 'delete-todo' event");
+			this.$emit('delete-todo', { todo: this.item });
+		},
 		toggleTodo() {
 			this.item.completed = !this.item.completed;
 		}
@@ -26,5 +32,12 @@ li.todo-item {
 }
 li.todo-item.done {
 	text-decoration: line-through;
+}
+li.todo-item span {
+	cursor: pointer;
+}
+li.todo-item span.delete-todo {
+	background-color: red;
+	padding: 0.25rem 0.5rem;
 }
 </style>

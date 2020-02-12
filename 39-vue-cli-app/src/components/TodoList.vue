@@ -1,9 +1,10 @@
 <template>
 	<ul>
 		<Todo-Item
-			v-for="(dumbThing, i) in todos"
+			v-for="(todo, i) in todos"
 			v-bind:key="i"
-			v-bind:item="dumbThing"
+			v-bind:item="todo"
+			v-on:delete-todo="onDeleteTodo($event)"
 		/>
 	</ul>
 </template>
@@ -18,6 +19,9 @@ export default {
 	},
 	props: ['todos'],
 	methods: {
+		onDeleteTodo(event) {
+			console.log("Todo-List: Want to delete todo with title:", event.todo.title);
+		}
 	},
 }
 </script>
