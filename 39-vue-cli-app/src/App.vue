@@ -2,17 +2,14 @@
 	<div id="app">
 		<h1>Things To Do</h1>
 
+		<Todo-List v-bind:todos="todos" />
+
 		<ul>
 			<Todo-Item
 				v-for="(todo, i) in todos"
 				v-bind:key="i"
 				v-bind:item="todo"
 			/>
-		</ul>
-
-		<ul>
-			<li>Look I'm a list item</li>
-			<li>Look I'm also a list item</li>
 		</ul>
 	</div>
 </template>

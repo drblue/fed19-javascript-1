@@ -1,5 +1,5 @@
 <template>
-	<li class="todo-item" :class="{ done: item.completed }">
+	<li class="todo-item" :class="{ done: item.completed }" @click="toggleTodo()">
 		{{ item.title }}
 	</li>
 </template>
@@ -8,6 +8,11 @@
 export default {
 	name: 'Todo-Item',
 	props: ['item'],
+	methods: {
+		toggleTodo() {
+			this.item.completed = !this.item.completed;
+		}
+	},
 }
 </script>
 
