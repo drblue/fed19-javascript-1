@@ -21,6 +21,7 @@ export default {
 	methods: {
 		onDeleteTodo(event) {
 			console.log("Todo-List: Want to delete todo with title:", event.todo.title);
+			this.todos = this.todos.filter(t => t !== event.todo);
 		}
 	},
 }
