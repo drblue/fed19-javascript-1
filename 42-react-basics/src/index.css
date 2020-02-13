@@ -12,9 +12,14 @@ code {
     monospace;
 }
 
-.user {
+#app {
+	max-width: 80vw;
+	margin: 1rem auto;
+}
+
+.user-profile {
 	background-color: #333;
 	color: #fff;
-	display: inline-block;
+	margin-bottom: 1.5rem;
 	padding: 1rem 1.5rem;
 }
