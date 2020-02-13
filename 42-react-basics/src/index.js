@@ -1,10 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const name = 'Johan';
-const msg = <h1>Hello, {name}! 2 + 2 = {2+2}</h1>;
+function formatName(user) {
+	return `${user.firstName} ${user.lastName}`;
+}
+
+const user = {
+	firstName: 'Pelle',
+	lastName: 'Persson',
+}
+const msg = (
+	<h1>
+		Hello, {formatName(user)} ☀️!
+	</h1>
+)
 
 ReactDOM.render(
 	msg,
 	document.querySelector('#root')
-);
+)
