@@ -1,0 +1,23 @@
+@import 'colors';
+@import '~bootstrap/scss/bootstrap';
+
+body {
+	background-color: $bg-color;
+	color: $text-color;
+}
+
+a {
+	color: $primary;
+	text-decoration: none;
+}
+
+.user-profile {
+	background-color: #333;
+	color: #fff;
+	margin-bottom: 1.5rem;
+	padding: 1rem 1.5rem;
+
+	.email-link {
+		font-style: italic;
+	}
+}
