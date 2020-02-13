@@ -2,26 +2,22 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-function formatName(user) {
-	return `${user.firstName} ${user.lastName}`;
+class Welcome extends React.Component {
+	render() {
+		return <h1>Hello, {this.props.name}</h1>
+	}
 }
 
-const user = {
-	firstName: 'Pelle',
-	lastName: 'Persson',
-	avatarUrl: 'https://i.pravatar.cc/150?img=58',
+class App extends React.Component {
+	render() {
+		return (
+			<div>
+				<Welcome name="Knatte" />
+				<Welcome name="Fnatte" />
+				<Welcome name="Tjatte" />
+			</div>
+		)
+	}
 }
 
-const msg = (
-	<div className="user">
-		<h1>
-			Hello, {formatName(user)} ☀️!
-		</h1>
-		<img src={user.avatarUrl} />
-	</div>
-)
-
-ReactDOM.render(
-	msg,
-	document.querySelector('#root')
-)
+ReactDOM.render(<App />, document.getElementById('root'));
