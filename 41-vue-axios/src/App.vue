@@ -44,7 +44,8 @@ export default {
 				this.joke = response.data.joke;
 			})
 			.catch(function(error) {
-				console.error(error);
+				this.hasJoke = true;
+				this.joke = error;
 			});
 		},
 	},
