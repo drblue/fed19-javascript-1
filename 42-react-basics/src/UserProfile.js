@@ -3,7 +3,7 @@ import EmailLink from './EmailLink'
 
 class UserProfile extends Component {
 	render() {
-		const { name, age, email } = this.props;
+		const { name, age, email } = this.props.user;
 		return (
 			<div className="user-profile">
 				<div>Name: {name}</div>
