@@ -14,3 +14,13 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
+
+#App {
+	margin: 0 auto;
+	max-width: 90vw;
+}
+
+.completed {
+	font-style: italic;
+	text-decoration: line-through;
+}
