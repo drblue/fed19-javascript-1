@@ -1,25 +1,9 @@
 import React from "react";
 
 class TodoItem extends React.Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			completed: props.todo.completed,
-		};
-	}
-
-	// toggleTodo = e => {
-	// 	this.setState({
-	// 		completed: !this.state.completed,
-	// 	});
-	// }
-
 	render() {
 		let cssClasses = 'todo-title';
-		cssClasses += this.state.completed ? ' completed' : '';
-
-		console.log("Rendering todo with id " + this.props.todo.id);
+		cssClasses += this.props.todo.completed ? ' completed' : '';
 
 		return (
 			<li>
