@@ -2,17 +2,20 @@ import React from "react";
 
 class TodoItem extends React.Component {
 	render() {
+		const { id, title, completed } = this.props.todo;
+
 		let cssClasses = 'todo-title';
-		cssClasses += this.props.todo.completed ? ' completed' : '';
+		cssClasses += completed ? ' completed' : '';
 
 		return (
 			<li>
 				<span
-					onClick={ () => { this.props.onToggle(this.props.todo.id) } }
+					onClick={ () => { this.props.onToggle(id) } }
 					className={cssClasses}
 				>
-					{ this.props.todo.title }
+					{ title }
 				</span>
+				{ completed ? <button>Delete</button> : '' }
 			</li>
 		)
 	}
