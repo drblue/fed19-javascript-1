@@ -23,10 +23,18 @@ class App extends React.Component {
 		],
 	}
 
+	handleTodoToggle = (id) => {
+		console.log('Want to toggle todo with id ' + id);
+	}
+
 	render() {
 		const todoItems = this.state.todos.map(todoItem => {
 			return (
-				<TodoItem todo={todoItem} key={todoItem.id} />
+				<TodoItem
+					todo={todoItem}
+					key={todoItem.id}
+					onToggle={this.handleTodoToggle}
+				/>
 			)
 		})
 

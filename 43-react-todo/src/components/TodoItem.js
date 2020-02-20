@@ -9,19 +9,24 @@ class TodoItem extends React.Component {
 		};
 	}
 
-	toggleTodo = e => {
-		this.setState({
-			completed: !this.state.completed,
-		});
-	}
+	// toggleTodo = e => {
+	// 	this.setState({
+	// 		completed: !this.state.completed,
+	// 	});
+	// }
 
 	render() {
 		let cssClasses = 'todo-title';
 		cssClasses += this.state.completed ? ' completed' : '';
 
+		console.log("Rendering todo with id " + this.props.todo.id);
+
 		return (
 			<li>
-				<span onClick={this.toggleTodo} className={cssClasses}>
+				<span
+					onClick={ () => { this.props.onToggle(this.props.todo.id) } }
+					className={cssClasses}
+				>
 					{ this.props.todo.title }
 				</span>
 			</li>
