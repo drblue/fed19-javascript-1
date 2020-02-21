@@ -1,26 +1,23 @@
 import React from 'react';
 import AddTodo from "./components/AddTodo";
 import TodoItem from "./components/TodoItem";
+import axios from 'axios';
 
 class App extends React.Component {
 	state = {
-		todos: [
-			{
-				id: 1,
-				title: "Do stuff",
-				completed: true,
-			},
-			{
-				id: 24,
-				title: "Do more stuff",
-				completed: false,
-			},
-			{
-				id: 3,
-				title: "Do EVEN MORE stuff",
-				completed: false,
-			},
-		],
+		todos: [],
+	}
+
+	componentDidMount() {
+		axios.get('https://jsonplaceholder.typicode.com/todos')
+		.then(response => {
+			this.setState({
+				todos: response.data,
+			});
+		})
+		.catch(error => {
+			console.error(error);
+		});
 	}
 
 	handleTodoAdd = (fields) => {
