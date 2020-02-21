@@ -2,7 +2,6 @@ import React from 'react';
 import TodoItem from "./components/TodoItem";
 
 class App extends React.Component {
-
 	state = {
 		todos: [
 			{
@@ -21,6 +20,18 @@ class App extends React.Component {
 				completed: false,
 			},
 		],
+	}
+
+	handleTodoDelete = (id) => {
+		console.log('Want to delete todo with id ' + id);
+
+		// Filter out the todo we want to delete
+		const newTodos = this.state.todos.filter(todo => todo.id !== id);
+
+		// Set filtered todos as the new state for `todos`
+		this.setState({
+			todos: newTodos,
+		});
 	}
 
 	handleTodoToggle = (id) => {
@@ -47,6 +58,7 @@ class App extends React.Component {
 				<TodoItem
 					todo={todoItem}
 					key={todoItem.id}
+					onDelete={this.handleTodoDelete}
 					onToggle={this.handleTodoToggle}
 				/>
 			)
