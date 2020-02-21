@@ -11,7 +11,7 @@ class App extends React.Component {
 				completed: true,
 			},
 			{
-				id: 2,
+				id: 24,
 				title: "Do more stuff",
 				completed: false,
 			},
@@ -21,6 +21,27 @@ class App extends React.Component {
 				completed: false,
 			},
 		],
+	}
+
+	handleTodoAdd = (fields) => {
+		console.log("Want to add a new todo...", fields);
+
+		const ids = this.state.todos.map(todo => todo.id);
+		const newId = Math.max(...ids) + 1;
+
+		const todo = {
+			id: newId,
+			title: fields.title,
+			completed: false,
+		};
+
+		// Create a copy of our current todos and add our new todo
+		const newTodos = [...this.state.todos, todo];
+
+		// Set copy as the new state
+		this.setState({
+			todos: newTodos,
+		});
 	}
 
 	handleTodoDelete = (id) => {
@@ -74,7 +95,9 @@ class App extends React.Component {
 						{todoItems}
 					</ul>
 
-					<AddTodo />
+					<AddTodo
+						onAddTodo={this.handleTodoAdd}
+					/>
 				</div>
 			</div>
 		)
