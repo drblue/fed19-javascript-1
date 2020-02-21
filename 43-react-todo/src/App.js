@@ -1,4 +1,5 @@
 import React from 'react';
+import AddTodo from "./components/AddTodo";
 import TodoItem from "./components/TodoItem";
 
 class App extends React.Component {
@@ -68,9 +69,13 @@ class App extends React.Component {
 			<div id="App">
 				<h1>TODOs</h1>
 
-				<ul className="todo-list">
-					{todoItems}
-				</ul>
+				<div className="todos">
+					<ul className="todo-list">
+						{todoItems}
+					</ul>
+
+					<AddTodo />
+				</div>
 			</div>
 		)
 	}

@@ -1,7 +1,5 @@
 import React from "react";
 
-// class TodoItem extends React.Component {
-// 	render() {
 const TodoItem = (props) => {
 	const { id, title, completed } = props.todo;
 
