@@ -1,0 +1,9 @@
+$body-bg: #333;
+$body-color: #fff;
+
+@import "~bootstrap/scss/bootstrap";
+
+.completed {
+	font-style: italic;
+	text-decoration: line-through;
+}
