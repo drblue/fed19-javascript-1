@@ -4,25 +4,33 @@ import axios from 'axios';
 class App extends React.Component {
 
 	state = {
+		inputQuestion: '',
 		question: '',
 		answer: null,
 		answer_image: null,
+		showPleaseAskQuestion: false,
 	}
 
 	handleFormSubmit = (e) => {
 		e.preventDefault();
 
-		if (!this.state.question.endsWith('?')) {
+		if (!this.state.inputQuestion.endsWith('?')) {
+			this.setState({
+				answer: null,
+				answer_image: null,
+				showPleaseAskQuestion: true,
+			});
 			return;
 		}
 
-		console.log(`Send question "${this.state.question}" to API...`);
-
-		// empty previous answer
+		// hide help text and empty previous answer
 		this.setState({
 			answer: null,
 			answer_image: null,
+			showPleaseAskQuestion: false,
 		});
+
+		console.log(`Send question "${this.state.inputQuestion}" to API...`);
 
 		// send request to API
 		axios.get('https://yesno.wtf/api')
@@ -31,6 +39,8 @@ class App extends React.Component {
 			this.setState({
 				answer: response.data.answer,
 				answer_image: response.data.image,
+				question: this.state.inputQuestion,
+				inputQuestion: '',
 			});
 		})
 		.catch(error => {
@@ -45,14 +55,16 @@ class App extends React.Component {
 	}
 
 	render() {
+		const answerStyle = {
+			backgroundImage: `url(${this.state.answer_image})`,
+		};
 
 		const answerContent = this.state.answer
 			?
 				(
-					<div id="answer">
+					<div id="answer" style={answerStyle}>
+						<h2>{this.state.question}</h2>
 						<p className="display-3">{this.state.answer}</p>
-
-						<img src={this.state.answer_image} className="img-fluid" />
 					</div>
 				)
 			: '';
@@ -65,9 +77,10 @@ class App extends React.Component {
 					<div className="input-group">
 						<input
 							type="text"
-							id="question"
+							id="inputQuestion"
 							className="form-control form-control-lg"
 							onChange={this.handleInputChange}
+							value={this.state.inputQuestion}
 						/>
 
 						<div className="input-group-append">
@@ -78,6 +91,15 @@ class App extends React.Component {
 						</div>
 					</div>
 				</form>
+
+				{this.state.showPleaseAskQuestion
+					? (
+						<div className="alert alert-info">
+							A question usually ends with a question-mark...
+						</div>
+					)
+					: ''
+				}
 
 				{answerContent}
 			</div>
