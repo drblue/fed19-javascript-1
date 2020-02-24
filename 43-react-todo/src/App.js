@@ -1,6 +1,6 @@
 import React from 'react';
 import AddTodo from "./components/AddTodo";
-import TodoItem from "./components/TodoItem";
+import TodoList from "./components/TodoList";
 import axios from 'axios';
 
 class App extends React.Component {
@@ -12,7 +12,7 @@ class App extends React.Component {
 		axios.get('https://jsonplaceholder.typicode.com/todos')
 		.then(response => {
 			this.setState({
-				todos: response.data,
+				todos: response.data.slice(0, 4),
 			});
 		})
 		.catch(error => {
@@ -72,25 +72,16 @@ class App extends React.Component {
 	}
 
 	render() {
-		const todoItems = this.state.todos.map(todoItem => {
-			return (
-				<TodoItem
-					todo={todoItem}
-					key={todoItem.id}
-					onDelete={this.handleTodoDelete}
-					onToggle={this.handleTodoToggle}
-				/>
-			)
-		})
-
 		return (
 			<div id="App">
 				<h1>TODOs</h1>
 
 				<div className="todos">
-					<ul className="todo-list">
-						{todoItems}
-					</ul>
+					<TodoList
+						todos={this.state.todos}
+						onTodoItemDelete={this.handleTodoDelete}
+						onTodoItemToggle={this.handleTodoToggle}
+					/>
 
 					<AddTodo
 						onAddTodo={this.handleTodoAdd}
