@@ -25,16 +25,20 @@ class AddTodo extends React.Component {
 	render() {
 		return (
 			<form onSubmit={this.handleFormSubmit}>
-				<input
-					type="text"
-					id="title"
-					aria-label="Title of new TODO"
-					placeholder="Type your new todo..."
-					onChange={this.handleInputTitleChange}
-					value={this.state.title}
-				/>
-
-				<button type="submit">Create</button>
+				<div className="input-group">
+					<input
+						type="text"
+						id="title"
+						aria-label="Title of new TODO"
+						placeholder="Type your new todo..."
+						className="form-control"
+						onChange={this.handleInputTitleChange}
+						value={this.state.title}
+					/>
+					<div className="input-group-append">
+						<button type="submit" className="btn btn-success">Create</button>
+					</div>
+				</div>
 			</form>
 		)
 	}

@@ -22,7 +22,7 @@ const TodoItem = (props) => {
 			>
 				{ title }
 			</span>
-			{ completed ? <button onClick={handleOnDeleteClick}>Delete</button> : '' }
+			{ completed ? <button onClick={handleOnDeleteClick} className="btn btn-danger btn-sm ml-2">Delete</button> : '' }
 		</li>
 	)
 }
