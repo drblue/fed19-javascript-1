@@ -34,6 +34,7 @@
   "devDependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "firebase": "^7.9.1",
     "node-sass": "^4.13.1"
   }
 }

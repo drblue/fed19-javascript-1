@@ -1,7 +1,8 @@
 import React from 'react';
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
-import axios from 'axios';
+// import axios from 'axios';
+import { db } from "./modules/firebase";
 
 class App extends React.Component {
 	state = {
@@ -9,6 +10,8 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
+		this.getTodos();
+		/*
 		axios.get('https://jsonplaceholder.typicode.com/todos')
 		.then(response => {
 			this.setState({
@@ -17,6 +20,26 @@ class App extends React.Component {
 		})
 		.catch(error => {
 			console.error(error);
+		});
+		*/
+	}
+
+	getTodos = () => {
+		db.collection("todos").get().then((querySnapshot) => {
+
+			const todos = [];
+
+			querySnapshot.forEach((doc) => {
+				todos.push({
+					id: doc.id,
+					title: doc.data().title,
+					completed: doc.data().completed,
+				});
+			});
+
+			this.setState({
+				todos,
+			});
 		});
 	}
 
