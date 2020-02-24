@@ -20,22 +20,24 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div id="app" className="container text-center">
-				<h1 className="display-5 mb-3">Anti-Decision Anxiety Resolver</h1>
+			<div id="app" className="container text-center my-5">
+				<h1 className="display-5 mb-5">Anti-Decision Anxiety Resolver</h1>
 
-				<form className="" onSubmit={this.handleFormSubmit}>
+				<form className="mb-5" onSubmit={this.handleFormSubmit}>
 					<div className="input-group">
 						<input
 							type="text"
 							id="question"
-							className="form-control"
+							className="form-control form-control-lg"
 							onChange={this.handleInputChange}
 						/>
 
-						<button
-							type="submit"
-							className="btn btn-success"
-						>Resolve!</button>
+						<div className="input-group-append">
+							<button
+								type="submit"
+								className="btn btn-lg btn-success"
+							>Resolve!</button>
+						</div>
 					</div>
 				</form>
 
