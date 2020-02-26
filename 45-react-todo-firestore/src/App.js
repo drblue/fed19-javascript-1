@@ -64,12 +64,12 @@ class App extends React.Component {
 	handleTodoDelete = (id) => {
 		console.log('Want to delete todo with id ' + id);
 
-		// Filter out the todo we want to delete
-		const newTodos = this.state.todos.filter(todo => todo.id !== id);
-
-		// Set filtered todos as the new state for `todos`
-		this.setState({
-			todos: newTodos,
+		db.collection('todos').doc(id).delete()
+		.then(() => {
+			// firestore has successfully deleted the todo
+			this.getTodos();
+		}).catch(err => {
+			console.error(err);
 		});
 	}
 
