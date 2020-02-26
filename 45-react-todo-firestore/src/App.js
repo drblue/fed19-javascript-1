@@ -46,21 +46,18 @@ class App extends React.Component {
 	handleTodoAdd = (fields) => {
 		console.log("Want to add a new todo...", fields);
 
-		const ids = this.state.todos.map(todo => todo.id);
-		const newId = Math.max(...ids) + 1;
-
 		const todo = {
-			id: newId,
 			title: fields.title,
 			completed: false,
 		};
 
-		// Create a copy of our current todos and add our new todo
-		const newTodos = [...this.state.todos, todo];
-
-		// Set copy as the new state
-		this.setState({
-			todos: newTodos,
+		// Create a new document for our Todo in the 'todos' collection
+		db.collection('todos').add(todo)
+		.then(docRef => {
+			this.getTodos();
+		})
+		.catch(err => {
+			console.error(err);
 		});
 	}
 
