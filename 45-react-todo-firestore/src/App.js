@@ -1,30 +1,33 @@
 import React from 'react';
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
-// import axios from 'axios';
 import { db } from "./modules/firebase";
 
 class App extends React.Component {
 	state = {
+		showSpinner: false,
 		todos: [],
 	}
 
 	componentDidMount() {
 		this.getTodos();
-		/*
-		axios.get('https://jsonplaceholder.typicode.com/todos')
-		.then(response => {
-			this.setState({
-				todos: response.data.slice(0, 4),
-			});
-		})
-		.catch(error => {
-			console.error(error);
+	}
+
+	showSpinner = () => {
+		this.setState({
+			showSpinner: true,
 		});
-		*/
+	}
+
+	hideSpinner = () => {
+		this.setState({
+			showSpinner: false,
+		});
 	}
 
 	getTodos = () => {
+		this.showSpinner();
+
 		db.collection("todos").get().then((querySnapshot) => {
 
 			const todos = [];
@@ -40,11 +43,15 @@ class App extends React.Component {
 			this.setState({
 				todos,
 			});
+
+			this.hideSpinner();
 		});
 	}
 
 	handleTodoAdd = (fields) => {
 		console.log("Want to add a new todo...", fields);
+
+		this.showSpinner();
 
 		const todo = {
 			title: fields.title,
@@ -64,6 +71,8 @@ class App extends React.Component {
 	handleTodoDelete = (id) => {
 		console.log('Want to delete todo with id ' + id);
 
+		this.showSpinner();
+
 		db.collection('todos').doc(id).delete()
 		.then(() => {
 			// firestore has successfully deleted the todo
@@ -75,6 +84,8 @@ class App extends React.Component {
 
 	handleTodoToggle = (todo) => {
 		console.log('Want to toggle todo with id ' + todo.id);
+
+		this.showSpinner();
 
 		db.collection('todos').doc(todo.id).update({
 			completed: !todo.completed,
@@ -89,6 +100,15 @@ class App extends React.Component {
 	render() {
 		return (
 			<div id="App" className="container my-5">
+				{
+					this.state.showSpinner
+					? (
+						<div id="spinner" className="spinner-border text-primary" role="status">
+							<span className="sr-only">Loading...</span>
+						</div>
+					) : ''
+				}
+
 				<h1>TODOs</h1>
 
 				<div className="todos">
