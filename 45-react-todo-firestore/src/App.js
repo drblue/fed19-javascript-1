@@ -73,21 +73,16 @@ class App extends React.Component {
 		});
 	}
 
-	handleTodoToggle = (id) => {
-		console.log('Want to toggle todo with id ' + id);
+	handleTodoToggle = (todo) => {
+		console.log('Want to toggle todo with id ' + todo.id);
 
-		// Create a copy of our current todos
-		const newTodos = [...this.state.todos];
-
-		// Find the todo among our todos-copy to toggle
-		const todo = newTodos.find(todo => todo.id === id);
-
-		// Toggle completed on the todo
-		todo.completed = !todo.completed;
-
-		// Set todos-copy as the new state for `todos`
-		this.setState({
-			todos: newTodos,
+		db.collection('todos').doc(todo.id).update({
+			completed: !todo.completed,
+		}).then(() => {
+			// firestore has updated the todo
+			this.getTodos();
+		}).catch(err => {
+			console.error(err);
 		});
 	}
 

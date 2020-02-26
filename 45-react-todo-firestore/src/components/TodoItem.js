@@ -11,7 +11,7 @@ const TodoItem = (props) => {
 	}
 
 	const handleOnTitleClick = () => {
-		props.onToggle(id)
+		props.onToggle(props.todo)
 	}
 
 	return (
