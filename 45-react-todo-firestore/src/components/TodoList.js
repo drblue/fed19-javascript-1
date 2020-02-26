@@ -1,4 +1,5 @@
 import React from "react";
+import AddTodo from './AddTodo';
 import TodoItem from "./TodoItem";
 
 const TodoList = (props) => {
@@ -15,9 +16,15 @@ const TodoList = (props) => {
 	})
 
 	return (
-		<ul className="todo-list">
-			{todoItems}
-		</ul>
+		<div className="todos">
+			<ul className="todo-list">
+				{todoItems}
+			</ul>
+
+			<AddTodo
+				onAddTodo={props.onTodoItemAdd}
+			/>
+		</div>
 	)
 }
 

@@ -1,7 +1,11 @@
 import React from 'react';
-import AddTodo from "./components/AddTodo";
+import { Route, BrowserRouter, Switch, Link, NavLink } from 'react-router-dom';
 import TodoList from "./components/TodoList";
 import { db } from "./modules/firebase";
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import SingleTodo from './components/SingleTodo';
 
 class App extends React.Component {
 	state = {
@@ -99,30 +103,44 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div id="App" className="container my-5">
-				{
-					this.state.showSpinner
-					? (
-						<div id="spinner" className="spinner-border text-primary" role="status">
-							<span className="sr-only">Loading...</span>
-						</div>
-					) : ''
-				}
+			<BrowserRouter>
+				<div id="App" className="container my-5">
+					{
+						this.state.showSpinner
+						? (
+							<div id="spinner" className="spinner-border text-primary" role="status">
+								<span className="sr-only">Loading...</span>
+							</div>
+						) : ''
+					}
 
-				<h1>TODOs</h1>
+					<h1>TODOs</h1>
 
-				<div className="todos">
-					<TodoList
+					<ul className="nav">
+						<li className="nav-item">
+							<NavLink exact to="/" className="nav-link">Home</NavLink>
+						</li>
+						<li className="nav-item">
+							<NavLink to="/about" className="nav-link">About</NavLink>
+						</li>
+						<li className="nav-item">
+							<NavLink to="/contact" className="nav-link">Contact</NavLink>
+						</li>
+					</ul>
+
+					<Route exact path='/' component={Home} />
+					<Route path='/about' component={About} />
+					<Route path='/contact' component={Contact} />
+					<Route path='/todo/:todo_id' component={SingleTodo} />
+
+					{/* <TodoList
 						todos={this.state.todos}
+						onTodoItemAdd={this.handleTodoAdd}
 						onTodoItemDelete={this.handleTodoDelete}
 						onTodoItemToggle={this.handleTodoToggle}
-					/>
-
-					<AddTodo
-						onAddTodo={this.handleTodoAdd}
-					/>
+					/> */}
 				</div>
-			</div>
+			</BrowserRouter>
 		)
 	}
 }
