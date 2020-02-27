@@ -7,10 +7,28 @@ class TodoList extends React.Component {
 	state = {
 		showSpinner: false,
 		todos: [],
+		clock: null,
+		timerId: null,
 	}
 
 	componentDidMount() {
+		console.log('TodoList.componentDidMount()');
 		this.getTodos();
+
+		const timerId = setInterval(() => {
+			this.setState({
+				clock: new Date().toLocaleTimeString(),
+			});
+		}, 1000);
+
+		this.setState({
+			timerId,
+		})
+	}
+
+	componentWillUnmount() {
+		console.log('TodoList.componentWillUnmount()');
+		clearInterval(this.state.timerId);
 	}
 
 	showSpinner = () => {
@@ -119,6 +137,7 @@ class TodoList extends React.Component {
 						</div>
 					) : ''
 				}
+				<div id="clock">{this.state.clock}</div>
 
 				<h1>TODOs</h1>
 

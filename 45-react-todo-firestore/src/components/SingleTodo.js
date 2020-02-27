@@ -9,6 +9,8 @@ class SingleTodo extends React.Component {
 	}
 
 	componentDidMount() {
+		console.log('SingleTodo.componentDidMount()');
+
 		db.collection('todos').doc(this.props.match.params.id).get()
 		.then(doc => {
 			// do stuff with document
@@ -24,6 +26,10 @@ class SingleTodo extends React.Component {
 		}).catch(err => {
 			console.error(err);
 		});
+	}
+
+	componentWillUnmount() {
+		console.log('SingleTodo.componentWillUnmount()');
 	}
 
 	render() {

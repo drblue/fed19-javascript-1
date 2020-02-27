@@ -4,6 +4,11 @@ import TodoList from "./components/TodoList";
 import SingleTodo from './components/SingleTodo';
 
 class App extends React.Component {
+
+	componentDidMount() {
+		console.log('App.componentDidMount()');
+	}
+
 	render() {
 		return (
 			<BrowserRouter>

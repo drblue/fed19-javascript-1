@@ -8,6 +8,12 @@ $body-color: #fff;
 	text-decoration: line-through;
 }
 
+#clock {
+	position: fixed;
+	top: 1rem;
+	left: 1.5rem;
+}
+
 #spinner {
 	position: fixed;
 	top: 1rem;
