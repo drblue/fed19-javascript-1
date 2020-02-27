@@ -54,7 +54,7 @@ class TodoList extends React.Component {
 		this.showSpinner();
 
 		const todo = {
-			title: fields.title,
+			...fields,
 			completed: false,
 		};
 

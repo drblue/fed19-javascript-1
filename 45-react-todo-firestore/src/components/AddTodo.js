@@ -3,6 +3,7 @@ import React from 'react';
 class AddTodo extends React.Component {
 	state = {
 		title: '',
+		description: '',
 	}
 
 	handleFormSubmit = (e) => {
@@ -13,32 +14,46 @@ class AddTodo extends React.Component {
 
 		this.setState({
 			title: '',
+			description: '',
 		});
 	}
 
-	handleInputTitleChange = (e) => {
+	handleInputChange = (e) => {
 		this.setState({
-			title: e.target.value,
+			[e.target.id]: e.target.value,
 		});
 	}
 
 	render() {
 		return (
 			<form onSubmit={this.handleFormSubmit}>
-				<div className="input-group">
+				<h2>Create a new Todo</h2>
+
+				<div className="form-group">
 					<input
 						type="text"
 						id="title"
 						aria-label="Title of new TODO"
 						placeholder="Type your new todo..."
 						className="form-control"
-						onChange={this.handleInputTitleChange}
+						required
+						onChange={this.handleInputChange}
 						value={this.state.title}
 					/>
-					<div className="input-group-append">
-						<button type="submit" className="btn btn-success">Create</button>
-					</div>
 				</div>
+
+				<div className="form-group">
+					<textarea
+						id="description"
+						aria-label="Description of new TODO"
+						placeholder="Type a more detailed description for your new todo..."
+						className="form-control"
+						onChange={this.handleInputChange}
+						value={this.state.description}
+					></textarea>
+				</div>
+
+				<button type="submit" className="btn btn-success w-100">Create</button>
 			</form>
 		)
 	}

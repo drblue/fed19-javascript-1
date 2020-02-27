@@ -16,8 +16,7 @@ class SingleTodo extends React.Component {
 			this.setState({
 				todo: {
 					id: doc.id,
-					title: doc.data().title,
-					completed: doc.data().completed,
+					...doc.data()
 				}
 			});
 			console.log("Todo-state is updated");
@@ -33,9 +32,7 @@ class SingleTodo extends React.Component {
 				<div className="todo-content">
 					<h2>{this.state.todo.title}</h2>
 
-					<p>
-						You want to see the todo with the ID {this.props.match.params.id}!
-					</p>
+					<p>{this.state.todo.description}</p>
 
 					<div className="mt-3">
 						<Link to='/' className="btn btn-secondary">&laquo; Back to list</Link>
