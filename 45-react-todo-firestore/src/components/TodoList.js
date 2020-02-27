@@ -2,6 +2,7 @@ import React from "react";
 import { db } from '../modules/firebase';
 import AddTodo from './AddTodo';
 import TodoItem from "./TodoItem";
+import todoListIcon from '../images/icons8-todo-list-100.png';
 
 class TodoList extends React.Component {
 	state = {
@@ -139,7 +140,10 @@ class TodoList extends React.Component {
 				}
 				<div id="clock">{this.state.clock}</div>
 
-				<h1>TODOs</h1>
+				<div className="d-flex align-items-center">
+					<img src={todoListIcon} className="img-fluid" alt="A paper with a pen" title="My Todos" />
+					<h1>TODOs</h1>
+				</div>
 
 				<ul className="todo-list">
 					{todoItems}

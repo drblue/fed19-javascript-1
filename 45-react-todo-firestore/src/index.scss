@@ -3,6 +3,14 @@ $body-color: #fff;
 
 @import "~bootstrap/scss/bootstrap";
 
+body {
+	/*
+	background:
+		linear-gradient(90deg, rgba(112, 66, 20, 0.5) 0%, rgba(112, 66, 20, 0.5) 100%),
+		url('images/background.jpg') center center;
+	*/
+}
+
 .completed {
 	font-style: italic;
 	text-decoration: line-through;
