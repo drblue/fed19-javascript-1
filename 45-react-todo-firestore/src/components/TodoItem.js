@@ -11,24 +11,24 @@ const TodoItem = (props) => {
 		props.onDelete(id)
 	}
 
-	const handleOnTitleClick = () => {
+	const handleOnToggleClick = () => {
 		props.onToggle(props.todo)
 	}
 
 	return (
 		<li>
-			<span
-				onClick={ handleOnTitleClick }
+			<Link
+				to={ '/todo/' + id }
 				className={cssClasses}
 			>
 				{ title }
-			</span>
-			{ completed ? <button onClick={handleOnDeleteClick} className="btn btn-danger btn-sm ml-2">Delete</button> : '' }
+			</Link>
 
-			<Link
-				to={ '/todo/' + id }
-				className="btn btn-info btn-sm"
-			>View</Link>
+			<span className="ml-2">
+				<button onClick={ handleOnToggleClick } className="btn btn-primary btn-sm">{ completed ? 'Damnit' : 'Complete' }</button>
+
+				{ completed ? <button onClick={handleOnDeleteClick} className="btn btn-danger btn-sm">Delete</button> : '' }
+			</span>
 		</li>
 	)
 }
