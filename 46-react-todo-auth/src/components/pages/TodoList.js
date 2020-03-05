@@ -1,35 +1,17 @@
 import React from "react";
-import { db } from '../modules/firebase';
-import AddTodo from './AddTodo';
-import TodoItem from "./TodoItem";
-import todoListIcon from '../images/icons8-todo-list-100.png';
+import { db } from '../../modules/firebase';
+import AddTodo from '../todos/AddTodo';
+import TodoItem from "../todos/TodoItem";
+import todoListIcon from '../../images/icons8-todo-list-100.png';
 
 class TodoList extends React.Component {
 	state = {
 		showSpinner: false,
 		todos: [],
-		clock: null,
-		timerId: null,
 	}
 
 	componentDidMount() {
-		console.log('TodoList.componentDidMount()');
 		this.getTodos();
-
-		const timerId = setInterval(() => {
-			this.setState({
-				clock: new Date().toLocaleTimeString(),
-			});
-		}, 1000);
-
-		this.setState({
-			timerId,
-		})
-	}
-
-	componentWillUnmount() {
-		console.log('TodoList.componentWillUnmount()');
-		clearInterval(this.state.timerId);
 	}
 
 	showSpinner = () => {
@@ -68,8 +50,6 @@ class TodoList extends React.Component {
 	}
 
 	handleTodoAdd = (fields) => {
-		console.log("Want to add a new todo...", fields);
-
 		this.showSpinner();
 
 		const todo = {
@@ -88,8 +68,6 @@ class TodoList extends React.Component {
 	}
 
 	handleTodoDelete = (id) => {
-		console.log('Want to delete todo with id ' + id);
-
 		this.showSpinner();
 
 		db.collection('todos').doc(id).delete()
@@ -102,8 +80,6 @@ class TodoList extends React.Component {
 	}
 
 	handleTodoToggle = (todo) => {
-		console.log('Want to toggle todo with id ' + todo.id);
-
 		this.showSpinner();
 
 		db.collection('todos').doc(todo.id).update({
@@ -138,11 +114,10 @@ class TodoList extends React.Component {
 						</div>
 					) : ''
 				}
-				<div id="clock">{this.state.clock}</div>
 
 				<div className="d-flex align-items-center">
 					<img src={todoListIcon} className="img-fluid" alt="A paper with a pen" title="My Todos" />
-					<h1>TODOs</h1>
+					<h1>My TODOs</h1>
 				</div>
 
 				<ul className="todo-list">

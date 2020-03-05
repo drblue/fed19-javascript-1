@@ -9,7 +9,6 @@ class AddTodo extends React.Component {
 	handleFormSubmit = (e) => {
 		e.preventDefault();
 
-		console.log("Want to add a new todo with title: " + this.state.title);
 		this.props.onAddTodo(this.state);
 
 		this.setState({

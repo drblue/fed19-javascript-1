@@ -1,13 +1,12 @@
 import React from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import NotFound from "./components/NotFound";
-import TodoList from "./components/TodoList";
-import SingleTodo from './components/SingleTodo';
+import NotFound from "./components/pages/NotFound";
+import TodoList from "./components/pages/TodoList";
+import SingleTodo from './components/pages/SingleTodo';
 
 class App extends React.Component {
 
 	componentDidMount() {
-		console.log('App.componentDidMount()');
 	}
 
 	render() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { db } from '../modules/firebase';
+import { db } from '../../modules/firebase';
 
 class SingleTodo extends React.Component {
 
@@ -9,27 +9,19 @@ class SingleTodo extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log('SingleTodo.componentDidMount()');
-
 		db.collection('todos').doc(this.props.match.params.id).get()
 		.then(doc => {
 			// do stuff with document
-			console.log("Got response from Firestore");
 			this.setState({
 				todo: {
 					id: doc.id,
 					...doc.data()
 				}
 			});
-			console.log("Todo-state is updated");
 
 		}).catch(err => {
 			console.error(err);
 		});
-	}
-
-	componentWillUnmount() {
-		console.log('SingleTodo.componentWillUnmount()');
 	}
 
 	render() {
@@ -49,7 +41,6 @@ class SingleTodo extends React.Component {
 				<h2>Loading...</h2>
 			);
 
-		console.log("Rendering component...");
 		return (
 			<div className="singleTodo">
 				{content}
