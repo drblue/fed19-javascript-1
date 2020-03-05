@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { auth } from '../../modules/firebase';
 
 const Navigation = props => {
+
+	const handleSignOut = e => {
+		auth.signOut()
+		.then(() => {
+			// redirect to login page
+			console.log("Signed out");
+		});
+	}
+
 	return (
 		<nav id="navigation" className="navbar navbar-expand-md navbar-dark bg-dark">
 			<div className="container">
@@ -18,6 +28,9 @@ const Navigation = props => {
 						</li>
 						<li className="nav-item">
 							<NavLink to="/login" className="nav-link">Login</NavLink>
+						</li>
+						<li className="nav-item">
+							<span className="nav-link" onClick={handleSignOut}>Logout</span>
 						</li>
 					</ul>
 				</div>

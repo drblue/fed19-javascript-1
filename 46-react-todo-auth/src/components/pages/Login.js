@@ -1,4 +1,5 @@
 import React from 'react';
+import { auth } from '../../modules/firebase';
 
 class Login extends React.Component {
 	state = {
@@ -15,10 +16,20 @@ class Login extends React.Component {
 	handleOnSubmit = e => {
 		e.preventDefault();
 
+		const { email, password } = this.state;
+
 		// submit email and password to firebase for authentication
+		auth.signInWithEmailAndPassword(email, password)
+		.then(credentials => {
+			// if successful, redirect to another page
+			console.log("Authentication successful!", credentials);
 
-		// if successful, redirect to another page
-
+			this.props.history.push('/');
+		})
+		.catch(err => {
+			// if not successful, show alert message
+			console.error("Authentication failed!", err);
+		})
 	}
 
 	render() {
