@@ -22,14 +22,3 @@ body {
 	top: 1rem;
 	right: 1.5rem;
 }
-
-.nav-item {
-	.nav-link {
-		background-color: #444;
-		color: #fff;
-
-		&.active {
-			background-color: #555;
-		}
-	}
-}
