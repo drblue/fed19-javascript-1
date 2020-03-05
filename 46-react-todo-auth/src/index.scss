@@ -1,0 +1,35 @@
+$body-bg: #333;
+$body-color: #fff;
+
+@import "~bootstrap/scss/bootstrap";
+
+body {
+}
+
+.completed {
+	font-style: italic;
+	text-decoration: line-through;
+}
+
+#clock {
+	position: fixed;
+	top: 1rem;
+	left: 1.5rem;
+}
+
+#spinner {
+	position: fixed;
+	top: 1rem;
+	right: 1.5rem;
+}
+
+.nav-item {
+	.nav-link {
+		background-color: #444;
+		color: #fff;
+
+		&.active {
+			background-color: #555;
+		}
+	}
+}
