@@ -5,6 +5,8 @@ import { auth } from '../../modules/firebase';
 const Navigation = props => {
 
 	const handleSignOut = e => {
+		e.preventDefault();
+
 		auth.signOut()
 		.then(() => {
 			// redirect to login page
@@ -26,12 +28,20 @@ const Navigation = props => {
 						<li className="nav-item">
 							<NavLink to="/" className="nav-link">All Todos</NavLink>
 						</li>
-						<li className="nav-item">
-							<NavLink to="/login" className="nav-link">Login</NavLink>
-						</li>
-						<li className="nav-item">
-							<span className="nav-link" onClick={handleSignOut}>Logout</span>
-						</li>
+
+						{
+							props.user
+							? (
+								<li className="nav-item">
+									<a href="/logout" className="nav-link" onClick={handleSignOut}>Logout</a>
+								</li>
+							)
+							: (
+								<li className="nav-item">
+									<NavLink to="/login" className="nav-link">Login</NavLink>
+								</li>
+							)
+						}
 					</ul>
 				</div>
 			</div>

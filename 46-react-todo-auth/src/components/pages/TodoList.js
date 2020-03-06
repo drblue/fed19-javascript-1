@@ -5,13 +5,14 @@ import TodoItem from "../todos/TodoItem";
 import todoListIcon from '../../images/icons8-todo-list-100.png';
 
 class TodoList extends React.Component {
+
 	state = {
 		showSpinner: false,
 		todos: [],
 	}
 
 	componentDidMount() {
-		this.getTodos();
+		this.props.user && this.getTodos();
 	}
 
 	showSpinner = () => {
@@ -93,6 +94,10 @@ class TodoList extends React.Component {
 	}
 
 	render() {
+		if (!this.props.user) {
+			this.props.history.push('/login');
+		}
+
 		const todoItems = this.state.todos.map(todoItem => {
 			return (
 				<TodoItem
@@ -120,7 +125,7 @@ class TodoList extends React.Component {
 					<h1>My TODOs</h1>
 				</div>
 
-				<ul className="todo-list">
+				<ul className="todo-list" className="mb-5">
 					{todoItems}
 				</ul>
 

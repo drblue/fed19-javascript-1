@@ -33,6 +33,10 @@ class Login extends React.Component {
 	}
 
 	render() {
+		if (this.props.user) {
+			this.props.history.push('/');
+		}
+
 		return (
 			<div id="login">
 				<h1 className="mb-5">Login</h1>

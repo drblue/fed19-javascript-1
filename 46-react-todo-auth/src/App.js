@@ -33,7 +33,7 @@ class App extends React.Component {
 		return (
 			<BrowserRouter>
 				<div id="App">
-					<Navigation />
+					<Navigation user={this.state.user} />
 
 					<div className="container my-5">
 						{
@@ -43,8 +43,20 @@ class App extends React.Component {
 						}
 
 						<Switch>
-							<Route exact path='/' component={TodoList} />
-							<Route path='/login' component={Login} />
+							<Route exact path='/' render={props => (
+									<TodoList
+										user={this.state.user}
+										{...props}
+									/>
+							)} />
+
+							<Route path='/login' render={props => (
+									<Login
+										user={this.state.user}
+										{...props}
+									/>
+							)} />
+
 							<Route path='/todo/:id' component={SingleTodo} />
 							<Route component={NotFound} />
 						</Switch>
