@@ -19,6 +19,7 @@ class AddTodo extends React.Component {
 	}
 
 	handleAddStepClick = e => {
+		e.preventDefault();
 		const steps = this.state.steps;
 		steps.push("");
 
@@ -27,7 +28,8 @@ class AddTodo extends React.Component {
 		});
 	}
 
-	handleDeleteStepClick = i => {
+	handleDeleteStepClick = (e, i) => {
+		e.preventDefault();
 		const steps = this.state.steps;
 		steps.splice(i, 1);
 
@@ -95,7 +97,7 @@ class AddTodo extends React.Component {
 									value={step}
 								/>
 								<div className="input-group-append">
-									<button className="btn btn-danger" onClick={e => { this.handleDeleteStepClick(i)}}>🗑</button>
+									<button className="btn btn-danger" onClick={e => { this.handleDeleteStepClick(e, i)}}>🗑</button>
 								</div>
 							</div>
 						))
