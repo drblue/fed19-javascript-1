@@ -5,6 +5,7 @@ class AddTodo extends React.Component {
 		title: '',
 		description: '',
 		steps: [""],
+		correctStep: null,
 	}
 
 	handleFormSubmit = (e) => {
@@ -102,13 +103,27 @@ class AddTodo extends React.Component {
 							</div>
 						))
 					}
-					<button className="btn btn-primary" onClick={this.handleAddStepClick}>Add Step</button>
+					<div className="mt-3">
+						<button className="btn btn-primary" onClick={this.handleAddStepClick}>Add Step</button>
+					</div>
+				</div>
+
+				<div className="steps-wrapper mb-4">
+					<h3>Correct Step</h3>
+					<select id="correctStep" onChange={this.handleInputChange} className="form-control">
+						<option value="">Please select correct step</option>
+						{
+							this.state.steps.map((step, i) => (
+								<option value={i} key={i}>{step}</option>
+							))
+						}
+					</select>
 				</div>
 
 				<button
 					type="submit"
 					className="btn btn-success w-100"
-					disabled={this.state.title ? '' : 'disabled'}
+					disabled={this.state.title && (this.state.correctStep || this.state.steps.length === 0)? '' : 'disabled'}
 				>Create</button>
 			</form>
 		)
