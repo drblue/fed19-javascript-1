@@ -25,9 +25,18 @@ const TodoItem = (props) => {
 			</Link>
 
 			<span className="ml-2">
-				<button onClick={ handleOnToggleClick } className="btn btn-primary btn-sm">{ completed ? 'Damnit' : 'Complete' }</button>
-
-				{ completed ? <button onClick={handleOnDeleteClick} className="btn btn-danger btn-sm">Delete</button> : '' }
+				{
+					completed
+					? (
+						<div className="btn-group">
+							<button className="btn btn-warning btn-sm" onClick={handleOnToggleClick}><span className="far fa-check-square"></span></button>
+							<button className="btn btn-danger btn-sm" onClick={handleOnDeleteClick}><span className="far fa-trash-alt"></span></button>
+						</div>
+					)
+					: (
+						<button className="btn btn-success btn-sm" onClick={handleOnToggleClick}><span className="fas fa-check-square"></span></button>
+					)
+				}
 			</span>
 		</li>
 	)

@@ -4,8 +4,12 @@ class AddTodo extends React.Component {
 	state = {
 		title: '',
 		description: '',
-		steps: [""],
-		correctStep: null,
+		steps: [
+			{
+				title: '',
+				completed: false,
+			}
+		],
 	}
 
 	handleFormSubmit = (e) => {
@@ -16,14 +20,22 @@ class AddTodo extends React.Component {
 		this.setState({
 			title: '',
 			description: '',
-			steps: [""],
+			steps: [
+				{
+					title: '',
+					completed: false,
+				}
+			],
 		});
 	}
 
 	handleAddStepClick = e => {
 		e.preventDefault();
 		const steps = this.state.steps;
-		steps.push("");
+		steps.push({
+			title: '',
+			completed: false,
+		});
 
 		this.setState({
 			steps
@@ -40,9 +52,19 @@ class AddTodo extends React.Component {
 		});
 	}
 
+	handleStepCheckboxChange = (e, i) => {
+		e.preventDefault();
+		const steps = this.state.steps;
+		steps[i].completed = !steps[i].completed
+
+		this.setState({
+			steps
+		});
+	}
+
 	handleInputStepChange = (e, i) => {
 		const steps = this.state.steps;
-		steps[i] = e.target.value;
+		steps[i].title = e.target.value;
 
 		this.setState({
 			steps,
@@ -96,36 +118,30 @@ class AddTodo extends React.Component {
 									onChange={e => { this.handleInputStepChange(e, i) }}
 									aria-label={`Type step ${i+1}`}
 									placeholder={`Type step ${i+1}`}
-									value={step}
+									value={step.title}
 								/>
 								<div className="input-group-append">
-									<button className="btn btn-danger" onClick={e => { this.handleDeleteStepClick(e, i)}}>🗑</button>
+									{
+										step.completed
+										? <button className="btn btn-success" onClick={e => { this.handleStepCheckboxChange(e, i)}}><span className="fas fa-check-square"></span></button>
+										: <button className="btn btn-warning" onClick={e => { this.handleStepCheckboxChange(e, i)}}><span className="far fa-check-square"></span></button>
+									}
+
+									<button className="btn btn-danger" onClick={e => { this.handleDeleteStepClick(e, i)}}><span className="far fa-trash-alt"></span></button>
 								</div>
 							</div>
 						))
 					}
 					<div className="mt-3">
-						<button className="btn btn-primary" onClick={this.handleAddStepClick}>Add Step</button>
+						<button className="btn btn-primary" onClick={this.handleAddStepClick}><span className="fas fa-plus-square"></span> Add Step</button>
 					</div>
-				</div>
-
-				<div className="steps-wrapper mb-4">
-					<h3>Correct Step</h3>
-					<select id="correctStep" onChange={this.handleInputChange} className="form-control">
-						<option value="">Please select correct step</option>
-						{
-							this.state.steps.map((step, i) => (
-								<option value={i} key={i}>{step}</option>
-							))
-						}
-					</select>
 				</div>
 
 				<button
 					type="submit"
 					className="btn btn-success w-100"
-					disabled={this.state.title && (this.state.correctStep || this.state.steps.length === 0)? '' : 'disabled'}
-				>Create</button>
+					disabled={this.state.title ? '' : 'disabled'}
+				><span className="fas fa-save"></span> Create</button>
 			</form>
 		)
 	}
