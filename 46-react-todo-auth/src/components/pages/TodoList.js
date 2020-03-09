@@ -1,5 +1,5 @@
 import React from "react";
-import { db } from '../../modules/firebase';
+import { auth, db } from '../../modules/firebase';
 import AddTodo from '../todos/AddTodo';
 import TodoItem from "../todos/TodoItem";
 import todoListIcon from '../../images/icons8-todo-list-100.png';
@@ -12,7 +12,11 @@ class TodoList extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.user && this.getTodos();
+		if (!auth.currentUser) {
+			this.props.history.push('/login');
+		}
+
+		auth.currentUser && this.getTodos();
 	}
 
 	showSpinner = () => {
@@ -94,10 +98,6 @@ class TodoList extends React.Component {
 	}
 
 	render() {
-		if (!this.props.user) {
-			this.props.history.push('/login');
-		}
-
 		const todoItems = this.state.todos.map(todoItem => {
 			return (
 				<TodoItem

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import { auth } from '../../modules/firebase';
 
 const Navigation = props => {
@@ -11,6 +11,7 @@ const Navigation = props => {
 		.then(() => {
 			// redirect to login page
 			console.log("Signed out");
+			this.props.history.go('/login');
 		});
 	}
 
@@ -30,7 +31,7 @@ const Navigation = props => {
 						</li>
 
 						{
-							props.user
+							auth.currentUser
 							? (
 								<li className="nav-item">
 									<a href="/logout" className="nav-link" onClick={handleSignOut}>Logout</a>
@@ -49,4 +50,4 @@ const Navigation = props => {
 	)
 }
 
-export default Navigation;
+export default withRouter(Navigation);

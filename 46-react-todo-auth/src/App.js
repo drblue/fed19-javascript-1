@@ -11,6 +11,7 @@ class App extends React.Component {
 
 	state = {
 		user: null,
+		loading: true,
 	}
 
 	componentDidMount() {
@@ -21,12 +22,12 @@ class App extends React.Component {
 					user: {
 						email: authUser.email,
 					},
-					currentUser: auth.currentUser,
+					loading: false,
 				});
 			} else {
 				this.setState({
 					user: null,
-					currentUser: auth.currentUser,
+					loading: false,
 				});
 			}
 		});
@@ -40,36 +41,27 @@ class App extends React.Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<div id="App">
-					<Navigation user={this.state.user} />
+				{
+					this.state.loading
+					? (
+						<div id="loader">
+							<div id="loader-content">Loading...</div>
+						</div>
+					) : (
+						<div id="App">
+							<Navigation />
 
-					<div className="container my-5">
-						{
-							this.state.user
-							? (<p>You are logged as {this.state.user.email}!</p>)
-							: (<p>No one is logged in.</p>)
-						}
-
-						<Switch>
-							<Route exact path='/' render={props => (
-									<TodoList
-										user={this.state.user}
-										{...props}
-									/>
-							)} />
-
-							<Route path='/login' render={props => (
-									<Login
-										user={this.state.user}
-										{...props}
-									/>
-							)} />
-
-							<Route path='/todo/:id' component={SingleTodo} />
-							<Route component={NotFound} />
-						</Switch>
-					</div>
-				</div>
+							<div className="container my-5">
+								<Switch>
+									<Route exact path='/' component={TodoList} />
+									<Route path='/login' component={Login} />
+									<Route path='/todo/:id' component={SingleTodo} />
+									<Route component={NotFound} />
+								</Switch>
+							</div>
+						</div>
+					)
+				}
 			</BrowserRouter>
 		)
 	}
