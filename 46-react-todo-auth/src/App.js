@@ -14,19 +14,27 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		auth.onAuthStateChanged(authUser => {
+		// save reference to onAuthStateChanged listener so we can unsubscribe from events when unmounted to prevent memory leaks
+		this.onAuthStateChangedListener = auth.onAuthStateChanged(authUser => {
 			if (authUser) {
 				this.setState({
 					user: {
 						email: authUser.email,
-					}
+					},
+					currentUser: auth.currentUser,
 				});
 			} else {
 				this.setState({
 					user: null,
+					currentUser: auth.currentUser,
 				});
 			}
 		});
+	}
+
+	componentWillUnmount() {
+		// unsubscribe from onAuthStateChanged events to prevent memory leaks
+		this.onAuthStateChangedListener();
 	}
 
 	render() {
