@@ -125,7 +125,7 @@ class TodoList extends React.Component {
 					<h1>My TODOs</h1>
 				</div>
 
-				<ul className="todo-list" className="mb-5">
+				<ul className="todo-list mb-5">
 					{todoItems}
 				</ul>
 

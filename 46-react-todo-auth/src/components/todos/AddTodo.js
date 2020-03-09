@@ -81,7 +81,7 @@ class AddTodo extends React.Component {
 					></textarea>
 				</div>
 
-				<div className="steps-wrapper" className="mb-4">
+				<div className="steps-wrapper mb-4">
 					<h3>Steps</h3>
 					{
 						this.state.steps.map((step, i) => (
