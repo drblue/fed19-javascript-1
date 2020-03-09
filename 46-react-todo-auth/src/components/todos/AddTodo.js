@@ -16,6 +16,7 @@ class AddTodo extends React.Component {
 		this.setState({
 			title: '',
 			description: '',
+			steps: [""],
 		});
 	}
 
